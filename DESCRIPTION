@@ -1,5 +1,5 @@
 Package: ppendemic
-Title: What the Package Does (One Line, Title Case)
+Title: Tools for accessing the information of endemic plants of Perú.
 Version: 0.0.0.9000
 Authors@R: 
     c(person(given = "Paul Efren",
@@ -8,14 +8,18 @@ Authors@R:
            email = "paulefrens@gmail.com"),
     person(given = "Lucely L.",
            family = "Vilca Bustamante",
-           role = c("aut", "cre"),
-           email = "vilca.lu01@gmail.com"))       
-Description: What the package does (one paragraph).
+           role = "aut",
+           email = "vilca.lu01@gmail.com")) 
+Maintainer:Paul Efren <paulefrens@gmail.com>
+Date: 2021-02-05
+Description: Provides tools for accessing the endemic plant's information from  "El libro rojo de las plantas endémicas del Perú".  The ppendemic package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. 
 License: MIT + file LICENSE
+URL: https://github.com/PaulESantos/ppendemic/
+BugReports: https://github.com/PaulESantos/ppendemic/issues
 Suggests: 
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
-LazyData: false
+LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1

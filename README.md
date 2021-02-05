@@ -11,56 +11,81 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
 <!-- badges: end -->
 
-El objetivo de ppendemic es brindar acceso a la información de “El libro
-rojo de las plantas endémicas del Perú. Blanca León et al 2006”,
-mediante un grupo de herramientas que permiten evaluar si nuestros
-registros contienen especies endémicas del Perú.
+El objetivo de ppendemic es brindar acceso a la información botánica de
+“El libro rojo de las plantas endémicas del Perú. Blanca León et al
+2006”.
 
-The goal of ppendemic is to gives access to the “El libro rojo de las
-plantas endémicas del Perú. Blanca León et al 2006”, with a set of
-functions to validate if you have endemic plants in your plants records.
+Al momento es un proyectó en desarrollo, con el objetivó de facilitar la
+determinación de endemismos en inventarios y evaluaciones botánicas del
+Perú.
 
-## Installation
+## Instalación:
 
-You can install the released version of ppendemic from
-[CRAN](https://CRAN.R-project.org) with:
-
-``` r
-install.packages("ppendemic")
-```
-
-## Example
-
-This is a basic example which shows you how to solve a common problem:
+Puede instalar la versión en desarrollo de ppendemic desde
+[github](https://github.com/) con:
 
 ``` r
-#library(ppendemic)
-## basic example code
+# install.packages("remotes")
+remotes::install_github("PaulESantos/ppendemic")
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+## Ejemplo:
+
+`pep_check`, es la función básica de `ppendemic`:
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(tidyverse)
+library(ppendemic)
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/master/examples>.
+La función puede ejecutarse sobre un `vector` con los nombres de las
+especies que se desea verificar.
 
-You can also embed plots, for example:
+``` r
+spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", 
+"Symplocos quitensis", "Miconia alpina", "Persea ruizii",
+"Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+pep_check(spp)
+#> [1] "not endemic" "not endemic" "not endemic" "not endemic" "endemic"    
+#> [6] "not endemic" "not endemic" "endemic"     "not endemic"
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+O puede ser incluida dentro del flujo de funciones de `tidyverse`:
+
+``` r
+df <- tibble::tibble(sppe = c("Clethra cuneata", "Miconia setulosa",
+                          "Weinmannia fagaroides", "Symplocos quitensis",
+                          "Miconia alpina", "Persea ruizii",
+                          "Myrsine andina", "Symplocos baehnii",
+                          "Polylepis pauta"))
+
+df
+#> # A tibble: 9 x 1
+#>   sppe                 
+#>   <chr>                
+#> 1 Clethra cuneata      
+#> 2 Miconia setulosa     
+#> 3 Weinmannia fagaroides
+#> 4 Symplocos quitensis  
+#> 5 Miconia alpina       
+#> 6 Persea ruizii        
+#> 7 Myrsine andina       
+#> 8 Symplocos baehnii    
+#> 9 Polylepis pauta
+
+df %>% 
+  mutate(endemic = pep_check(sppe))
+#> # A tibble: 9 x 2
+#>   sppe                  endemic    
+#>   <chr>                 <chr>      
+#> 1 Clethra cuneata       not endemic
+#> 2 Miconia setulosa      not endemic
+#> 3 Weinmannia fagaroides not endemic
+#> 4 Symplocos quitensis   not endemic
+#> 5 Miconia alpina        endemic    
+#> 6 Persea ruizii         not endemic
+#> 7 Myrsine andina        not endemic
+#> 8 Symplocos baehnii     endemic    
+#> 9 Polylepis pauta       not endemic
+```

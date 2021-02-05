@@ -9,7 +9,8 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  message = FALSE
 )
 ```
 
@@ -20,13 +21,15 @@ knitr::opts_chunk$set(
 [![CRAN status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
 <!-- badges: end -->
 
-El objetivo de ppendemic es brindar acceso a la información de "El libro rojo de las plantas endémicas del Perú. Blanca León et al 2006", mediante un grupo de herramientas que permiten evaluar si nuestros registros contienen especies endémicas del Perú. 
+El objetivo de ppendemic es brindar acceso a la información botánica de "El libro rojo de las plantas endémicas del Perú. Blanca León et al 2006".
 
-The goal of ppendemic is to gives access to the "El libro rojo de las plantas endémicas del Perú. Blanca León et al 2006", with a set of functions to validate if you have endemic plants in your plants records.
+Al momento es un proyectó en desarrollo, con el objetivó de facilitar la determinación de endemismos en inventarios y evaluaciones botánicas del Perú. 
 
-## Installation
 
-You can install the released version of ppendemic from [github](https://github.com/) with:
+
+## Instalación:
+Puede instalar la versión en desarrollo de ppendemic desde 
+[github](https://github.com/) con:
 
 ``` r
 # install.packages("remotes")
@@ -34,22 +37,37 @@ remotes::install_github("PaulESantos/ppendemic")
 ```
 
 ## Ejemplo:
-Pep_check, es la función básica de ppendemic:
 
+`pep_check`, es la función básica de `ppendemic`:
 
 ```{r example}
 library(tidyverse)
 library(ppendemic)
-## basic example code
 ```
 
+La función puede ejecutarse sobre un `vector` con los nombres de las especies que se desea verificar.
 
-```{r spp}
-spp <- c("Mauria denticulata", "Mauria flexuosa")
+```{r spp-vector}
+spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", 
+"Symplocos quitensis", "Miconia alpina", "Persea ruizii",
+"Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
 pep_check(spp)
 
-spp1 <- enframe(spp)
-spp1 %>% 
-  mutate(endemic = pep_check(value))
 ```
+
+O puede ser incluida dentro del flujo de funciones de `tidyverse`:
+
+```{r spp-tibble}
+df <- tibble::tibble(sppe = c("Clethra cuneata", "Miconia setulosa",
+                          "Weinmannia fagaroides", "Symplocos quitensis",
+                          "Miconia alpina", "Persea ruizii",
+                          "Myrsine andina", "Symplocos baehnii",
+                          "Polylepis pauta"))
+
+df
+
+df %>% 
+  mutate(endemic = pep_check(sppe))
+```
+
