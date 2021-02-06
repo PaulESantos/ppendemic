@@ -71,3 +71,10 @@ df %>%
   mutate(endemic = pep_check(sppe))
 ```
 
+Mapa de registro departamental:
+
+```{r map}
+pep_regdep_map("Symplocos baehnii")
+
+```
+

@@ -47,8 +47,9 @@ spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides",
 "Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
 pep_check(spp)
-#> [1] "not endemic" "not endemic" "not endemic" "not endemic" "endemic"    
-#> [6] "not endemic" "not endemic" "endemic"     "not endemic"
+#> [1] "Clethra cuneata"       "Miconia setulosa"      "Weinmannia fagaroides"
+#> [4] "Symplocos quitensis"   "endemic"               "Persea ruizii"        
+#> [7] "Myrsine andina"        "endemic"               "Polylepis pauta"
 ```
 
 O puede ser incluida dentro del flujo de funciones de `tidyverse`:
@@ -77,15 +78,23 @@ df
 df %>% 
   mutate(endemic = pep_check(sppe))
 #> # A tibble: 9 x 2
-#>   sppe                  endemic    
-#>   <chr>                 <chr>      
-#> 1 Clethra cuneata       not endemic
-#> 2 Miconia setulosa      not endemic
-#> 3 Weinmannia fagaroides not endemic
-#> 4 Symplocos quitensis   not endemic
-#> 5 Miconia alpina        endemic    
-#> 6 Persea ruizii         not endemic
-#> 7 Myrsine andina        not endemic
-#> 8 Symplocos baehnii     endemic    
-#> 9 Polylepis pauta       not endemic
+#>   sppe                  endemic              
+#>   <chr>                 <chr>                
+#> 1 Clethra cuneata       Clethra cuneata      
+#> 2 Miconia setulosa      Miconia setulosa     
+#> 3 Weinmannia fagaroides Weinmannia fagaroides
+#> 4 Symplocos quitensis   Symplocos quitensis  
+#> 5 Miconia alpina        endemic              
+#> 6 Persea ruizii         Persea ruizii        
+#> 7 Myrsine andina        Myrsine andina       
+#> 8 Symplocos baehnii     endemic              
+#> 9 Polylepis pauta       Polylepis pauta
 ```
+
+Mapa de registro departamental:
+
+``` r
+pep_regdep_map("Symplocos baehnii")
+```
+
+<img src="man/figures/README-map-1.png" width="100%" />
