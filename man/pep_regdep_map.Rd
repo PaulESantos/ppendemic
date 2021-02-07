@@ -10,11 +10,12 @@ pep_regdep_map(spp_name)
 \item{spp_name}{species name}
 }
 \value{
-
+ggplot object
 }
 \description{
 pep_regdep_map
 }
 \examples{
+
 pep_regdep_map("Grosvenoria coelocaulis")
 }

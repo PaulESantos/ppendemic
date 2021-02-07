@@ -94,7 +94,5 @@ df %>%
 Mapa de registro departamental:
 
 ``` r
-pep_regdep_map("Symplocos baehnii")
+#pep_regdep_map("Symplocos baehnii")
 ```
-
-<img src="man/figures/README-map-1.png" width="100%" />

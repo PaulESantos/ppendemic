@@ -10,7 +10,7 @@
 #' @author
 #' Nathan Eastwood and Antoine Fabri \email{antoine.fabri@@gmail.com}.
 #'
-#' @export
+#' @export `%>%`
 `%>%` <- function(lhs, rhs) {
   rhs_call <- insert_dot(substitute(rhs))
   eval(rhs_call, envir = list(`.` = lhs), enclos = parent.frame())
@@ -36,4 +36,3 @@ insert_dot <- function(expr) {
   }
   expr
 }
-# -------------------------------------------------------------------------

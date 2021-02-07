@@ -10,8 +10,8 @@
 #'
 #' pep_regdep_map("Grosvenoria coelocaulis")
 pep_regdep_map <- function(spp_name){
-  peru <- peru_tibble%>%
-    sf::st_as_sf()
+  #peru <- peru %>%
+   # sf::st_as_sf()
 
   departa <- reg_depa %>%
     poorman::filter(accepted_name == spp_name)
