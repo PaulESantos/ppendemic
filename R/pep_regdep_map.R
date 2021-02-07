@@ -1,36 +1,37 @@
 #' pep_regdep_map
 #'
 #' @param spp_name species name
+#' @name pep_regdep_map
 #'
-#' @return
-#' @export pep_regdep_map
+#' @return ggplot object
+#' @export
 #'
 #' @examples
+#'
 #' pep_regdep_map("Grosvenoria coelocaulis")
 pep_regdep_map <- function(spp_name){
   peru <- peru_tibble%>%
     sf::st_as_sf()
 
   departa <- reg_depa %>%
-    filter(accepted_name %in% c(spp_name)) %>%
-    select(registro_dep) %>% flatten_chr()
+    poorman::filter(accepted_name == spp_name)
 
   dep_data <- peru %>%
-    mutate(fillcolor = if_else(dep_id %in% departa,
+    poorman::mutate(fillcolor = poorman::if_else(dep_id %in% departa$registro_dep,
                                "#ff4000",
                                "transparent"))
   dep_data %>%
-    ggplot() +
-    geom_sf(fill = dep_data$fillcolor) +
-    theme_bw() +
-    labs(y = "Latitud",
+    ggplot2::ggplot() +
+    ggplot2::geom_sf(fill = dep_data$fillcolor) +
+    ggplot2::theme_bw() +
+    ggplot2::labs(y = "Latitud",
          x = "Longitud",
          colour = " ",
          fill = " ",
          title = spp_name,
          subtitle = "Registro departamental",
          caption = "ppendemic: El libro rojo de las plantas\n endémicas del  Perú") +
-    theme(strip.background = element_rect(fill = "transparent"),
+    ggplot2::theme(strip.background = element_rect(fill = "transparent"),
           axis.title = element_text(face = "bold", size = 14),
           axis.text = element_blank(),
           axis.ticks = element_blank(),

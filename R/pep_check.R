@@ -2,12 +2,12 @@
 #'
 #' Esta función permite evaluar si la especie es o no endémica del Perú.
 #' @param x Vector conteniendo el listado de especies.
-#'
+#' @name pep_check
 #' @return vector
-#' @export pep_check
+#' @export
 #'
 #' @examples
-#'
+#' # Basic usage
 #' spp <-  c("Clethra cuneata", "Miconia setulosa", "Hedyosmum"
 #'           "Weinmannia fagaroides", "Symplocos quitensis" , "Miconia alpina",
 #'           "Persea sp2", "Myrsine", "Symplocos var",
