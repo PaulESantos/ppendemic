@@ -4,10 +4,10 @@
 #' @name pep_regdep_map
 #'
 #' @return ggplot object
-#' @export pep_regdep_map
+#' @export
 #'
 #' @examples
-#'
+#' # Basic usage
 #' pep_regdep_map("Grosvenoria coelocaulis")
 pep_regdep_map <- function(spp_name){
 

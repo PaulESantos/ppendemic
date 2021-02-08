@@ -4,7 +4,7 @@
 #' @param x Vector conteniendo el listado de especies.
 #'
 #' @return vector
-#' @export pep_check
+#' @export
 #'
 #' @examples
 #' # Basic usage
