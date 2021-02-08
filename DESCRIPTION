@@ -1,6 +1,6 @@
 Package: ppendemic
-Title: Tools for accessing the information of endemic plants of Perú
-Version: 0.0.0.9000
+Title: The red book of endemic plants of Peru 
+Version: 0.1.0
 Authors@R: 
     c(person(given = "Paul Efren",
            family = "Santos Andrade",
@@ -12,7 +12,7 @@ Authors@R:
            email = "vilca.lu01@gmail.com")) 
 Maintainer: Paul Efren <paulefrens@gmail.com>
 Date: 2021-02-05
-Description: Provides tools for accessing the endemic plant's information from  "El libro rojo de las plantas endémicas del Perú".  The ppendemic package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. 
+Description: Provides tools for accessing the endemic plant's information from  "The red book of endemic plants of Peru ".  The ppendemic package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. 
 License: MIT + file LICENSE
 URL: https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues
