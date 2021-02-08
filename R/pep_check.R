@@ -8,14 +8,13 @@
 #'
 #' @examples
 #' # Basic usage
-#' spp <-  c("Clethra cuneata", "Miconia setulosa", "Hedyosmum"
-#'           "Weinmannia fagaroides", "Symplocos quitensis" , "Miconia alpina",
-#'           "Persea sp2", "Myrsine", "Symplocos var",
-#'           "Polylepis pauta var pauta", "Senna versicolor var. heterosperma")
+#' spp <-  c("Hedyosmum", "Miconia alpina", "Persea sp2")
 #' pep_check(spp)
 #'
 #'
 pep_check <- function(x){
+  sp <- ppendemic::species_pep
+  especiespp <- sp$accepted_name
   x <- trimws(x)
   # clean taxonomic status
   x[which(grepl("sp [0-9]|[a-z] [a-z] var | sp[0-9]| spp| sp|[a-z] var", x))] <- "taxon state undefined"

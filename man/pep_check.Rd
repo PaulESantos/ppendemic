@@ -17,10 +17,7 @@ Esta función permite evaluar si la especie es o no endémica del Perú.
 }
 \examples{
 # Basic usage
-spp <-  c("Clethra cuneata", "Miconia setulosa", "Hedyosmum"
-          "Weinmannia fagaroides", "Symplocos quitensis" , "Miconia alpina",
-          "Persea sp2", "Myrsine", "Symplocos var",
-          "Polylepis pauta var pauta", "Senna versicolor var. heterosperma")
+spp <-  c("Hedyosmum", "Miconia alpina", "Persea sp2")
 pep_check(spp)
 
 

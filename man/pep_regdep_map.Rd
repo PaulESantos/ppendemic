@@ -16,6 +16,6 @@ ggplot object
 pep_regdep_map
 }
 \examples{
-
+# Basic usage
 pep_regdep_map("Grosvenoria coelocaulis")
 }

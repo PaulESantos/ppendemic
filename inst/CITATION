@@ -1,0 +1,14 @@
+citHeader("To cite ppendemic in publications use:")
+
+citEntry(
+  entry    = "Manual",
+  title    = "ppendemic: The red book of endemic plants of Peru data",
+  author   = "Paul Efren Santos Andrade, Lucely L. Vilca Bustamante",
+  year     = 2021,
+  note     = "R package version 0.1.0",
+  doi      = "",
+  url      = "https://github.com/PaulESantos/ppendemic",
+  textVersion = paste(
+"Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red book of endemic plants of Peru data. R package version 0.1.0."
+  )
+)
