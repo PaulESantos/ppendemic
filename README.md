@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/redlistperu.png' align="right" height="139" /></a>
+# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/redlistperu.png' align="right" height="220" width="150" /></a>
 
 <!-- badges: start -->
 
@@ -12,7 +12,7 @@ status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.
 <!-- badges: end -->
 
 <blockquote align="center">
-…**El libro rojo de las plantas endémicas del Perú** constituye, en este
+…El libro rojo de las plantas endémicas del Perú constituye, en este
 aspecto una herramienta fundamental paradeterminar las medidas
 necesarias para la conservación de la flora peruana. - Kember Mejía
 Carhuanca
@@ -52,9 +52,7 @@ The function can be executed on a `vector` with the names of the species
 to be verified.
 
 ``` r
-spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", 
-"Symplocos quitensis", "Miconia alpina", "Persea ruizii",
-"Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
+spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", "Symplocos quitensis", "Miconia alpina", "Persea ruizii", "Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
 #pep_check(spp)
 ```

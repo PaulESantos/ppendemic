@@ -16,7 +16,7 @@ library(tidyverse)
 library(ppendemic)
 ```
 
-# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/redlistperu.png' align="right" height="139" /></a>
+# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/redlistperu.png' align="right" height="220" width="150" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
@@ -24,8 +24,7 @@ library(ppendemic)
 <!-- badges: end -->
 
 <blockquote align="center">
-  ...**El libro rojo de las plantas endémicas del Perú** constituye, en este aspecto una herramienta fundamental paradeterminar las medidas necesarias para la conservación de la flora peruana.
-    - Kember Mejía Carhuanca
+  ...El libro rojo de las plantas endémicas del Perú constituye, en este aspecto una herramienta fundamental paradeterminar las medidas necesarias para la conservación de la flora peruana. - Kember Mejía Carhuanca
 </blockquote>
 
 The goal of ppendemic is to provide access to **The red book of endemic plants of Peru** data. 
@@ -57,9 +56,7 @@ Data were published and made available by the [Revista Peruana de Biología](htt
 The function can be executed on a `vector` with the names of the species to be verified.
 
 ```{r spp-vector}
-spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", 
-"Symplocos quitensis", "Miconia alpina", "Persea ruizii",
-"Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
+spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", "Symplocos quitensis", "Miconia alpina", "Persea ruizii", "Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
 #pep_check(spp)
 

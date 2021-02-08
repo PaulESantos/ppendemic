@@ -13,15 +13,30 @@
 #'
 #'
 pep_check <- function(x){
-  sp <- ppendemic::species_pep
-  especiespp <- sp$accepted_name
+  "%w/o%" <- function(x, table) match(x, table, nomatch = 0) == 0
+  "%per%" <- function(x, table) match(x, table, nomatch = 0) > 0
   x <- trimws(x)
-  # clean taxonomic status
-  x[which(grepl("sp [0-9]|[a-z] [a-z] var | sp[0-9]| spp| sp|[a-z] var", x))] <- "taxon state undefined"
+  #' clean and check taxonomic status
+  #' all posible variants
+  variant <- c("sp [0-9]",
+               "[a-z] [a-z] var. [a-z]",
+               "sp[0-9]",
+               " spp",
+               "sp",
+               "[a-z] var",
+               "subsp.",
+               "subsp")
+  x[which(grepl(paste0(variant, collapse = "|"), x))] <- "taxon state undefined"
+
   # not binari name position
   x[base::setdiff(seq(1:length(x)),
                   which(grepl("[a-z] [a-z]", tolower(x))))] <- "not binary name"
-  x[x%in%especiespp] <- "endemic"
-  x[x == FALSE] <- "not endemic"
+
+  x[x %per% species_pep$accepted_name] <- "endemic"
+
+  x[x %w/o% c("endemic",
+              "not binary name",
+              "taxon state undefined")] <- "not endemic"
+
   return(x)
 }
