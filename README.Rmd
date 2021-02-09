@@ -58,7 +58,7 @@ The function can be executed on a `vector` with the names of the species to be v
 ```{r spp-vector}
 spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", "Symplocos quitensis", "Miconia alpina", "Persea ruizii", "Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
-#pep_check(spp)
+pep_check(spp)
 
 ```
 
@@ -73,14 +73,14 @@ df <- tibble::tibble(sppe = c("Clethra cuneata", "Miconia setulosa",
 
 df
 
-#df %>% 
-#  mutate(endemic = pep_check(sppe))
+df %>% 
+  mutate(endemic = pep_check(sppe))
 ```
 
 Mapa de registro departamental:
 
 ```{r map}
-#pep_regdep_map("Symplocos baehnii")
+pep_regdep_map("Symplocos baehnii")
 
 ```
 

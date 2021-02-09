@@ -54,7 +54,9 @@ to be verified.
 ``` r
 spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", "Symplocos quitensis", "Miconia alpina", "Persea ruizii", "Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
 
-#pep_check(spp)
+pep_check(spp)
+#> [1] "not endemic" "not endemic" "not endemic" "not endemic" "endemic"    
+#> [6] "not endemic" "not endemic" "endemic"     "not endemic"
 ```
 
 Or in a tibble variable:
@@ -80,15 +82,35 @@ df
 #> 8 Symplocos baehnii    
 #> 9 Polylepis pauta
 
-#df %>% 
-#  mutate(endemic = pep_check(sppe))
+df %>% 
+  mutate(endemic = pep_check(sppe))
+#> # A tibble: 9 x 2
+#>   sppe                  endemic    
+#>   <chr>                 <chr>      
+#> 1 Clethra cuneata       not endemic
+#> 2 Miconia setulosa      not endemic
+#> 3 Weinmannia fagaroides not endemic
+#> 4 Symplocos quitensis   not endemic
+#> 5 Miconia alpina        endemic    
+#> 6 Persea ruizii         not endemic
+#> 7 Myrsine andina        not endemic
+#> 8 Symplocos baehnii     endemic    
+#> 9 Polylepis pauta       not endemic
 ```
 
 Mapa de registro departamental:
 
 ``` r
-#pep_regdep_map("Symplocos baehnii")
+pep_regdep_map("Symplocos baehnii")
+#> Reading layer `peru' from data source `C:\Users\user\OneDrive\Documentos\R\win-library\4.0\ppendemic\shape\peru.shp' using driver `ESRI Shapefile'
+#> Simple feature collection with 26 features and 84 fields
+#> geometry type:  MULTIPOLYGON
+#> dimension:      XY
+#> bbox:           xmin: -81.33756 ymin: -18.33775 xmax: -68.68425 ymax: -0.02909271
+#> geographic CRS: GCS_unknown
 ```
+
+<img src="man/figures/README-map-1.png" width="100%" />
 
 ## Citation
 
