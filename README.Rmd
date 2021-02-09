@@ -21,10 +21,11 @@ library(ppendemic)
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
+[![Travis build status](https://travis-ci.com/PaulESantos/ppendemic.svg?branch=main)](https://travis-ci.com/PaulESantos/ppendemic)
 <!-- badges: end -->
 
 <blockquote align="center">
-  ...El libro rojo de las plantas endémicas del Perú constituye, en este aspecto una herramienta fundamental paradeterminar las medidas necesarias para la conservación de la flora peruana. - Kember Mejía Carhuanca
+  ...El libro rojo de las plantas endémicas del Perú constituye, en este aspecto una herramienta fundamental para determinar las medidas necesarias para la conservación de la flora peruana. - Kember Mejía Carhuanca
 </blockquote>
 
 The goal of ppendemic is to provide access to **The red book of endemic plants of Peru** data. 
@@ -48,9 +49,9 @@ Data were published and made available by the [Revista Peruana de Biología](htt
 
 `pep_check`, the basic function of `ppendemic`:
 
-```{r example}
-#library(tidyverse)
-#library(ppendemic)
+```{r example, eval=FALSE}
+library(tidyverse)
+library(ppendemic)
 ```
 
 The function can be executed on a `vector` with the names of the species to be verified.

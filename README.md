@@ -9,11 +9,13 @@
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
+[![Travis build
+status](https://travis-ci.com/PaulESantos/ppendemic.svg?branch=main)](https://travis-ci.com/PaulESantos/ppendemic)
 <!-- badges: end -->
 
 <blockquote align="center">
 …El libro rojo de las plantas endémicas del Perú constituye, en este
-aspecto una herramienta fundamental paradeterminar las medidas
+aspecto una herramienta fundamental para determinar las medidas
 necesarias para la conservación de la flora peruana. - Kember Mejía
 Carhuanca
 </blockquote>
@@ -44,8 +46,8 @@ on 2006. Edited by Blanca León et al.
 `pep_check`, the basic function of `ppendemic`:
 
 ``` r
-#library(tidyverse)
-#library(ppendemic)
+library(tidyverse)
+library(ppendemic)
 ```
 
 The function can be executed on a `vector` with the names of the species
