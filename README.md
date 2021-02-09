@@ -100,7 +100,7 @@ df %>%
 #> 9 Polylepis pauta       not endemic
 ```
 
-Mapa de registro departamental:
+Departmental registry map:
 
 ``` r
 pep_regdep_map("Symplocos baehnii")
