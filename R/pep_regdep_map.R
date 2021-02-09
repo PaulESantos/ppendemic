@@ -5,24 +5,24 @@
 #'
 #' @return ggplot object
 #' @export
-#' @importFrom sf st_read st_as_sf
+#' @importFrom sf st_as_sf
 #' @importFrom ggplot2 ggplot geom_sf theme_bw labs theme element_rect element_text element_blank
+#' @importFrom dplyr mutate
+#' @importFrom tibble as_tibble
 #' @importFrom rlang .data
-#' @importFrom dplyr as_tibble mutate
 #' @examples
 #' # Basic usage
 #' pep_regdep_map("Grosvenoria coelocaulis")
 pep_regdep_map <- function(spp_name){
   # read shape file
-  shp <-  sf::st_read(system.file("shape/peru.shp", package="ppendemic"))
+  shp <-  ppendemic::peru
   # choose regions
   dff <- ppendemic::registro_departamental
   dff <- dff[dff$accepted_name == spp_name,]
   regions <- dff$registro_dep
-regions
   # fill regions where species was funded
   peru <- shp %>%
-    dplyr::as_tibble() %>%
+    tibble::as_tibble() %>%
     dplyr::mutate(fillcolor = .data$dep_id %in% regions,
                     fillcolor = ifelse(.data$fillcolor == TRUE,
                                        "#ff4000",

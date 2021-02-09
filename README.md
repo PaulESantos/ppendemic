@@ -102,12 +102,6 @@ Mapa de registro departamental:
 
 ``` r
 pep_regdep_map("Symplocos baehnii")
-#> Reading layer `peru' from data source `C:\Users\user\OneDrive\Documentos\R\win-library\4.0\ppendemic\shape\peru.shp' using driver `ESRI Shapefile'
-#> Simple feature collection with 26 features and 84 fields
-#> geometry type:  MULTIPOLYGON
-#> dimension:      XY
-#> bbox:           xmin: -81.33756 ymin: -18.33775 xmax: -68.68425 ymax: -0.02909271
-#> geographic CRS: GCS_unknown
 ```
 
 <img src="man/figures/README-map-1.png" width="100%" />

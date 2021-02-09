@@ -28,4 +28,5 @@ Depends:
     sf,
     ggplot2,
     rlang,
+    tibble,
     dplyr
