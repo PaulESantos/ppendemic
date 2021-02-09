@@ -7,8 +7,7 @@
 #' @export
 #' @importFrom sf st_as_sf
 #' @importFrom ggplot2 ggplot geom_sf theme_bw labs theme element_rect element_text element_blank
-#' @importFrom dplyr mutate
-#' @importFrom tibble as_tibble
+#' @importFrom dplyr mutate as_tibble %>%
 #' @importFrom rlang .data
 #' @examples
 #' # Basic usage
@@ -22,7 +21,7 @@ pep_regdep_map <- function(spp_name){
   regions <- dff$registro_dep
   # fill regions where species was funded
   peru <- shp %>%
-    tibble::as_tibble() %>%
+    dplyr::as_tibble() %>%
     dplyr::mutate(fillcolor = .data$dep_id %in% regions,
                     fillcolor = ifelse(.data$fillcolor == TRUE,
                                        "#ff4000",
