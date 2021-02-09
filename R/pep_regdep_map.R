@@ -5,38 +5,48 @@
 #'
 #' @return ggplot object
 #' @export
-#'
+#' @importFrom sf st_read st_as_sf
+#' @importFrom ggplot2 ggplot geom_sf theme_bw labs theme element_rect element_text element_blank
+#' @importFrom rlang .data
+#' @importFrom dplyr as_tibble mutate
 #' @examples
 #' # Basic usage
 #' pep_regdep_map("Grosvenoria coelocaulis")
 pep_regdep_map <- function(spp_name){
-
-  departa <- reg_depa[reg_depa$accepted_name == spp_name,]$registro_dep
-
-  peru <- peru_tibble %>%
-    poorman::mutate(fillcolor = dep_id %in% departa,
-                          fillcolor = ifelse(fillcolor == TRUE,
-                                             "#ff4000",
-                                             "transparent"))
-  dep_data <- peru %>%
+  # read shape file
+  shp <-  sf::st_read(system.file("shape/peru.shp", package="ppendemic"))
+  # choose regions
+  dff <- ppendemic::registro_departamental
+  dff <- dff[dff$accepted_name == spp_name,]
+  regions <- dff$registro_dep
+regions
+  # fill regions where species was funded
+  peru <- shp %>%
+    dplyr::as_tibble() %>%
+    dplyr::mutate(fillcolor = .data$dep_id %in% regions,
+                    fillcolor = ifelse(.data$fillcolor == TRUE,
+                                       "#ff4000",
+                                       "transparent"))
+  # plot
+  peru %>%
     sf::st_as_sf() %>%
     ggplot2::ggplot() +
-    ggplot2::geom_sf(aes(fill = fillcolor)) +
+    ggplot2::geom_sf(fill = peru$fillcolor) +
     ggplot2::theme_bw() +
     ggplot2::labs(y = "Latitud",
-         x = "Longitud",
-         colour = " ",
-         fill = " ",
-         title = spp_name,
-         subtitle = "Registro departamental") +
-    ggplot2::theme(strip.background = element_rect(fill = "transparent"),
-          axis.title = element_text(face = "bold", size = 14),
-          axis.text = element_blank(),
-          axis.ticks = element_blank(),
-          strip.text = element_text(face = "bold"),
-          plot.title = element_text(hjust = .5),
-          plot.subtitle = element_text(hjust = .5, size = 8),
-          plot.caption = element_text(hjust = .5, colour = "#1a1aff",
-                                      size = 5))
+                  x = "Longitud",
+                  colour = " ",
+                  fill = " ",
+                  title = spp_name,
+                  subtitle = "Registro departamental") +
+    ggplot2::theme(strip.background = ggplot2::element_rect(fill = "transparent"),
+                   axis.title = ggplot2::element_text(face = "bold", size = 8),
+                   axis.text = ggplot2::element_blank(),
+                   axis.ticks = ggplot2::element_blank(),
+                   strip.text = ggplot2::element_text(face = "bold"),
+                   plot.title = ggplot2::element_text(hjust = .5, size = 12),
+                   plot.subtitle = ggplot2::element_text(hjust = .5, size = 8),
+                   plot.caption = ggplot2::element_text(hjust = .5, colour = "#1a1aff",
+                                               size = 5))
 
 }

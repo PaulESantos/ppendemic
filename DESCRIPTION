@@ -17,11 +17,15 @@ License: MIT + file LICENSE
 URL: https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues
 Suggests: 
-    testthat (>= 3.0.0)
-Config/testthat/edition: 3
+    knitr,
+    rmarkdown
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    sf,
+    ggplot2,
+    rlang,
+    dplyr

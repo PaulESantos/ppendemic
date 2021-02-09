@@ -5,7 +5,7 @@
 #'
 #' @return vector
 #' @export
-#'
+#' @importFrom rlang .data
 #' @examples
 #' # Basic usage
 #' spp <-  c("Hedyosmum", "Miconia alpina", "Persea sp2")
@@ -16,8 +16,7 @@ pep_check <- function(x){
   "%w/o%" <- function(x, table) match(x, table, nomatch = 0) == 0
   "%per%" <- function(x, table) match(x, table, nomatch = 0) > 0
   x <- trimws(x)
-  #' clean and check taxonomic status
-  #' all posible variants
+  # clean and check taxonomic status all posible variants
   variant <- c("sp [0-9]",
                "[a-z] [a-z] var. [a-z]",
                "sp[0-9]",
