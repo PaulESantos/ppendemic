@@ -1,5 +1,7 @@
 #' pep_regdep_map
 #'
+#' This function builds a map indicating where the species has been recorded.
+#'
 #' @param spp_name species name
 #' @name pep_regdep_map
 #'

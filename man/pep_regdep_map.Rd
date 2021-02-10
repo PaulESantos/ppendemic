@@ -13,7 +13,7 @@ pep_regdep_map(spp_name)
 ggplot object
 }
 \description{
-pep_regdep_map
+This function builds a map indicating where the species has been recorded.
 }
 \examples{
 # Basic usage

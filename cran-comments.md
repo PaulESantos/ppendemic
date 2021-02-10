@@ -5,9 +5,4 @@
 * win-builder: devel
 
 ## R CMD check results
-ppendemic 0.1.0 ----
-Duration: 2m 32.8s
 
-0 errors v | 0 warnings v | 0 notes v
-
-R CMD check succeeded

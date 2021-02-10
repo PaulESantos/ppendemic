@@ -1,5 +1,5 @@
 Package: ppendemic
-Title: The red book of endemic plants of Peru 
+Title: The Red Book of Endemic Plants of Peru 
 Version: 0.1.0
 Authors@R: 
     c(person(given = "Paul Efren",
@@ -10,9 +10,9 @@ Authors@R:
            family = "Vilca Bustamante",
            role = "aut",
            email = "vilca.lu01@gmail.com")) 
-Maintainer: Paul Efren <paulefrens@gmail.com>
+Maintainer: Paul Efren Santos Andrade <paulefrens@gmail.com>
 Date: 2021-02-05
-Description: Provides tools for accessing the endemic plant's information from  "The red book of endemic plants of Peru ".  The ppendemic package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. 
+Description: Provides tools for accessing the endemic plant's information from  "The Red Book of Endemic Plants of Peru ".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. 
 License: MIT + file LICENSE
 URL: https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues
@@ -24,7 +24,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Depends: 
-    R (>= 2.10),
+    R (>= 3.5.0),
 Imports:
     sf,
     ggplot2,

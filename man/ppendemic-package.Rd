@@ -4,9 +4,9 @@
 \name{ppendemic-package}
 \alias{ppendemic}
 \alias{ppendemic-package}
-\title{ppendemic: The red book of endemic plants of Peru}
+\title{ppendemic: The Red Book of Endemic Plants of Peru}
 \description{
-Provides tools for accessing the endemic plant's information from  "The red book of endemic plants of Peru ".  The ppendemic package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data.
+Provides tools for accessing the endemic plant's information from  "The Red Book of Endemic Plants of Peru ".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data.
 }
 \seealso{
 Useful links:

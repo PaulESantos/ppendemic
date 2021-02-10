@@ -3,15 +3,11 @@
 \docType{data}
 \name{peru}
 \alias{peru}
-\alias{states10}
-\title{state (admin level 1) polygons from Natural Earth}
+\title{For Peru at scale 1:10m (high).}
 \format{
 A \code{SpatialPolygonsDataFrame}
 
 An object of class \code{sf} (inherits from \code{data.frame}) with 26 rows and 85 columns.
-}
-\source{
-\url{http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_1_states.zip}
 }
 \usage{
 peru

@@ -7,13 +7,13 @@
 pep_check(x)
 }
 \arguments{
-\item{x}{Vector conteniendo el listado de especies.}
+\item{x}{Vector}
 }
 \value{
 vector
 }
 \description{
-Esta función permite evaluar si la especie es o no endémica del Perú.
+This function allows evaluating whether or not the species is endemic to Peru.
 }
 \examples{
 # Basic usage

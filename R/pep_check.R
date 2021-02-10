@@ -1,7 +1,7 @@
 #' pep_check
 #'
-#' Esta función permite evaluar si la especie es o no endémica del Perú.
-#' @param x Vector conteniendo el listado de especies.
+#' This function allows evaluating whether or not the species is endemic to Peru.
+#' @param x Vector
 #'
 #' @return vector
 #' @export
