@@ -13,6 +13,8 @@ pep_regdep_map(spp_name)
 ggplot object
 }
 \description{
+\ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
+
 This function builds a map indicating where the species has been recorded.
 }
 \examples{

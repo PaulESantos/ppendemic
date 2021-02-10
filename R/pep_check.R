@@ -1,4 +1,7 @@
 #' pep_check
+#' @description
+#'
+#' `r lifecycle::badge("experimental")`
 #'
 #' This function allows evaluating whether or not the species is endemic to Peru.
 #' @param x Vector
