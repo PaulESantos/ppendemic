@@ -1,0 +1,18 @@
+#url: https://allisonhorst.github.io/palmerpenguins
+
+template:
+  params:
+    ganalytics: UA-169202294-1
+  opengraph:
+    image:
+      src: man/figures/redlistperu.png
+      alt: "ppendemic data package in R"
+    twitter:
+      creator: "@PaulEfrenSantos"
+      card: summary
+
+authors:
+  Paul E. Santos:
+    href: https://paulefrensa.rbind.io
+  Lucely Vilca:
+# href: https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php
