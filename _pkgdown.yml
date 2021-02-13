@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 url: https://paulesantos.github.io/ppendemic
+=======
+#url: https://allisonhorst.github.io/palmerpenguins
+>>>>>>> 92b039b2dba466f0ac5e3d1fcd3c5c5eb3083582
 
 template:
   params:
@@ -16,6 +20,7 @@ authors:
     href: https://paulefrensa.rbind.io
   Lucely Vilca:
 # href: https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php
+<<<<<<< HEAD
 
 navbar:
   structure:
@@ -44,3 +49,5 @@ navbar:
 
 
 
+=======
+>>>>>>> 92b039b2dba466f0ac5e3d1fcd3c5c5eb3083582
