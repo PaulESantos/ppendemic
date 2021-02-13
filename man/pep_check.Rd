@@ -7,15 +7,14 @@
 pep_check(x)
 }
 \arguments{
-\item{x}{Vector}
+\item{x}{an atomic character string or a vector with the species names that will be verified if it endemic species}
 }
 \value{
-vector
+a vector with information for each species names tested: a) "endemic" if the species is endemic of Perú; b)  "not endemic" if the species is not endemic of Perú; c)"not binary name" if only the genera were submitted; d) "taxon state undefined" if the submitted species name has a taxonomic status undetermined.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
-
-This function allows evaluating whether or not the species is endemic to Peru.
+The function automates the process to check if a plant species is or not endemic to Perú.
 }
 \examples{
 # Basic usage

@@ -6,7 +6,7 @@
 \alias{ppendemic-package}
 \title{ppendemic: The Red Book of Endemic Plants of Peru}
 \description{
-Provides tools for accessing the endemic plant's information from  "The Red Book of Endemic Plants of Peru ".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data.
+Provides tools for accessing the endemic plant's information from  "The Red Book of Endemic Plants of Peru".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data.
 }
 \seealso{
 Useful links:
@@ -17,7 +17,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Paul Efren Santos Andrade \email{paulefrens@gmail.com}
+\strong{Maintainer}: Paul Efren Santos Andrade \email{paulefrens@gmail.com} (\href{https://orcid.org/0000-0002-6635-0375}{ORCID})
 
 Authors:
 \itemize{

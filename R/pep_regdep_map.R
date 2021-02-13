@@ -9,7 +9,7 @@
 #' @param spp_name species name
 #' @name pep_regdep_map
 #'
-#' @return ggplot object
+#' @return a map showing all regions where the species is present. This map is a ggplot object that could be edited.
 #' @export
 #' @importFrom sf st_as_sf
 #' @importFrom ggplot2 ggplot geom_sf theme_bw labs theme element_rect element_text element_blank

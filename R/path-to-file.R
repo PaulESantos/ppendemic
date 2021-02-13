@@ -6,7 +6,7 @@
 #'
 
 #'
-#' @param path `NULL`, the example files will be listed.
+#' @param path `NULL`, the source files will be listed.
 #' @export
 #' @examples
 #' path_to_file()

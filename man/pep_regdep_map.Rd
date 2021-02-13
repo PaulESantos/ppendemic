@@ -10,7 +10,7 @@ pep_regdep_map(spp_name)
 \item{spp_name}{species name}
 }
 \value{
-ggplot object
+a map showing all regions where the species is present. This map is a ggplot object that could be edited.
 }
 \description{
 \ifelse{html}{\out{<a href='https://www.tidyverse.org/lifecycle/#experimental'><img src='figures/lifecycle-experimental.svg' alt='Experimental lifecycle'></a>}}{\strong{Experimental}}
