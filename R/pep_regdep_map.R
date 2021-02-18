@@ -33,8 +33,9 @@ pep_regdep_map <- function(spp_name){
                                        "#ff4000",
                                        "transparent"))
   # plot
-  peru %>%
-    sf::st_as_sf() %>%
+ # peru %>%
+ #  sf::st_as_sf() %>%
+  shp %>%
     ggplot2::ggplot() +
     ggplot2::geom_sf(fill = peru$fillcolor) +
     ggplot2::theme_bw() +

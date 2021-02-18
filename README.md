@@ -25,8 +25,16 @@ plants of Peru** data.
 
 ## Installation:
 
-You can install the development version of ppendemic from
-[github](https://github.com/) with:
+You can install:
+
+the most recent officially-released version from
+[CRAN](https://CRAN.R-project.org) with:
+
+``` r
+install.packages("ppendemic")
+```
+
+the latest development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")

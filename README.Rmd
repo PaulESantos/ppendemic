@@ -32,12 +32,24 @@ The goal of ppendemic is to provide access to **The red book of endemic plants o
 
 
 ## Installation:
-You can install the development version of ppendemic from [github](https://github.com/) with:
+
+You can install:
+
+the most recent officially-released version from [CRAN](https://CRAN.R-project.org) with:
+
+``` r
+
+install.packages("ppendemic")
+
+```
+
+the latest development version from [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("remotes")
 remotes::install_github("PaulESantos/ppendemic")
 ```
+
 ## About the data
 
 Data were published and made available by the [Revista Peruana de Biología](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/index) in volume 13 and number 2 [available here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153), on 2006. Edited by Blanca León et al.
