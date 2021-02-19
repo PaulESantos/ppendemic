@@ -90,10 +90,18 @@ df %>%
   mutate(endemic = pep_check(sppe))
 ```
 
-Departmental registry map:
+You can check the region where the endemic species are registered with `pep_regdep` function:
+
+```{r regdep}
+pep_regdep("Miconia alpina")
+
+```
+
+
+and build a map with `pep_regdep_map()`:
 
 ```{r map}
-pep_regdep_map("Symplocos baehnii")
+pep_regdep_map("Miconia alpina")
 
 ```
 

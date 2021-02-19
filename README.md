@@ -108,10 +108,21 @@ df %>%
 #> 9 Polylepis pauta       not endemic
 ```
 
-Departmental registry map:
+You can check the region where the endemic species are registered with
+`pep_regdep` function:
 
 ``` r
-pep_regdep_map("Symplocos baehnii")
+pep_regdep("Miconia alpina")
+#> # A tibble: 1 x 2
+#>   accepted_name  registro_dep                 
+#>   <chr>          <chr>                        
+#> 1 Miconia alpina Áncash-Apurímac-Cusco-Huánuco
+```
+
+and build a map with `pep_regdep_map()`:
+
+``` r
+pep_regdep_map("Miconia alpina")
 ```
 
 <img src="man/figures/README-map-1.png" width="100%" />
@@ -126,7 +137,7 @@ citation("ppendemic")
 #> To cite ppendemic in publications use:
 #> 
 #>   Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red
-#>   book of endemic plants of Peru data. R package version 0.1.0.
+#>   book of endemic plants of Peru data. R package version 0.1.1.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -134,7 +145,7 @@ citation("ppendemic")
 #>     title = {ppendemic: The red book of endemic plants of Peru data},
 #>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
 #>     year = {2021},
-#>     note = {R package version 0.1.0},
+#>     note = {R package version 0.1.1},
 #>     url = {https://github.com/PaulESantos/ppendemic},
 #>   }
 ```
