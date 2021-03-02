@@ -11,8 +11,11 @@ experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](h
 status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
 [![Travis build
 status](https://travis-ci.com/PaulESantos/ppendemic.svg?branch=main)](https://travis-ci.com/PaulESantos/ppendemic)
-<!-- badges: end -->
+[![](http://cranlogs.r-pkg.org/badges/grand-total/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
+[![](http://cranlogs.r-pkg.org/badges/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
+[![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 
+<!-- badges: end -->
 <blockquote align="center">
 …El libro rojo de las plantas endémicas del Perú constituye, en este
 aspecto una herramienta fundamental para determinar las medidas
