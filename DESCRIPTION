@@ -1,6 +1,6 @@
 Package: ppendemic
 Title: The Red Book of Endemic Plants of Peru 
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: 
     c(person(given = "Paul Efren",
            family = "Santos Andrade",
