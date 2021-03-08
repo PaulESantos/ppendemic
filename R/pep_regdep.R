@@ -1,5 +1,9 @@
 #' pep_regdep
 #'
+#' @description
+#'
+#' `r lifecycle::badge("maturing")`
+#'
 #' Help to find in which region the endemic species are described
 #'
 #' @param ... Atomic element or vector with species names.

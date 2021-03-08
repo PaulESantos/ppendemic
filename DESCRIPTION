@@ -32,7 +32,8 @@ Imports:
     dplyr,
     magrittr,
     purrr,
-    tidyr
+    tidyr,
+    lifecycle
 Author: 
    Paul Efren Santos Andrade [aut, cre]
     (<https://orcid.org/0000-0002-6635-0375>),

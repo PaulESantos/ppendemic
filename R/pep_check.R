@@ -1,6 +1,6 @@
 #' pep_check
 #' @description
-#' `r lifecycle::badge("experimental")`
+#' `r lifecycle::badge("maturing")`
 #' The function automates the process to check if a plant species is or not endemic to Perú.
 #'
 #' @param x an atomic character string or a vector with the species names that will be verified if it endemic species

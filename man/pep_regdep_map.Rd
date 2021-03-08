@@ -13,7 +13,7 @@ pep_regdep_map(spp_name)
 a map showing all regions where the species is present. This map is a ggplot object that could be edited.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 
 This function builds a map indicating where the species has been recorded.
 }

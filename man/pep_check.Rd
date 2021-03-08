@@ -13,7 +13,7 @@ pep_check(x)
 a vector with information for each species names tested: a) "endemic" if the species is endemic of Perú; b)  "not endemic" if the species is not endemic of Perú; c)"not binary name" if only the genera were submitted; d) "taxon state undefined" if the submitted species name has a taxonomic status undetermined.
 }
 \description{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}}
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 The function automates the process to check if a plant species is or not endemic to Perú.
 }
 \examples{
