@@ -22,6 +22,26 @@
 #' species <- c("Sanchezia filamentosa", "Aphelandra latibracteata")
 #' pep_by_reg(species)
 pep_by_reg <- function(...) {
-  ppendemic::registro_departamental %>%
-    dplyr::filter(registro_dep %in%  c(...))
+  out <- ppendemic::registro_departamental %>%
+    dplyr::filter(registro_dep %in%  c(...)) %>%
+    dplyr::select(registro_dep, accepted_name) %>%
+    dplyr::arrange(registro_dep)
+
+  meta <- out %>%
+    dplyr::group_by(registro_dep) %>%
+    dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name))# %>%
+  if(length(meta$registro_dep) == 1){
+    message(crayon::green(paste("Region:",meta$registro_dep, "with",
+                                meta$n_sp,
+                                "species")))
+  }
+  else{
+    message(crayon::green(paste("Regions:",
+                                paste(meta$registro_dep, collapse = " - "),
+                                "with",
+                                sum(meta$n_sp),
+                                "species")))
+  }
+
+  out
 }

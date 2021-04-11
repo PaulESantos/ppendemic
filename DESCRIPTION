@@ -33,7 +33,8 @@ Imports:
     magrittr,
     purrr,
     tidyr,
-    lifecycle
+    lifecycle,
+    crayon
 Author: 
    Paul Efren Santos Andrade [aut, cre]
     (<https://orcid.org/0000-0002-6635-0375>),

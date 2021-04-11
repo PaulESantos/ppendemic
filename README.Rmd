@@ -109,6 +109,15 @@ pep_regdep_map("Miconia alpina")
 
 ```
 
+`pep_by_reg()` give access a list of species by region or regions 
+
+```{r pep_by}
+pep_by_reg("Cusco")
+
+# or
+
+pep_by_reg(c("Cusco", "Madre de Dios"))
+```
 
 
 ## Citation
