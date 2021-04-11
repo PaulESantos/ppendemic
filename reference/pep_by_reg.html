@@ -183,12 +183,12 @@ List all endemic species within an region." />
     <pre class="examples"><div class='input'><span class='co'># Basic usage</span>
 <span class='co'>### One name</span>
 <span class='fu'>pep_by_reg</span><span class='op'>(</span><span class='st'>"Aphelandra latibracteata"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 0 x 2</span><span>
-#&gt; </span><span style='color: #949494;'># … with 2 variables: accepted_name &lt;chr&gt;, registro_dep &lt;chr&gt;</span><span></div><div class='input'><span class='co'>### Set of names</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>Regions:  with 0 species</span><span></span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 0 x 2</span><span>
+#&gt; </span><span style='color: #949494;'># … with 2 variables: registro_dep &lt;chr&gt;, accepted_name &lt;chr&gt;</span><span></div><div class='input'><span class='co'>### Set of names</span>
 <span class='va'>species</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Sanchezia filamentosa"</span>, <span class='st'>"Aphelandra latibracteata"</span><span class='op'>)</span>
 <span class='fu'>pep_by_reg</span><span class='op'>(</span><span class='va'>species</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 0 x 2</span><span>
-#&gt; </span><span style='color: #949494;'># … with 2 variables: accepted_name &lt;chr&gt;, registro_dep &lt;chr&gt;</span><span></div></span></pre>
+</div><div class='output co'>#&gt; <span class='message'></span><span style='color: #00BB00;'>Regions:  with 0 species</span><span></span></div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 0 x 2</span><span>
+#&gt; </span><span style='color: #949494;'># … with 2 variables: registro_dep &lt;chr&gt;, accepted_name &lt;chr&gt;</span><span></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
