@@ -130,6 +130,46 @@ pep_regdep_map("Miconia alpina")
 
 <img src="man/figures/README-map-1.png" width="100%" />
 
+`pep_by_reg()` give access a list of species by region or regions
+
+``` r
+pep_by_reg("Cusco")
+#> Region: Cusco with 689 species
+#> # A tibble: 690 x 2
+#>    registro_dep accepted_name              
+#>    <chr>        <chr>                      
+#>  1 Cusco        Aphelandra cuscoensis      
+#>  2 Cusco        Dicliptera rauhii          
+#>  3 Cusco        Justicia alpina            
+#>  4 Cusco        Odontophyllum cuscoensis   
+#>  5 Cusco        Ruellia rauhii             
+#>  6 Cusco        Streblacanthus amoenus     
+#>  7 Cusco        Bomarea ampayesana         
+#>  8 Cusco        Bomarea herrerae           
+#>  9 Cusco        Alternanthera albosquarrosa
+#> 10 Cusco        Clinanthus imasumacc       
+#> # ... with 680 more rows
+
+# or
+
+pep_by_reg(c("Cusco", "Madre de Dios"))
+#> Regions: Cusco - Madre de Dios with 743 species
+#> # A tibble: 744 x 2
+#>    registro_dep accepted_name              
+#>    <chr>        <chr>                      
+#>  1 Cusco        Aphelandra cuscoensis      
+#>  2 Cusco        Dicliptera rauhii          
+#>  3 Cusco        Justicia alpina            
+#>  4 Cusco        Odontophyllum cuscoensis   
+#>  5 Cusco        Ruellia rauhii             
+#>  6 Cusco        Streblacanthus amoenus     
+#>  7 Cusco        Bomarea ampayesana         
+#>  8 Cusco        Bomarea herrerae           
+#>  9 Cusco        Alternanthera albosquarrosa
+#> 10 Cusco        Clinanthus imasumacc       
+#> # ... with 734 more rows
+```
+
 ## Citation
 
 To cite the ppendemic package, please use:
@@ -140,7 +180,7 @@ citation("ppendemic")
 #> To cite ppendemic in publications use:
 #> 
 #>   Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red
-#>   book of endemic plants of Peru data. R package version 0.1.1.
+#>   book of endemic plants of Peru data. R package version 0.1.3.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -148,7 +188,7 @@ citation("ppendemic")
 #>     title = {ppendemic: The red book of endemic plants of Peru data},
 #>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
 #>     year = {2021},
-#>     note = {R package version 0.1.1},
+#>     note = {R package version 0.1.3},
 #>     url = {https://github.com/PaulESantos/ppendemic},
 #>   }
 ```

@@ -9,8 +9,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%",
-  message = FALSE
+  out.width = "100%"
 )
 library(tidyverse)
 library(ppendemic)
