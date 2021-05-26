@@ -1,9 +1,11 @@
 
-.onAttach <- function(lib, pkg)  {
+.onAttach <- function(lib, pkg) {
   packageStartupMessage("This is ppendemic ",
-                        utils::packageDescription("ppendemic",
-                                                  fields="Version"),
-                        appendLF = TRUE)
+    utils::packageDescription("ppendemic",
+      fields = "Version"
+    ),
+    appendLF = TRUE
+  )
 }
 
 
@@ -11,7 +13,7 @@
 
 show_progress <- function() {
   isTRUE(getOption("ppendemic.show_progress")) && # user disables progress bar
-    interactive()  # Not actively knitting a document
+    interactive() # Not actively knitting a document
 }
 
 
@@ -22,11 +24,9 @@ show_progress <- function() {
     ppendemic.show_progress = TRUE
   )
   to_set <- !(names(opt_ppendemic) %in% names(opt))
-  if(any(to_set)) options(opt_ppendemic[to_set])
+  if (any(to_set)) options(opt_ppendemic[to_set])
   invisible()
 }
 
 
 # -------------------------------------------------------------------------
-
-

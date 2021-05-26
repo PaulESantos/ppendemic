@@ -15,8 +15,8 @@ insert_dot <- function(expr) {
     expr <- as.call(c(expr[[1]], quote(`.`)))
   } else if (
     expr[[1]] != quote(`{`) &&
-    !any(vapply(expr[-1], identical, quote(`.`), FUN.VALUE = logical(1))) &&
-    !any(vapply(expr[-1], identical, quote(`!!!.`), FUN.VALUE = logical(1)))
+      !any(vapply(expr[-1], identical, quote(`.`), FUN.VALUE = logical(1))) &&
+      !any(vapply(expr[-1], identical, quote(`!!!.`), FUN.VALUE = logical(1)))
   ) {
     # if a call with args but no dot in arg, insert one first
     expr <- as.call(c(expr[[1]], quote(`.`), as.list(expr[-1])))

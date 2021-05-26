@@ -3,7 +3,8 @@
 \docType{data}
 \name{species_pep}
 \alias{species_pep}
-\title{Species names list from El  libro  rojo  de  las  plantas  endémicas  del  Perú}
+\title{Species names list from El  libro  rojo  de  las  plantas
+endémicas  del  Perú}
 \format{
 A tibble with 5,508 rows and 1 variable:
 \describe{
@@ -11,12 +12,15 @@ A tibble with 5,508 rows and 1 variable:
 }
 }
 \source{
-{Originally published in: El  libro  rojo  de  las  plantas  endémicas  del  Perú (2006).  Ed.:  Blanca  León  et al.Rev.  peru.  biol.  Número  especial  13(2)}
+{Originally published in: El  libro  rojo  de  las  plantas
+endémicas  del  Perú (2006).  Ed.:  Blanca  León  et al.Rev.
+peru.  biol.  Número  especial  13(2)}
 }
 \usage{
 species_pep
 }
 \description{
-Species names list from El  libro  rojo  de  las  plantas  endémicas  del  Perú
+Species names list from El  libro  rojo  de  las  plantas
+endémicas  del  Perú
 }
 \keyword{datasets}

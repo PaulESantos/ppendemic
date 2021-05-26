@@ -18,8 +18,6 @@ The function automates the process to check if a plant species is or not endemic
 }
 \examples{
 # Basic usage
-spp <-  c("Hedyosmum", "Miconia alpina", "Persea sp2")
+spp <- c("Hedyosmum", "Miconia alpina", "Persea sp2")
 pep_check(spp)
-
-
 }
