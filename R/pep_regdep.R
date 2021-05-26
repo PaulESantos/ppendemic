@@ -22,14 +22,16 @@
 #' species <- c("Sanchezia filamentosa", "Aphelandra latibracteata")
 #' pep_regdep(species)
 #' pep_regdep("Sanchezia filamentosa", "Aphelandra latibracteata")
-pep_regdep <- function(...){
-
+pep_regdep <- function(...) {
   ppendemic::registro_departamental %>%
-    dplyr::filter(accepted_name %in%  c(...)) %>%
+    dplyr::filter(accepted_name %in% c(...)) %>%
     dplyr::group_nest(accepted_name) %>%
-    dplyr::mutate(reg = purrr::map(data, ~dplyr::summarise_all(.,
-                                          ~paste0(.,
-                                                  collapse = "-")))) %>%
+    dplyr::mutate(reg = purrr::map(data, ~ dplyr::summarise_all(
+      .,
+      ~ paste0(.,
+        collapse = "-"
+      )
+    ))) %>%
     dplyr::select(accepted_name, reg) %>%
     tidyr::unnest(c(reg))
 }
