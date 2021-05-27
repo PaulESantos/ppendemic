@@ -6,12 +6,18 @@
 \title{Specie name and ecological region for plants listed in El  libro
 rojo  de  las  plantas  endémicas  del  Perú}
 \format{
-A tibble with 9041rows and 2 variables:
+A tibble with 6778 rows and 5 variables:
 \describe{
+\item{accepted_family}{a factor denoting plant family}
+\item{accepted_genus}{a factor denoting plant genus}
 \item{accepted_name}{a factor denoting plant species}
 \item{region_id}{a factor denoting short name for ecological
 region}
-\item{region_eco}{a factor denoting ecological region names}
+\item{region_eco}{a factor denoting ecological region names.
+Based on: "ZAMORA, C. 1996. Las regiones ecológicas del Perú.
+En: Rodríguez, L.O. (ed.), Diversidad Biológica del Perú: Zonas
+Prioritarias para su Conservación, pp. 137-141. FANPE,
+GTZ-INRENA. Lima, Perú." }
 }
 }
 \source{
@@ -26,4 +32,4 @@ regiones_ecologicas
 Specie name and ecological region for plants listed in El  libro
 rojo  de  las  plantas  endémicas  del  Perú
 }
-\keyword{datasets}
+\keyword{internal}

@@ -8,4 +8,5 @@
 #' @source {Originally published in: El  libro  rojo  de  las  plantas
 #'   endémicas  del  Perú (2006).  Ed.:  Blanca  León  et al.Rev.
 #'   peru.  biol.  Número  especial  13(2)}
+#' @keywords internal
 "species_pep"

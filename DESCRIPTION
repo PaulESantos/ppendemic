@@ -1,6 +1,6 @@
 Package: ppendemic
 Title: The Red Book of Endemic Plants of Peru 
-Version: 0.1.3
+Version: 0.1.4
 Authors@R: 
     c(person(given = "Paul Efren",
            family = "Santos Andrade",
@@ -14,7 +14,7 @@ Authors@R:
 Date: 2021-02-05
 Description: Gives help to access the information from  "The Red Book of Endemic Plants of Peru".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. The original source could be found in "León, Blanca, Nigel Pitman, y José Roque. (2006). Introducción a Las Plantas Endémicas Del Perú"<doi:10.15381/rpb.v13i2.1782><https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153>.
 License: MIT + file LICENSE
-URL: https://github.com/PaulESantos/ppendemic/
+URL: https://paulesantos.github.io/ppendemic, https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues
 Suggests: 
     knitr,
@@ -40,3 +40,4 @@ Author:
     (<https://orcid.org/0000-0002-6635-0375>),
    Lucely L. Vilca Bustamante [aut]
 Maintainer: Paul Efren Santos Andrade <paulefrens@gmail.com>
+VignetteBuilder: knitr

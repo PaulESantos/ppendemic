@@ -24,4 +24,4 @@ registro_departamental
 Species names and region where finded from El  libro  rojo  de  las
 plantas  endémicas  del  Perú
 }
-\keyword{datasets}
+\keyword{internal}
