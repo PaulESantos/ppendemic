@@ -1,8 +1,14 @@
 pandoc: 2.11.4
 pkgdown: 1.6.1
 pkgdown_sha: ~
-articles: {}
-last_built: 2021-02-19T15:49Z
+articles:
+  art: art.html
+  download: download.html
+  examples: examples.html
+  intro: intro.html
+  pca: pca.html
+  user_contributions: user_contributions.html
+last_built: 2021-05-28T03:20Z
 urls:
   reference: https://paulesantos.github.io/ppendemic/reference
   article: https://paulesantos.github.io/ppendemic/articles
