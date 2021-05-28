@@ -22,8 +22,23 @@ List all endemic species within an ecological region.
 
 List of ecological region ids and full name, based on Zamora, C. 1996.
 
-c("AA", "BHA", "BHMP", "BMHM", "BMHP", "BPM", "BS", "DCT", "DST", "MA", "MDE", "NDE", "PAR", "PD", "PSH")
-c("Altoandina", "Bosques Húmedos Amazónicos", "Bosques Muy Húmedos Premontanos", "Bosques Muy Húmedos Montanos", "Bosques Muy Húmedos Premontanos", "Bosques Pluviales Montanos", "Bosques Secos", "Desierto Cálido Tropical", "Desierto Semicálido Tropical", "Mesoandina", "Matorral Desértico", "Matorral Desértico", "Páramo", "Puna Desértica", "Puna Húmeda y Seca")
+\itemize{
+\item AA   = Altoandina
+\item BHA  = Bosques Húmedos Amazónicos
+\item BHMP = Bosques Muy Húmedos Premontanos
+\item BMHM = Bosques Muy Húmedos Montanos
+\item BMHP = Bosques Muy Húmedos Premontanos
+\item BPM  = Bosques Pluviales Montanos
+\item BS   = Bosques Secos
+\item DCT  = Desierto Cálido Tropical
+\item DST  = Desierto Semicálido Tropical
+\item MA   = Mesoandina
+\item MDE  = Matorral Desértico
+\item NDE  = Matorral Desértico
+\item PAR  = Páramo
+\item PD   = Puna Desértica
+\item PSH  = Puna Húmeda y Seca
+}
 }
 \examples{
 # By Region ID

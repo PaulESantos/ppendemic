@@ -1,4 +1,4 @@
-
+#' @keywords internal
 `%>%` <- function(lhs, rhs) {
   rhs_call <- insert_dot(substitute(rhs))
   eval(rhs_call, envir = list(`.` = lhs), enclos = parent.frame())

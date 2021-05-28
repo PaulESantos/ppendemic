@@ -9,7 +9,23 @@
 #' @description
 #' List of ecological region ids and full name, based on Zamora, C. 1996.
 #'
-#'  `r ppendemic::regions_id()`
+#' \itemize{
+#'  \item AA   = Altoandina
+#'  \item BHA  = Bosques Húmedos Amazónicos
+#'  \item BHMP = Bosques Muy Húmedos Premontanos
+#'  \item BMHM = Bosques Muy Húmedos Montanos
+#'  \item BMHP = Bosques Muy Húmedos Premontanos
+#'  \item BPM  = Bosques Pluviales Montanos
+#'  \item BS   = Bosques Secos
+#'  \item DCT  = Desierto Cálido Tropical
+#'  \item DST  = Desierto Semicálido Tropical
+#'  \item MA   = Mesoandina
+#'  \item MDE  = Matorral Desértico
+#'  \item NDE  = Matorral Desértico
+#'  \item PAR  = Páramo
+#'  \item PD   = Puna Desértica
+#'  \item PSH  = Puna Húmeda y Seca
+#' }
 #'
 #' @param region Atomic element or vector with ecological region names,
 #' shrot or long name.
