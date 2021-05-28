@@ -41,7 +41,10 @@
 
 <meta property="og:title" content="pep_regecol — pep_regecol" />
 <meta property="og:description" content="
-List all endemic species within an ecological region." />
+List all endemic species within an ecological region.
+List of ecological region ids and full name, based on Zamora, C. 1996.
+c(&quot;AA&quot;, &quot;BHA&quot;, &quot;BHMP&quot;, &quot;BMHM&quot;, &quot;BMHP&quot;, &quot;BPM&quot;, &quot;BS&quot;, &quot;DCT&quot;, &quot;DST&quot;, &quot;MA&quot;, &quot;MDE&quot;, &quot;NDE&quot;, &quot;PAR&quot;, &quot;PD&quot;, &quot;PSH&quot;)
+c(&quot;Altoandina&quot;, &quot;Bosques Húmedos Amazónicos&quot;, &quot;Bosques Muy Húmedos Premontanos&quot;, &quot;Bosques Muy Húmedos Montanos&quot;, &quot;Bosques Muy Húmedos Premontanos&quot;, &quot;Bosques Pluviales Montanos&quot;, &quot;Bosques Secos&quot;, &quot;Desierto Cálido Tropical&quot;, &quot;Desierto Semicálido Tropical&quot;, &quot;Mesoandina&quot;, &quot;Matorral Desértico&quot;, &quot;Matorral Desértico&quot;, &quot;Páramo&quot;, &quot;Puna Desértica&quot;, &quot;Puna Húmeda y Seca&quot;)" />
 <meta property="og:image" content="https://paulesantos.github.io/ppendemic/reference/figures/redlistperu.png" />
 <meta property="og:image:alt" content="ppendemic data package in R" />
 <meta name="twitter:card" content="summary" />
@@ -162,9 +165,12 @@ List all endemic species within an ecological region." />
     <div class="ref-description">
     <p><a href='https://lifecycle.r-lib.org/articles/stages.html#maturing'><img src='figures/lifecycle-maturing.svg' alt='[Maturing]' /></a></p>
 <p>List all endemic species within an ecological region.</p>
+<p>List of ecological region ids and full name, based on Zamora, C. 1996.</p>
+<p>c("AA", "BHA", "BHMP", "BMHM", "BMHP", "BPM", "BS", "DCT", "DST", "MA", "MDE", "NDE", "PAR", "PD", "PSH")
+c("Altoandina", "Bosques Húmedos Amazónicos", "Bosques Muy Húmedos Premontanos", "Bosques Muy Húmedos Montanos", "Bosques Muy Húmedos Premontanos", "Bosques Pluviales Montanos", "Bosques Secos", "Desierto Cálido Tropical", "Desierto Semicálido Tropical", "Mesoandina", "Matorral Desértico", "Matorral Desértico", "Páramo", "Puna Desértica", "Puna Húmeda y Seca")</p>
     </div>
 
-    <pre class="usage"><span class='fu'>pep_regecol</span><span class='op'>(</span><span class='va'>region</span><span class='op'>)</span></pre>
+    <pre class="usage"><span class='fu'>pep_regecol</span><span class='op'>(</span>region <span class='op'>=</span> <span class='cn'>NULL</span>, <span class='va'>specie</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -174,12 +180,73 @@ List all endemic species within an ecological region." />
       <td><p>Atomic element or vector with ecological region names,
 shrot or long name.</p></td>
     </tr>
+    <tr>
+      <th>specie</th>
+      <td><p>Atomic element or vector with species names.</p></td>
+    </tr>
     </table>
 
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A tibble</p>
+    <h2 class="hasAnchor" id="references"><a class="anchor" href="#references"></a>References</h2>
 
+    <p>León, B., J. Roque, C. Ulloa Ulloa, N. C. A. Pitman,
+P. M. Jørgensen &amp; A. Cano Echevarría. 2006 (2007).
+El Libro Rojo de las Plantas Endémicas del Perú. Revista Peruana
+Biol. 13(núm. 2 especial): 1s–971s</p>
+<p>ZAMORA, C. 1996. Las regiones ecológicas del Perú.
+En: Rodríguez, L.O. (ed.), Diversidad Biológica del Perú: Zonas
+Prioritarias para su Conservación, pp. 137-141. FANPE,
+GTZ-INRENA. Lima, Perú.</p>
+
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='co'># By Region ID</span>
+<span class='fu'>pep_regecol</span><span class='op'>(</span><span class='st'>"BHA"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>Region: BHA with 754 species</span></span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 756 x 3</span>
+#&gt;    region_id region_eco                 accepted_name              
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                      
+#&gt; <span style='color: #BCBCBC;'> 1</span> BHA       Bosques Húmedos Amazónicos Aphelandra cuscoensis      
+#&gt; <span style='color: #BCBCBC;'> 2</span> BHA       Bosques Húmedos Amazónicos Aphelandra latibracteata   
+#&gt; <span style='color: #BCBCBC;'> 3</span> BHA       Bosques Húmedos Amazónicos Justicia manserichensis    
+#&gt; <span style='color: #BCBCBC;'> 4</span> BHA       Bosques Húmedos Amazónicos Mendoncia peruviana        
+#&gt; <span style='color: #BCBCBC;'> 5</span> BHA       Bosques Húmedos Amazónicos Mendoncia tarapotana       
+#&gt; <span style='color: #BCBCBC;'> 6</span> BHA       Bosques Húmedos Amazónicos Odontophyllum cuscoensis   
+#&gt; <span style='color: #BCBCBC;'> 7</span> BHA       Bosques Húmedos Amazónicos Oplonia hutchisonii        
+#&gt; <span style='color: #BCBCBC;'> 8</span> BHA       Bosques Húmedos Amazónicos Pachystachys killipii      
+#&gt; <span style='color: #BCBCBC;'> 9</span> BHA       Bosques Húmedos Amazónicos Pachystachys incarnata     
+#&gt; <span style='color: #BCBCBC;'>10</span> BHA       Bosques Húmedos Amazónicos Pachystachys longibracteata
+#&gt; <span style='color: #949494;'># … with 746 more rows</span></div><div class='input'><span class='fu'>pep_regecol</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"MA"</span>, <span class='st'>"BS"</span><span class='op'>)</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span class='message'><span style='color: #00BB00;'>Regions: BS - MA with 1451 species</span></span></div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 1,468 x 3</span>
+#&gt;    region_id region_eco    accepted_name             
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>         <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                     
+#&gt; <span style='color: #BCBCBC;'> 1</span> MA        Mesoandina    Aphelandra juninensis     
+#&gt; <span style='color: #BCBCBC;'> 2</span> MA        Mesoandina    Aphelandra viscosa        
+#&gt; <span style='color: #BCBCBC;'> 3</span> MA        Mesoandina    Dicliptera porphyrea      
+#&gt; <span style='color: #BCBCBC;'> 4</span> MA        Mesoandina    Justicia weberbaueri      
+#&gt; <span style='color: #BCBCBC;'> 5</span> BS        Bosques Secos Justicia weberbaueri      
+#&gt; <span style='color: #BCBCBC;'> 6</span> MA        Mesoandina    Justicia alpina           
+#&gt; <span style='color: #BCBCBC;'> 7</span> BS        Bosques Secos Tetramerium denudatum     
+#&gt; <span style='color: #BCBCBC;'> 8</span> BS        Bosques Secos Tetramerium peruvianum    
+#&gt; <span style='color: #BCBCBC;'> 9</span> BS        Bosques Secos Tetramerium sagasteguianum
+#&gt; <span style='color: #BCBCBC;'>10</span> BS        Bosques Secos Tetramerium surcubambense 
+#&gt; <span style='color: #949494;'># … with 1,458 more rows</span></div><div class='input'>
+<span class='co'># By species name</span>
+<span class='fu'>pep_regecol</span><span class='op'>(</span>specie <span class='op'>=</span> <span class='st'>"Aphelandra weberbaueri"</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 2 x 3</span>
+#&gt;   region_id region_eco                      accepted_name         
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                 
+#&gt; <span style='color: #BCBCBC;'>1</span> BMHM      Bosques Muy Húmedos Montanos    Aphelandra weberbaueri
+#&gt; <span style='color: #BCBCBC;'>2</span> BMHP      Bosques Muy Húmedos Premontanos Aphelandra weberbaueri</div><div class='input'>
+<span class='va'>especie</span> <span class='op'>&lt;-</span>  <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"Aphelandra weberbaueri"</span>, <span class='st'>"Odontophyllum cuscoensis"</span><span class='op'>)</span>
+<span class='fu'>pep_regecol</span><span class='op'>(</span>specie <span class='op'>=</span> <span class='va'>especie</span><span class='op'>)</span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 x 3</span>
+#&gt;   region_id region_eco                      accepted_name           
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                           <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                   
+#&gt; <span style='color: #BCBCBC;'>1</span> BMHM      Bosques Muy Húmedos Montanos    Aphelandra weberbaueri  
+#&gt; <span style='color: #BCBCBC;'>2</span> BMHP      Bosques Muy Húmedos Premontanos Aphelandra weberbaueri  
+#&gt; <span style='color: #BCBCBC;'>3</span> BHA       Bosques Húmedos Amazónicos      Odontophyllum cuscoensis</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
