@@ -17,7 +17,7 @@ authors:
   Lucely Vilca:
 navbar:
   structure:
-    left:  [home, intro, reference, articles]
+    left:  [intro, reference, articles]
     right: [github]
   components:
     intro:
@@ -31,11 +31,7 @@ navbar:
         href: articles/examples.html
       - text: PCA example
         href: articles/pca.html
-      - text: Community examples
-        href: articles/user_contributions.html
       - text: -------
       - text: Extras
       - text: Art
         href: articles/art.html
-      - text: Download the data directly
-        href: articles/download.html

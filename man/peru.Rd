@@ -3,7 +3,7 @@
 \docType{data}
 \name{peru}
 \alias{peru}
-\title{For Peru at scale 1:10m (high).}
+\title{Map of Peru at scale 1:10m (high).}
 \format{
 A \code{SpatialPolygonsDataFrame}
 
@@ -13,7 +13,7 @@ An object of class \code{sf} (inherits from \code{data.frame}) with 26 rows and 
 peru
 }
 \description{
-For Peru at scale 1:10m (high).
+Map of Peru at scale 1:10m (high).
 }
 \section{Slots}{
 
@@ -21,4 +21,4 @@ For Peru at scale 1:10m (high).
 \item{\code{data}}{A data frame with attributes}
 }}
 
-\keyword{datasets}
+\keyword{internal}

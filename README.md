@@ -180,7 +180,7 @@ citation("ppendemic")
 #> To cite ppendemic in publications use:
 #> 
 #>   Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red
-#>   book of endemic plants of Peru data. R package version 0.1.3.
+#>   book of endemic plants of Peru data. R package version 0.1.4.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
@@ -188,7 +188,7 @@ citation("ppendemic")
 #>     title = {ppendemic: The red book of endemic plants of Peru data},
 #>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
 #>     year = {2021},
-#>     note = {R package version 0.1.3},
+#>     note = {R package version 0.1.4},
 #>     url = {https://github.com/PaulESantos/ppendemic},
 #>   }
 ```
