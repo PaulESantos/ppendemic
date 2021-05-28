@@ -6,8 +6,24 @@
 #'
 #' List all endemic species within an ecological region.
 #'
+#' @description
+#' List of ecological region ids and full name, based on Zamora, C. 1996.
+#'
+#'  `r ppendemic::regions_id()`
+#'
 #' @param region Atomic element or vector with ecological region names,
 #' shrot or long name.
+#' @param specie Atomic element or vector with species names.
+#' @references
+#' León, B., J. Roque, C. Ulloa Ulloa, N. C. A. Pitman,
+#' P. M. Jørgensen & A. Cano Echevarría. 2006 (2007).
+#' El Libro Rojo de las Plantas Endémicas del Perú. Revista Peruana
+#' Biol. 13(núm. 2 especial): 1s–971s
+#'
+#' ZAMORA, C. 1996. Las regiones ecológicas del Perú.
+#'   En: Rodríguez, L.O. (ed.), Diversidad Biológica del Perú: Zonas
+#'   Prioritarias para su Conservación, pp. 137-141. FANPE,
+#'   GTZ-INRENA. Lima, Perú.
 #'
 #' @return A tibble
 #' @export
@@ -15,42 +31,60 @@
 #' @importFrom dplyr filter group_nest mutate select summarise_all
 #' @importFrom tidyr unnest
 #' @importFrom purrr map
+#' @examples
+#' # By Region ID
+#' pep_regecol("BHA")
+#' pep_regecol(c("MA", "BS"))
+#'
+#' # By species name
+#' pep_regecol(specie = "Aphelandra weberbaueri")
+#'
+#' especie <-  c("Aphelandra weberbaueri", "Odontophyllum cuscoensis")
+#' pep_regecol(specie = especie)
+#'
 
-pep_regecol <- function(region) {
-  if(unique(grepl("[A-Z]{2,}", region)) == TRUE){
-    out <- ppendemic::regiones_ecologicas %>%
-      dplyr::filter( region_id %in% region) %>%
-      dplyr::select(region_id, region_eco, accepted_name)
-  }
-  else if( length(unique(grepl("[A-Z]", regiones))) > 1){
-    out <- ppendemic::regiones_ecologicas %>%
-      dplyr::filter( region_eco %in% region) %>%
-      dplyr::select(region_id, region_eco, accepted_name)
+pep_regecol <- function(region = NULL, specie ) {
+  if(is.null(region) != TRUE){
+    if(length(unique(grepl("[A-Z]{2,}", region))) > 1){
+      stop("Check ecological region ID")
+    }
+    else if(unique(grepl("[A-Z]{2,}", region)) == TRUE){
+      out <- ppendemic::regiones_ecologicas %>%
+        dplyr::filter( region_id %in% region) %>%
+        dplyr::select(region_id, region_eco, accepted_name)
+    }
+    else if( length(unique(grepl("[A-Za-z]{2,}", region))) > 1){
+      out <- ppendemic::regiones_ecologicas %>%
+        dplyr::filter( region_eco %in% region) %>%
+        dplyr::select(region_id, region_eco, accepted_name)
+    }
+
+
+    meta <- out %>%
+      dplyr::group_by(region_id) %>%
+      dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name)) # %>%
+    if (length(meta$region_id) == 1) {
+      message(crayon::green(paste(
+        "Region:", meta$region_id, "with",
+        meta$n_sp,
+        "species"
+      )))
+    } else {
+      message(crayon::green(paste(
+        "Regions:",
+        paste(meta$region_id, collapse = " - "),
+        "with",
+        sum(meta$n_sp),
+        "species"
+      )))
+    }
+    out
   }
   else{
-    message(crayon::red(paste(
-      "The ecological region name is misspelled. Check!!"
-    )))
+    out <-  ppendemic::regiones_ecologicas %>%
+      dplyr::filter( accepted_name %in% specie) %>%
+      dplyr::select(region_id, region_eco, accepted_name)
+    return(out)
   }
 
-  meta <- out %>%
-    dplyr::group_by(region_id) %>%
-    dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name)) # %>%
-  if (length(meta$region_id) == 1) {
-    message(crayon::green(paste(
-      "Region:", meta$region_id, "with",
-      meta$n_sp,
-      "species"
-    )))
-  } else {
-    message(crayon::green(paste(
-      "Regions:",
-      paste(meta$region_id, collapse = " - "),
-      "with",
-      sum(meta$n_sp),
-      "species"
-    )))
-  }
-
-  out
 }

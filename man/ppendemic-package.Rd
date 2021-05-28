@@ -11,6 +11,7 @@ Gives help to access the information from  "The Red Book of Endemic Plants of Pe
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://paulesantos.github.io/ppendemic}
   \item \url{https://github.com/PaulESantos/ppendemic/}
   \item Report bugs at \url{https://github.com/PaulESantos/ppendemic/issues}
 }

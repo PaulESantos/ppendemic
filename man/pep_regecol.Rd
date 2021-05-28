@@ -4,11 +4,13 @@
 \alias{pep_regecol}
 \title{pep_regecol}
 \usage{
-pep_regecol(region)
+pep_regecol(region = NULL, specie)
 }
 \arguments{
 \item{region}{Atomic element or vector with ecological region names,
 shrot or long name.}
+
+\item{specie}{Atomic element or vector with species names.}
 }
 \value{
 A tibble
@@ -17,4 +19,32 @@ A tibble
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#maturing}{\figure{lifecycle-maturing.svg}{options: alt='[Maturing]'}}}{\strong{[Maturing]}}
 
 List all endemic species within an ecological region.
+
+List of ecological region ids and full name, based on Zamora, C. 1996.
+
+c("AA", "BHA", "BHMP", "BMHM", "BMHP", "BPM", "BS", "DCT", "DST", "MA", "MDE", "NDE", "PAR", "PD", "PSH")
+c("Altoandina", "Bosques Húmedos Amazónicos", "Bosques Muy Húmedos Premontanos", "Bosques Muy Húmedos Montanos", "Bosques Muy Húmedos Premontanos", "Bosques Pluviales Montanos", "Bosques Secos", "Desierto Cálido Tropical", "Desierto Semicálido Tropical", "Mesoandina", "Matorral Desértico", "Matorral Desértico", "Páramo", "Puna Desértica", "Puna Húmeda y Seca")
+}
+\examples{
+# By Region ID
+pep_regecol("BHA")
+pep_regecol(c("MA", "BS"))
+
+# By species name
+pep_regecol(specie = "Aphelandra weberbaueri")
+
+especie <-  c("Aphelandra weberbaueri", "Odontophyllum cuscoensis")
+pep_regecol(specie = especie)
+
+}
+\references{
+León, B., J. Roque, C. Ulloa Ulloa, N. C. A. Pitman,
+P. M. Jørgensen & A. Cano Echevarría. 2006 (2007).
+El Libro Rojo de las Plantas Endémicas del Perú. Revista Peruana
+Biol. 13(núm. 2 especial): 1s–971s
+
+ZAMORA, C. 1996. Las regiones ecológicas del Perú.
+En: Rodríguez, L.O. (ed.), Diversidad Biológica del Perú: Zonas
+Prioritarias para su Conservación, pp. 137-141. FANPE,
+GTZ-INRENA. Lima, Perú.
 }
