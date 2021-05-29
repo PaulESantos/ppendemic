@@ -20,7 +20,6 @@ library(ppendemic)
 <!-- badges: start -->
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
-[![Travis build status](https://travis-ci.com/PaulESantos/ppendemic.svg?branch=main)](https://travis-ci.com/PaulESantos/ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
@@ -133,5 +132,5 @@ citation("ppendemic")
 **Data originally published in:** 
 
 
-+ León, B., J. Roque, C. Ulloa Ulloa, N. C. A. Pitman, P. M. Jørgensen & A. Cano Echevarría. 2006 [2007]. El Libro Rojo de las Plantas Endémicas del Perú. Revista Peruana Biol. 13(núm. 2 especial): 1s–971s.[Here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
++ León, B., Pitman, N., & Roque Gamarra, J. E. (2006). Introducción a las plantas endémicas del Perú. Revista Peruana de Biologia, 13(2), 9s-22s. [Here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
 
