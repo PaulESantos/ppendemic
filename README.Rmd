@@ -30,8 +30,12 @@ library(ppendemic)
   ...El libro rojo de las plantas endémicas del Perú constituye, en este aspecto una herramienta fundamental para determinar las medidas necesarias para la conservación de la flora peruana. - Kember Mejía Carhuanca
 </blockquote>
 
-The goal of ppendemic is to provide access to **The red book of endemic plants of Peru** data. 
 
+The flora of Peru is one of the richest in the New World, with over 14,000 species, and 5,508 taxa are treated as endemic. This represents a significant proportion of the South American flora, highlighting the importance of Peru in the conservation of New World flora.
+
+The pandemic package takes the data from the **The red book of endemic plants of Peru** and update the taxonomic information for all species included using the [Taxonomic Name Resolution Service](https://tnrs.biendata.org/) api.
+
+The goal of ppendemic is to provide access to the endemic plant species data in Peru. 
 
 ## Installation:
 
@@ -55,67 +59,6 @@ remotes::install_github("PaulESantos/ppendemic")
 ## About the data
 
 Data were published and made available by the [Revista Peruana de Biología](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/index) in volume 13 and number 2 [available here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153), on 2006. Edited by Blanca León et al.
-
-
-
-
-## Examples:
-
-`pep_check`, the basic function of `ppendemic`:
-
-```{r example, eval=FALSE}
-library(tidyverse)
-library(ppendemic)
-```
-
-The function can be executed on a `vector` with the names of the species to be verified.
-
-```{r spp-vector}
-spp <-  c("Clethra cuneata", "Miconia setulosa", "Weinmannia fagaroides", "Symplocos quitensis", "Miconia alpina", "Persea ruizii", "Myrsine andina", "Symplocos baehnii", "Polylepis pauta")
-
-pep_check(spp)
-
-```
-
-Or in a tibble variable:
-
-```{r spp-tibble}
-df <- tibble::tibble(sppe = c("Clethra cuneata", "Miconia setulosa",
-                          "Weinmannia fagaroides", "Symplocos quitensis",
-                          "Miconia alpina", "Persea ruizii",
-                          "Myrsine andina", "Symplocos baehnii",
-                          "Polylepis pauta"))
-
-df
-
-df %>% 
-  mutate(endemic = pep_check(sppe))
-```
-
-You can check the region where the endemic species are registered with `pep_regdep` function:
-
-```{r regdep}
-pep_regdep("Miconia alpina")
-
-```
-
-
-and build a map with `pep_regdep_map()`:
-
-```{r map}
-pep_regdep_map("Miconia alpina")
-
-```
-
-`pep_by_reg()` give access a list of species by region or regions 
-
-```{r pep_by}
-pep_by_reg("Cusco")
-
-# or
-
-pep_by_reg(c("Cusco", "Madre de Dios"))
-```
 
 
 ## Citation
