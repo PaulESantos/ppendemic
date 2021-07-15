@@ -14,14 +14,12 @@ knitr::opts_chunk$set(
 
 
 ```{r setup, include=FALSE}
-library(palmerpenguins)
-library(dplyr)
-library(ggplot2)
+library(tidyverse)
 library(ppendemic)
 theme_set(theme_minimal())
 ```
 
-The `palmerpenguins` R package contains two datasets that we believe are a viable alternative to Anderson's **Iris** data (see `datasets::iris`). In this introductory vignette, we'll highlight some of the properties of these datasets that make them useful for statistics and data science education, as well as software documentation and testing.
+
 
 
 ## Examples:
