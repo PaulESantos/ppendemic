@@ -1,7 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://paulesantos.github.io/ppendemic/404.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/CODE_OF_CONDUCT.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/CONTRIBUTING.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/LICENSE-text.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/LICENSE.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/SUPPORT.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/authors.html</loc>
+  </url>
+  <url>
     <loc>https://paulesantos.github.io/ppendemic/index.html</loc>
+  </url>
+  <url>
+    <loc>https://paulesantos.github.io/ppendemic/reference/index.html</loc>
   </url>
   <url>
     <loc>https://paulesantos.github.io/ppendemic/reference/pep_by_reg.html</loc>
