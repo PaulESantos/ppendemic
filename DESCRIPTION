@@ -1,24 +1,28 @@
-Package: perudiv
-Title: Lists of plants and mammals from Peru protected by legislation
+Package: ppendemic
+Title: The Red Book of Endemic Plants of Peru 
 Version: 0.1.4
 Authors@R: 
     c(person(given = "Paul Efren",
            family = "Santos Andrade",
            role = c("aut", "cre"),
            email = "paulefrens@gmail.com",
-           comment = c(ORCID = "0000-0002-6635-0375"))) 
-Date: 2022-02-23
-Description: Gives help to access the information from different lists of plants and mammals protected by-laws by the Peruvian government.
+           comment = c(ORCID = "0000-0002-6635-0375")),
+    person(given = "Lucely L.",
+           family = "Vilca Bustamante",
+           role = "aut",
+           email = "vilca.lu01@gmail.com")) 
+Date: 2021-02-05
+Description: Gives help to access the information from  "The Red Book of Endemic Plants of Peru".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. The original source could be found in "León, Blanca, Nigel Pitman, y José Roque. (2006). Introducción a Las Plantas Endémicas Del Perú"<doi:10.15381/rpb.v13i2.1782><https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153>.
 License: MIT + file LICENSE
-URL: https://paulesantos.github.io/perudiv, https://github.com/PaulESantos/perudiv
-BugReports: https://github.com/PaulESantos/perudiv/issues
+URL: https://paulesantos.github.io/ppendemic, https://github.com/PaulESantos/ppendemic/
+BugReports: https://github.com/PaulESantos/ppendemic/issues
 Suggests: 
     knitr,
     rmarkdown
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Depends: 
     R (>= 3.5.0),
 Imports:
@@ -33,6 +37,7 @@ Imports:
     crayon
 Author: 
    Paul Efren Santos Andrade [aut, cre]
-    (<https://orcid.org/0000-0002-6635-0375>)
+    (<https://orcid.org/0000-0002-6635-0375>),
+   Lucely L. Vilca Bustamante [aut]
 Maintainer: Paul Efren Santos Andrade <paulefrens@gmail.com>
 VignetteBuilder: knitr

@@ -6,7 +6,7 @@
 \alias{ppendemic-package}
 \title{ppendemic: The Red Book of Endemic Plants of Peru}
 \description{
-Gives help to access the information from  "The Red Book of Endemic Plants of Peru".  The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. The original source could be found in "León, Blanca, Nigel Pitman, y José Roque. (2006). Introducción a Las Plantas Endémicas Del Perú"<doi:10.15381/rpb.v13i2.1782><https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153>.
+Gives help to access the information from "The Red Book of Endemic Plants of Peru". The package contains a database with cleaned and standardized botanical data including occurrence and taxonomic data. The original source could be found in "León, Blanca, Nigel Pitman, y José Roque. (2006). Introducción a Las Plantas Endémicas Del Perú"<doi:10.15381/rpb.v13i2.1782><https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153>.
 }
 \seealso{
 Useful links:
