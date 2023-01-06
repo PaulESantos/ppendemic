@@ -39,21 +39,11 @@ The goal of ppendemic is to provide access to the endemic plant species data in 
 
 ## Installation:
 
-You can install:
-
-the most recent officially-released version from [CRAN](https://CRAN.R-project.org) with:
+You can install the latest development version from [GitHub](https://github.com/) with:
 
 ``` r
-
-install.packages("ppendemic")
-
-```
-
-the latest development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("remotes")
-remotes::install_github("PaulESantos/ppendemic")
+# install.packages("pak")
+pak::pak("PaulESantos/ppendemic")
 ```
 
 ## About the data

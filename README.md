@@ -36,20 +36,12 @@ data in Peru.
 
 ## Installation:
 
-You can install:
-
-the most recent officially-released version from
-[CRAN](https://CRAN.R-project.org) with:
+You can install the latest development version from
+[GitHub](https://github.com/) with:
 
 ``` r
-install.packages("ppendemic")
-```
-
-the latest development version from [GitHub](https://github.com/) with:
-
-``` r
-# install.packages("remotes")
-remotes::install_github("PaulESantos/ppendemic")
+# install.packages("pak")
+pak::pak("PaulESantos/ppendemic")
 ```
 
 ## About the data
@@ -79,6 +71,7 @@ citation("ppendemic")
 #>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
 #>     year = {2021},
 #>     note = {R package version 0.1.4},
+#>     doi = {10.5281/zenodo.5106619},
 #>     url = {https://github.com/PaulESantos/ppendemic},
 #>   }
 ```
@@ -87,7 +80,7 @@ citation("ppendemic")
 
 **Data originally published in:**
 
--   León, B., Pitman, N., & Roque Gamarra, J. E. (2006). Introducción a
-    las plantas endémicas del Perú. Revista Peruana de Biologia, 13(2),
-    9s-22s.
-    [Here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
+- León, B., Pitman, N., & Roque Gamarra, J. E. (2006). Introducción a
+  las plantas endémicas del Perú. Revista Peruana de Biologia, 13(2),
+  9s-22s.
+  [Here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
