@@ -17,7 +17,4 @@ a map showing all regions where the species is present. This map is a ggplot obj
 
 This function builds a map indicating where the species has been recorded.
 }
-\examples{
-# Basic usage
-pep_regdep_map("Grosvenoria coelocaulis")
-}
+\keyword{deprecated}

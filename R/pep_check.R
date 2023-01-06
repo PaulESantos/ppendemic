@@ -7,7 +7,6 @@
 #'
 #' @return a vector with information for each species names tested: a) "endemic" if the species is endemic of Perú; b)  "not endemic" if the species is not endemic of Perú; c)"not binary name" if only the genera were submitted; d) "taxon state undefined" if the submitted species name has a taxonomic status undetermined.
 #' @export
-#' @importFrom rlang .data
 #' @examples
 #' # Basic usage
 #' spp <- c("Hedyosmum", "Miconia alpina", "Persea sp2")

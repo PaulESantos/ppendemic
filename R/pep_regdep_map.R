@@ -10,14 +10,7 @@
 #' @name pep_regdep_map
 #'
 #' @return a map showing all regions where the species is present. This map is a ggplot object that could be edited.
-#' @export
-#' @importFrom sf st_as_sf
-#' @importFrom ggplot2 ggplot geom_sf theme_bw labs theme element_rect element_text element_blank
-#' @importFrom dplyr mutate as_tibble %>%
-#' @importFrom rlang .data
-#' @examples
-#' # Basic usage
-#' pep_regdep_map("Grosvenoria coelocaulis")
+#' @keywords deprecated
 pep_regdep_map <- function(spp_name) {
   # read shape file
   shp <- ppendemic::peru
@@ -26,8 +19,8 @@ pep_regdep_map <- function(spp_name) {
   dff <- dff[dff$accepted_name == spp_name, ]
   regions <- dff$registro_dep
   # fill regions where species was funded
-  peru <- shp %>%
-    dplyr::as_tibble() %>%
+  peru <- shp|>
+    dplyr::as_tibble()|>
     dplyr::mutate(
       fillcolor = .data$dep_id %in% regions,
       fillcolor = ifelse(.data$fillcolor == TRUE,
@@ -36,9 +29,9 @@ pep_regdep_map <- function(spp_name) {
       )
     )
   # plot
-  # peru %>%
-  #  sf::st_as_sf() %>%
-  shp %>%
+  # peru|>
+  #  sf::st_as_sf()|>
+  shp|>
     ggplot2::ggplot() +
     ggplot2::geom_sf(fill = peru$fillcolor) +
     ggplot2::theme_bw() +

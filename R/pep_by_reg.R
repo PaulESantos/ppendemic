@@ -10,10 +10,6 @@
 #'
 #' @return A tibble with two variables: species name and regions where species found
 #' @export
-#'
-#' @importFrom dplyr filter group_nest mutate select summarise_all
-#' @importFrom tidyr unnest
-#' @importFrom purrr map
 #' @examples
 #' # Basic usage
 #' ### One name
@@ -22,14 +18,14 @@
 #' species <- c("Sanchezia filamentosa", "Aphelandra latibracteata")
 #' pep_by_reg(species)
 pep_by_reg <- function(...) {
-  out <- ppendemic::registro_departamental %>%
-    dplyr::filter(registro_dep %in% c(...)) %>%
-    dplyr::select(registro_dep, accepted_name) %>%
+  out <- ppendemic::registro_departamental |>
+    dplyr::filter(registro_dep %in% c(...)) |>
+    dplyr::select(registro_dep, accepted_name) |>
     dplyr::arrange(registro_dep)
 
-  meta <- out %>%
-    dplyr::group_by(registro_dep) %>%
-    dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name)) # %>%
+  meta <- out |>
+    dplyr::group_by(registro_dep) |>
+    dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name)) # |>
   if (length(meta$registro_dep) == 1) {
     message(crayon::green(paste(
       "Region:", meta$registro_dep, "with",

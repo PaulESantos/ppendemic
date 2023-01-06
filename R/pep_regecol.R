@@ -44,9 +44,6 @@
 #' @return A tibble
 #' @export
 #'
-#' @importFrom dplyr filter group_nest mutate select summarise_all
-#' @importFrom tidyr unnest
-#' @importFrom purrr map
 #' @examples
 #' # By Region ID
 #' pep_regecol("BHA")
@@ -65,20 +62,20 @@ pep_regecol <- function(region = NULL, specie ) {
       stop("Check ecological region ID")
     }
     else if(unique(grepl("[A-Z]{2,}", region)) == TRUE){
-      out <- ppendemic::regiones_ecologicas %>%
-        dplyr::filter( region_id %in% region) %>%
+      out <- ppendemic::regiones_ecologicas |>
+        dplyr::filter( region_id %in% region) |>
         dplyr::select(region_id, region_eco, accepted_name)
     }
     else if( length(unique(grepl("[A-Za-z]{2,}", region))) > 1){
-      out <- ppendemic::regiones_ecologicas %>%
-        dplyr::filter( region_eco %in% region) %>%
+      out <- ppendemic::regiones_ecologicas |>
+        dplyr::filter( region_eco %in% region) |>
         dplyr::select(region_id, region_eco, accepted_name)
     }
 
 
-    meta <- out %>%
-      dplyr::group_by(region_id) %>%
-      dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name)) # %>%
+    meta <- out |>
+      dplyr::group_by(region_id) |>
+      dplyr::summarise(n_sp = dplyr::n_distinct(accepted_name)) # |>
     if (length(meta$region_id) == 1) {
       message(crayon::green(paste(
         "Region:", meta$region_id, "with",
@@ -97,8 +94,8 @@ pep_regecol <- function(region = NULL, specie ) {
     out
   }
   else{
-    out <-  ppendemic::regiones_ecologicas %>%
-      dplyr::filter( accepted_name %in% specie) %>%
+    out <-  ppendemic::regiones_ecologicas |>
+      dplyr::filter( accepted_name %in% specie) |>
       dplyr::select(region_id, region_eco, accepted_name)
     return(out)
   }
