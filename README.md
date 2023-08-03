@@ -6,15 +6,15 @@
 <!-- badges: start -->
 
 [![Lifecycle:
-stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
-[![DOI](https://zenodo.org/badge/336340798.svg)](https://zenodo.org/badge/latestdoi/336340798)
-[![Project Status: Active - The project has reached a stable, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+
+[![R-CMD-check](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/ppendemic?branch=main)
 <!-- badges: end -->
 
 <blockquote align="center">
@@ -61,22 +61,6 @@ To cite the ppendemic package, please use:
 
 ``` r
 citation("ppendemic")
-#> 
-#> To cite ppendemic in publications use:
-#> 
-#>   Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red
-#>   book of endemic plants of Peru data. R package version 0.1.4.
-#> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {ppendemic: The red book of endemic plants of Peru data},
-#>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
-#>     year = {2021},
-#>     note = {R package version 0.1.4},
-#>     doi = {10.5281/zenodo.5106619},
-#>     url = {https://github.com/PaulESantos/ppendemic},
-#>   }
 ```
 
 ## References

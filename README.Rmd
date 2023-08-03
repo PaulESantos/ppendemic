@@ -11,21 +11,31 @@ knitr::opts_chunk$set(
   fig.path = "man/figures/README-",
   out.width = "100%"
 )
-library(tidyverse)
+
+```
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
 library(ppendemic)
 ```
 
 # ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/cover_ppendemic.jpg' align="right" height="220" width="150" /></a>
 
+
 <!-- badges: start -->
-[![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-green.svg)](https://lifecycle.r-lib.org/articles/stages.html)
+[![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
-[![DOI](https://zenodo.org/badge/336340798.svg)](https://zenodo.org/badge/latestdoi/336340798)
-`r badger::badge_repostatus("Active")`
-<!-- badges: end -->
 
+[![R-CMD-check](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/ppendemic?branch=main)
+<!-- badges: end -->
 
 <blockquote align="center">
   ...El libro rojo de las plantas endémicas del Perú constituye, en este aspecto una herramienta fundamental para determinar las medidas necesarias para la conservación de la flora peruana. - Kember Mejía Carhuanca
@@ -56,7 +66,7 @@ Data were published and made available by the [Revista Peruana de Biología](htt
 
 To cite the ppendemic package, please use:
 
-```{r}
+```r
 citation("ppendemic")
 ```
 
@@ -67,4 +77,3 @@ citation("ppendemic")
 
 
 + León, B., Pitman, N., & Roque Gamarra, J. E. (2006). Introducción a las plantas endémicas del Perú. Revista Peruana de Biologia, 13(2), 9s-22s. [Here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
-
