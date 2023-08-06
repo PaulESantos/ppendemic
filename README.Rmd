@@ -31,30 +31,14 @@ library(ppendemic)
 
 ## Overview
 
-`ppendemic` is an R package that provides easy access to a new database containing the list of endemic plant species found in Peru. The package includes a collection of 7,249 species with detailed botanical information, such as accepted names, family, authorship, publication details, and the place and date of first publication.
+`ppendemic` is an R package that offers convenient access to a new and extensive database containing a list of 7,249 endemic plant species found in Peru. This comprehensive collection provides detailed botanical information, including accepted names, family, authorship, publication details, and the place and date of first publication for each species.
 
-## Installation
+The construction of the ppendemic package is built upon valuable data sourced from the renowned `World Checklist of Vascular Plants (WCVP)` database. As a highly authoritative resource, WCVP offers comprehensive information on plant taxonomy and occurrence worldwide. Leveraging this data, the `ppendemic` package aims to present an up-to-date and novel compilation of Peru's endemic plant species, tailored to the diverse ecosystems of the region. By incorporating meticulously curated data from WCVP, this package offers users a reliable and accurate resource to explore, analyze, and gain deeper insights into the rich diversity of Peru's endemic flora.
 
-You can install the `ppendemic` package from GitHub using the following command:
+Representing a significant advancement in our understanding of Peru's endemic plant species, the `ppendemic` package surpasses the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru, bringing the total to an impressive 7,249 species. This substantial increase in documented endemic species is a testament to the integration of data and the commitment to presenting the most up-to-date information. With this expanded and current database, researchers, conservationists, and nature enthusiasts alike can now delve into a more comprehensive and accurate account of Peru's unique and diverse plant biodiversity. The `ppendemic` package stands as a valuable resource for anyone interested in the study, conservation, and appreciation of Peru's endemic plant life.
 
-```r
-pak::pak("PaulESantos/ppendemic")
-```
+The database spans a total of 169 families, with particular richness observed in the Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae families, all of which boast the highest number of endemic species in Peru.
 
-
-## Data base 
-
-The ppendemic database consists of 7,249 rows and 7 columns, with each row representing a unique endemic plant species. The columns in the database include:
-
-1. `accepted_name`: The accepted scientific name of the endemic plant species.
-2. `accepted_family`: The family to which the plant species belongs.
-3. `accepted_name_author`: The author of the accepted scientific name.
-4. `publication_author`: The author of the publication where the species was described.
-5. `place_of_publication`: The place of publication of the species.
-6. `volume_and_page`: The volume and page number of the publication.
-7. `first_published`: The year of the first publication.
-
-The database covers a total of 169 families, and it is particularly rich in Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae families, which have the highest number of endemic species in Peru.
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -72,6 +56,52 @@ ppendemic::ppendemic_tab |>
   theme_bw()
 ```
 
+## Installation
+
+You can install the `ppendemic` package from GitHub using the following command:
+
+```r
+pak::pak("PaulESantos/ppendemic")
+```
+
+
+## Getting Started
+
+After installing the ppendemic package, you can load it into your R session using:
+
+```{r}
+library(ppendemic)
+
+```
+
+- Use `is_ppendemic()` to check if taxa are endemic
+
+```{r}
+splist <- c("Aa aurantiaca", "Aa aurantiaaia",
+            "Werneria nubigena", "Piper politum var. politum",
+            "Miconia firma")
+is_ppendemic(splist)
+
+```
+
+- The `is_ppendemic()` function is designed to work seamlessly with tibbles, allowing users to easily analyze and determine the endemism status of species within a tabular format.
+
+```{r}
+
+tibble::tibble(splist = splist) |> 
+  dplyr::mutate(endemic = is_ppendemic(splist))
+
+```
+
+
+
+- Utilize the `get_ppendemic_data()` function to retrieve comprehensive taxonomic information.
+
+```{r}
+
+get_ppendemic_data(splist = splist)
+
+```
 
 ## Citation
 
