@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/cover_ppendemic.jpg' align="right" height="220" width="150" /></a>
+# ppendemic
 
 <!-- badges: start -->
 
@@ -17,57 +17,40 @@ status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.
 coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/ppendemic?branch=main)
 <!-- badges: end -->
 
-<blockquote align="center">
-…El libro rojo de las plantas endémicas del Perú constituye, en este
-aspecto una herramienta fundamental para determinar las medidas
-necesarias para la conservación de la flora peruana. - Kember Mejía
-Carhuanca
-</blockquote>
+## Overview
 
-The flora of Peru is one of the richest in the New World, with over
-14,000 species, and 5,508 taxa are treated as endemic. This represents a
-significant proportion of the South American flora, highlighting the
-importance of Peru in the conservation of New World flora.
+`ppendemic` is an R package that provides easy access to a new database
+containing the list of endemic plant species found in Peru. The package
+includes a collection of 7,249 species with detailed botanical
+information, such as accepted names, family, authorship, publication
+details, and the place and date of first publication.
 
-The pandemic package takes the data from the **The red book of endemic
-plants of Peru** and update the taxonomic information for all species
-included using the [Taxonomic Name Resolution
-Service](https://tnrs.biendata.org/) api.
+## Installation
 
-The goal of ppendemic is to provide access to the endemic plant species
-data in Peru.
-
-## Installation:
-
-You can install the latest development version from
-[GitHub](https://github.com/) with:
+You can install the `ppendemic` package from GitHub using the following
+command:
 
 ``` r
-# install.packages("pak")
 pak::pak("PaulESantos/ppendemic")
 ```
 
-## About the data
+## Data base
 
-Data were published and made available by the [Revista Peruana de
-Biología](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/index)
-in volume 13 and number 2 [available
-here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153),
-on 2006. Edited by Blanca León et al.
+The ppendemic database consists of 7,249 rows and 7 columns, with each
+row representing a unique endemic plant species. The columns in the
+database include:
 
-## Citation
+1.  `accepted_name`: The accepted scientific name of the endemic plant
+    species.
+2.  `accepted_family`: The family to which the plant species belongs.
+3.  `accepted_name_author`: The author of the accepted scientific name.
+4.  `publication_author`: The author of the publication where the
+    species was described.
+5.  `place_of_publication`: The place of publication of the species.
+6.  `volume_and_page`: The volume and page number of the publication.
+7.  `first_published`: The year of the first publication.
 
-To cite the ppendemic package, please use:
-
-``` r
-citation("ppendemic")
-```
-
-## References
-
-**Data originally published in:**
-
-- León, B., Pitman, N., & Roque Gamarra, J. E. (2006). Introducción a
-  las plantas endémicas del Perú. Revista Peruana de Biologia, 13(2),
-  9s-22s.
-  [Here](https://revistasinvestigacion.unmsm.edu.pe/index.php/rpb/issue/view/153)
+The database covers a total of 169 families, and it is particularly rich
+in Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae,
+Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae
+families, which have the highest number of endemic species in Peru.
