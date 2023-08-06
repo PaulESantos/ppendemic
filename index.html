@@ -66,7 +66,11 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p><code>ppendemic</code> is an R package that provides easy access to a new database containing the list of endemic plant species found in Peru. The package includes a collection of 7,249 species with detailed botanical information, such as accepted names, family, authorship, publication details, and the place and date of first publication.</p>
+<p><code>ppendemic</code> is an R package that offers convenient access to a new and extensive database containing a list of 7,249 endemic plant species found in Peru. This comprehensive collection provides detailed botanical information, including accepted names, family, authorship, publication details, and the place and date of first publication for each species.</p>
+<p>The construction of the ppendemic package is built upon valuable data sourced from the renowned <code>World Checklist of Vascular Plants (WCVP)</code> database. As a highly authoritative resource, WCVP offers comprehensive information on plant taxonomy and occurrence worldwide. Leveraging this data, the <code>ppendemic</code> package aims to present an up-to-date and novel compilation of Peru’s endemic plant species, tailored to the diverse ecosystems of the region. By incorporating meticulously curated data from WCVP, this package offers users a reliable and accurate resource to explore, analyze, and gain deeper insights into the rich diversity of Peru’s endemic flora.</p>
+<p>Representing a significant advancement in our understanding of Peru’s endemic plant species, the <code>ppendemic</code> package surpasses the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru, bringing the total to an impressive 7,249 species. This substantial increase in documented endemic species is a testament to the integration of data and the commitment to presenting the most up-to-date information. With this expanded and current database, researchers, conservationists, and nature enthusiasts alike can now delve into a more comprehensive and accurate account of Peru’s unique and diverse plant biodiversity. The <code>ppendemic</code> package stands as a valuable resource for anyone interested in the study, conservation, and appreciation of Peru’s endemic plant life.</p>
+<p>The database spans a total of 169 families, with particular richness observed in the Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae families, all of which boast the highest number of endemic species in Peru.</p>
+<p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
@@ -76,46 +80,82 @@
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="http://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"PaulESantos/ppendemic"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
-<h2 id="data-base">Data base<a class="anchor" aria-label="anchor" href="#data-base"></a>
+<h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<p>The ppendemic database consists of 7,249 rows and 7 columns, with each row representing a unique endemic plant species. The columns in the database include:</p>
-<ol style="list-style-type: decimal">
-<li>
-<code>accepted_name</code>: The accepted scientific name of the endemic plant species.</li>
-<li>
-<code>accepted_family</code>: The family to which the plant species belongs.</li>
-<li>
-<code>accepted_name_author</code>: The author of the accepted scientific name.</li>
-<li>
-<code>publication_author</code>: The author of the publication where the species was described.</li>
-<li>
-<code>place_of_publication</code>: The place of publication of the species.</li>
-<li>
-<code>volume_and_page</code>: The volume and page number of the publication.</li>
-<li>
-<code>first_published</code>: The year of the first publication.</li>
-</ol>
-<p>The database covers a total of 169 families, and it is particularly rich in Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae families, which have the highest number of endemic species in Peru.</p>
-<p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
+<p>After installing the ppendemic package, you can load it into your R session using:</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://paulesantos.github.io/ppendemic">ppendemic</a></span><span class="op">)</span></span></code></pre></div>
+<ul>
+<li>Use <code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> to check if taxa are endemic</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aa aurantiaca"</span>, <span class="st">"Aa aurantiaaia"</span>,</span>
+<span>            <span class="st">"Werneria nubigena"</span>, <span class="st">"Piper politum var. politum"</span>,</span>
+<span>            <span class="st">"Miconia firma"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="va">splist</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Aa aurantiaca is endemic"                 </span></span>
+<span><span class="co">#&gt; [2] "Aa aurantiaca is endemic - fuzzy matching"</span></span>
+<span><span class="co">#&gt; [3] "not endemic"                              </span></span>
+<span><span class="co">#&gt; [4] "not endemic"                              </span></span>
+<span><span class="co">#&gt; [5] "Miconia firma is endemic"</span></span></code></pre></div>
+<ul>
+<li>The <code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> function is designed to work seamlessly with tibbles, allowing users to easily analyze and determine the endemism status of species within a tabular format.</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>endemic <span class="op">=</span> <span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="va">splist</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 5 × 2</span></span>
+<span><span class="co">#&gt;   splist                     endemic                                  </span></span>
+<span><span class="co">#&gt;   &lt;chr&gt;                      &lt;chr&gt;                                    </span></span>
+<span><span class="co">#&gt; 1 Aa aurantiaca              Aa aurantiaca is endemic                 </span></span>
+<span><span class="co">#&gt; 2 Aa aurantiaaia             Aa aurantiaca is endemic - fuzzy matching</span></span>
+<span><span class="co">#&gt; 3 Werneria nubigena          not endemic                              </span></span>
+<span><span class="co">#&gt; 4 Piper politum var. politum not endemic                              </span></span>
+<span><span class="co">#&gt; 5 Miconia firma              Miconia firma is endemic</span></span></code></pre></div>
+<ul>
+<li>Utilize the <code><a href="reference/get_ppendemic_data.html">get_ppendemic_data()</a></code> function to retrieve comprehensive taxonomic information.</li>
+</ul>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="fu"><a href="reference/get_ppendemic_data.html">get_ppendemic_data</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span></span>
+<span><span class="co">#&gt;               name_submitted accepted_name accepted_family accepted_name_author</span></span>
+<span><span class="co">#&gt; 1              Aa aurantiaca Aa aurantiaca     Orchidaceae           D.Trujillo</span></span>
+<span><span class="co">#&gt; 2             Aa aurantiaaia Aa aurantiaca     Orchidaceae           D.Trujillo</span></span>
+<span><span class="co">#&gt; 3          Werneria nubigena          nill            nill                 nill</span></span>
+<span><span class="co">#&gt; 4 Piper politum var. politum          nill            nill                 nill</span></span>
+<span><span class="co">#&gt; 5              Miconia firma Miconia firma Melastomataceae           J.F.Macbr.</span></span>
+<span><span class="co">#&gt;   publication_author                   place_of_publication volume_and_page</span></span>
+<span><span class="co">#&gt; 1               &lt;NA&gt;                          Lankesteriana           11: 3</span></span>
+<span><span class="co">#&gt; 2               &lt;NA&gt;                          Lankesteriana           11: 3</span></span>
+<span><span class="co">#&gt; 3               nill                                   nill            nill</span></span>
+<span><span class="co">#&gt; 4               nill                                   nill            nill</span></span>
+<span><span class="co">#&gt; 5               &lt;NA&gt; Publ. Field Mus. Nat. Hist., Bot. Ser.      13(4): 411</span></span>
+<span><span class="co">#&gt;   first_published dist</span></span>
+<span><span class="co">#&gt; 1          (2011)    0</span></span>
+<span><span class="co">#&gt; 2          (2011)    2</span></span>
+<span><span class="co">#&gt; 3            nill nill</span></span>
+<span><span class="co">#&gt; 4            nill nill</span></span>
+<span><span class="co">#&gt; 5          (1941)    0</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
 <p>To cite the <code>ppendemic</code> package, please use:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"ppendemic"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; To cite ppendemic in publications use:</span></span>
 <span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red</span></span>
-<span><span class="co">#&gt;   book of endemic plants of Peru data. R package version 0.1.4.</span></span>
+<span><span class="co">#&gt;   Santos-Andrade PE, Vilca-Bustamante LL (2023). ppendemic: A glimpse</span></span>
+<span><span class="co">#&gt;   at the diversity of Peru's endemic plants.</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;   @Manual{,</span></span>
-<span><span class="co">#&gt;     title = {ppendemic: The red book of endemic plants of Peru data},</span></span>
+<span><span class="co">#&gt;     title = {ppendemic: A glimpse at the diversity of Peru's endemic plants},</span></span>
 <span><span class="co">#&gt;     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},</span></span>
-<span><span class="co">#&gt;     year = {2021},</span></span>
-<span><span class="co">#&gt;     note = {R package version 0.1.4},</span></span>
+<span><span class="co">#&gt;     year = {2023},</span></span>
+<span><span class="co">#&gt;     note = {R package version 0.1.6},</span></span>
 <span><span class="co">#&gt;     doi = {10.5281/zenodo.5106619},</span></span>
 <span><span class="co">#&gt;     url = {https://github.com/PaulESantos/ppendemic},</span></span>
 <span><span class="co">#&gt;   }</span></span></code></pre></div>
