@@ -56,19 +56,28 @@ The ppendemic database consists of 7,249 rows and 7 columns, with each row repre
 
 The database covers a total of 169 families, and it is particularly rich in Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae families, which have the highest number of endemic species in Peru.
 
-```{r echo=FALSE, eval=FALSE}
+```{r echo=FALSE, message=FALSE}
+library(tidyverse)
 ppendemic::ppendemic_tab |> 
   group_by(accepted_family) |> 
   summarise(n_especies = n_distinct(accepted_name)) |> 
   arrange(desc(n_especies)) |> 
   top_n(10) |> 
-  ggplot(aes(fct_reorder(accepted_family, n_espcies, .desc = TRUE),
+  ggplot(aes(fct_reorder(accepted_family, n_especies, .desc = TRUE),
              n_especies)) +
   geom_col() +
   labs(x = "Families",
        y = "Number of species") +
+  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
   theme_bw()
 ```
 
 
+## Citation
+
+To cite the `ppendemic` package, please use:
+
+```{r}
+citation("ppendemic")
+```
 

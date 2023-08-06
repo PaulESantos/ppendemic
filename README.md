@@ -54,3 +54,28 @@ The database covers a total of 169 families, and it is particularly rich
 in Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae,
 Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae
 families, which have the highest number of endemic species in Peru.
+
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+
+## Citation
+
+To cite the `ppendemic` package, please use:
+
+``` r
+citation("ppendemic")
+#> To cite ppendemic in publications use:
+#> 
+#>   Santos-Andrade PE, Vilca-Bustamante LL (2021). ppendemic: The red
+#>   book of endemic plants of Peru data. R package version 0.1.4.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {ppendemic: The red book of endemic plants of Peru data},
+#>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
+#>     year = {2021},
+#>     note = {R package version 0.1.4},
+#>     doi = {10.5281/zenodo.5106619},
+#>     url = {https://github.com/PaulESantos/ppendemic},
+#>   }
+```
