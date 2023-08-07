@@ -13,6 +13,9 @@ status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.
 [![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![Codecov test
 coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/ppendemic?branch=main)
+
+[![DOI](https://zenodo.org/badge/336340798.svg)](https://zenodo.org/badge/latestdoi/336340798)
+
 <!-- badges: end -->
 
 ## Overview
