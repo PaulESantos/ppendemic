@@ -1,5 +1,5 @@
 Package: ppendemic
-Title: A Glimpse At The Biversity Of Peru's Endemic Plants
+Title: A Glimpse at the Biversity of Peru's Endemic Plants
 Version: 0.1.6
 Authors@R: 
     c(person(given = "Paul Efren",
@@ -11,7 +11,7 @@ Authors@R:
            family = "Vilca Bustamante",
            role = "aut",
            email = "vilca.lu01@gmail.com")) 
-Description: The package offers easy access to a new and updated database of Peru's endemic plants. It provides a meticulously compiled and revised botanical data collection, featuring over 7,249 species.
+Description: This package offers easy access to a new and updated database of Peru's endemic plants. It provides a meticulously compiled and revised botanical data collection, featuring over 7,249 species.
 License: MIT + file LICENSE
 URL: https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues/
