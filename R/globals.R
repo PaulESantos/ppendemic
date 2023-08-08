@@ -1,5 +1,2 @@
-utils::globalVariables(c(
-  "dep_id", "fillcolor", "species_pep", "peru",
-  "data", "reg", "accepted_name", "registro_dep",
-  "region_id", "region_eco", "regiones", ".data"
+utils::globalVariables(c( ".data"
 ))

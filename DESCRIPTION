@@ -11,10 +11,9 @@ Authors@R:
            family = "Vilca Bustamante",
            role = "aut",
            email = "vilca.lu01@gmail.com")) 
-Description: The `ppendemic` package offers easy access to a new and updated database of Peru's endemic plants. It provides a meticulously compiled and revised botanical data collection, featuring over 7,249 species. The package includes functions to validate species lists for endemism through partial and total match validation. Stay informed with the latest insights into Peru's unique and diverse endemic flora.
+Description: The `ppendemic` package offers easy access to a new and updated database of Peru's endemic plants. It provides a meticulously compiled and revised botanical data collection, featuring over 7,249 species.
 License: MIT + file LICENSE
-URL: https://paulesantos.github.io/ppendemic/,
-     https://github.com/PaulESantos/ppendemic/
+URL: https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues/
 Suggests: 
     knitr,
