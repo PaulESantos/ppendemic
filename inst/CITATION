@@ -1,14 +1,10 @@
-citHeader("To cite ppendemic in publications use:")
-
-citEntry(
-  entry    = "Manual",
-  title    = "ppendemic: A glimpse at the diversity of Peru's endemic plants",
-  author   = "Paul Efren Santos Andrade, Lucely L. Vilca Bustamante",
-  year     = 2023,
-  note     = "R package version 0.1.6",
+bibentry(
+  bibtype = "mANUAL",
+  textVersion = "Santos-Andrade PE, Vilca-Bustamante LL (2023). ppendemic: A glimpse at the diversity of Peru's endemic plants.",
+  header = "To cite ppendemic in publications use:",
+  author = "Paul E. Santos Andrade, Lucely L. Vilca Bustamante",
+  title = "ppendemic: A glimpse at the diversity of Peru's endemic plants",
+  year = "2023",
   doi      = "10.5281/zenodo.5106619",
-  url      = "https://github.com/PaulESantos/ppendemic",
-  textVersion = paste(
-"Santos-Andrade PE, Vilca-Bustamante LL (2023). ppendemic: A glimpse at the diversity of Peru's endemic plants."
-  )
+  url = "https://paulesantos.github.io/ppendemic/",
 )
