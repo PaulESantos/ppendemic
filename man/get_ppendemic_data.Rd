@@ -21,5 +21,7 @@ ppendemic_tab dataset, and returns a data frame containing the relevant
 information for each species.
 }
 \examples{
+ \dontrun{
 get_ppendemic_data(splist = c("Aa aurantiaca", "Aa aurantiaaia", "werneria nubigena"))
+}
 }

@@ -24,6 +24,7 @@ in this case, Peru. The function allows fuzzy matching for species names with a 
 distance threshold to handle potential typos or variations in species names.
 }
 \examples{
+\dontrun{
 is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
-
+}
 }

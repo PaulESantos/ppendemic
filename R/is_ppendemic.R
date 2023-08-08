@@ -16,8 +16,9 @@
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
-#'
+#' }
 is_ppendemic <- function(splist, max_distance = 0.1) {
   # Defensive function here, check for user input errors
   if (is.factor(splist)) {

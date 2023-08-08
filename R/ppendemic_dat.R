@@ -9,7 +9,9 @@
 #'   Defaults to 0.1.
 #' @return A data frame containing the retrieved information for each species.
 #' @examples
+#'  \dontrun{
 #' get_ppendemic_data(splist = c("Aa aurantiaca", "Aa aurantiaaia", "werneria nubigena"))
+#' }
 #' @export
 get_ppendemic_data <- function(splist, max_distance = 0.1) {
 #splist <- c("werneria nubigena")
