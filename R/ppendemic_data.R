@@ -41,13 +41,13 @@
 #' database.
 #'
 #' @examples
-#' \dontrun{
+#'
 #' # Load the package
 #' library(ppendemic)
 #'
 #' # Access the dataset
-#' ppendemic_tab
-#' }
+#' data("ppendemic_tab")
+#'
 #'
 #' @keywords dataset
 #'

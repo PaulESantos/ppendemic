@@ -52,13 +52,13 @@ is particularly valuable for conducting studies related to biodiversity,
 conservation, and ecological research.
 }
 \examples{
-\dontrun{
+
 # Load the package
 library(ppendemic)
 
 # Access the dataset
-ppendemic_tab
-}
+data("ppendemic_tab")
+
 
 }
 \keyword{dataset}
