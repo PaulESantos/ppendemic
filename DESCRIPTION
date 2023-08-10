@@ -11,7 +11,7 @@ Authors@R:
            family = "Vilca Bustamante",
            role = "aut",
            email = "vilca.lu01@gmail.com")) 
-Description: A new and updated database of Peru's endemic plants. It provides a meticulously compiled and revised botanical data collection, featuring over 7,249 species.
+Description: Introducing a novel and updated database showcasing Peru's endemic plants. This meticulously compiled and revised botanical collection encompasses a remarkable assemblage of over 7,249 distinct species. The data for this resource was sourced from the work of Govaerts, R., Nic Lughadha, E., Black, N. et al., titled 'The World Checklist of Vascular Plants: A continuously updated resource for exploring global plant diversity', published in Sci Data 8, 215 (2021) <https://doi.org/10.1038/s41597-021-00997-6>.
 License: MIT + file LICENSE
 URL: https://github.com/PaulESantos/ppendemic/
 BugReports: https://github.com/PaulESantos/ppendemic/issues/
@@ -26,5 +26,4 @@ RoxygenNote: 7.2.3
 Depends: 
     R (>= 3.5.0),
 Config/testthat/edition: 3
-Author: Paul E. Santos Andrade [aut, cre],
-        Lucely L. Vilca Bustamante [aut]
+Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>
