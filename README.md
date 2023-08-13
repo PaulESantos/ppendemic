@@ -60,8 +60,16 @@ species in Peru.
 
 ## Installation
 
-You can install the `ppendemic` package from GitHub using the following
-command:
+You can install the `ppendemic` package from CRAN using:
+
+``` r
+install.packages("ppendemic")
+# or
+pak::pak("ppendemic")
+```
+
+Also you can install the `ppendemic` package from GitHub using the
+following command:
 
 ``` r
 pak::pak("PaulESantos/ppendemic")
