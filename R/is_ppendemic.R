@@ -27,7 +27,7 @@ is_ppendemic <- function(splist, max_distance = 0.1) {
 
   # Standardize species names
   splist_std <- standardize_names(splist)
-
+  splist_std
   # Remove any NA values from splist_std
   splist_std <- splist_std[!is.na(splist_std)]
 
@@ -42,38 +42,39 @@ is_ppendemic <- function(splist, max_distance = 0.1) {
     } else {
       max_distance_fixed <- max_distance
     }
-
+    max_distance_fixed
     # Fuzzy and exact match
     matches <- agrep(splist_std[i],
                      ppendemic::ppendemic_tab$accepted_name, # base data column
                      max.distance = max_distance_fixed,
                      value = TRUE)
+    if(length(matches) == 0){
+      output <- "Not endemic"
+    }
+    else if(length(matches) != 0){
 
-    # Check non-matching result
-    if (length(matches) == 0) {
-      matches1 <- "nill"
-    } else { # Match result
       dis_value <- as.numeric(utils::adist(splist_std[i], matches))
       matches1 <- matches[dis_value <= max_distance_fixed]
-    }
+      distvalue <- as.numeric(utils::adist(splist_std[i], matches1))
 
-    distvalue <- as.numeric(utils::adist(splist[i], matches1))
-
-    # Build an output result from match data
-    if (matches1 != "nill" & distvalue == 0) {
-      val <- grep(matches1, ppendemic::ppendemic_tab$accepted_name, value = TRUE)
-      output <- paste0(val, " is endemic")
+      # Build an output result from match data
+      if(length(matches1) == 0){
+        output <- "Not endemic"
+      }
+      else if (length(matches1) != 0 & distvalue == 0) {
+        #val <- grep(matches1, ppendemic::ppendemic_tab$accepted_name, value = TRUE)
+        #output <- paste0(val, " is endemic")
+        output <- "Endemic"
+      }
+      else if (length(matches1) != 0 & distvalue != 0){
+        #val <- grep(matches1, ppendemic::ppendemic_tab$accepted_name, value = TRUE)
+        #output <- paste0(val, " is endemic - fuzzy matching")
+        output <- "Endemic - fuzzy matching"
+      }
     }
-    else if (matches1 != "nill" & distvalue != 0){
-      val <- grep(matches1, ppendemic::ppendemic_tab$accepted_name, value = TRUE)
-      output <- paste0(val, " is endemic - fuzzy matching")
-    }
-    else if(matches1 == "nill"){
-      output <- "not endemic"
-    }
-
     output_vector[i] <- output
   }
 
+  # output_vector
   return(output_vector)
 }

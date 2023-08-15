@@ -8,15 +8,15 @@ test_that("get_ppendemic_data retrieves correct data for valid species names", {
   output_data
   # Expected output data
   expected_data <- data.frame(
-    name_submitted = c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"),
-    accepted_name = c("Aa aurantiaca", "Aa aurantiaca", "nill"),
-    accepted_family = c("Orchidaceae", "Orchidaceae", "nill"),
-    accepted_name_author = c("D.Trujillo", "D.Trujillo", "nill"),
-    publication_author = c(NA, NA, "nill"),
-    place_of_publication = c("Lankesteriana", "Lankesteriana", "nill"),
-    volume_and_page = c("11: 3", "11: 3", "nill"),
-    first_published = c("(2011)", "(2011)", "nill"),
-    dist = c(0, 2, "nill"),
+    name_submitted = c("Aa aurantiaca", "Aa aurantiaaia"),
+    accepted_name = c("Aa aurantiaca", "Aa aurantiaca"),
+    accepted_family = c("Orchidaceae", "Orchidaceae"),
+    accepted_name_author = c("D.Trujillo", "D.Trujillo"),
+    publication_author = c("nill", "nill"),
+    place_of_publication = c("Lankesteriana", "Lankesteriana"),
+    volume_and_page = c("11: 3", "11: 3"),
+    first_published = c("(2011)", "(2011)"),
+    dist = c("0", "2"),
     stringsAsFactors = FALSE
   )
   # Compare the output data with the expected data

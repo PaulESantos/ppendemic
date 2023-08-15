@@ -14,7 +14,7 @@
 #'
 #' @export
 get_ppendemic_data <- function(splist, max_distance = 0.1) {
-#splist <- c("werneria nubigena")
+#splist <- c("werneria nubigena", "Gentiana sedifolia", "Abatia rugosa")
   # Defensive function here, check for user input errors
   if (is.factor(splist)) {
     splist <- as.character(splist)
@@ -34,6 +34,7 @@ get_ppendemic_data <- function(splist, max_distance = 0.1) {
                                "first_published",
                                "dist"
                               )
+ # output_matrix
   # loop code to find the matching string
 
   for (i in seq_along(splist_std)) {
@@ -43,32 +44,35 @@ get_ppendemic_data <- function(splist, max_distance = 0.1) {
     } else {
       max_distance_fixed <- max_distance
     }
+  #  max_distance
+  #  max_distance_fixed
     # fuzzy and exact match
     matches <- agrep(splist_std[i],
                      ppendemic::ppendemic_tab$accepted_name, # base data column
                      max.distance = max_distance_fixed,
                      value = TRUE)
-    matches
+
+   # matches |>  length() == 0
     # check non matching result
     if (length(matches) == 0) {
-      matches1 <- "nill"
+      row_data <- rep("nill", 7)
       dis_value_1 <- ""
-    } else { # match result
+    }
+    else { # match result
 
       dis_value <- as.numeric(utils::adist(splist_std[i], matches))
       matches1 <- matches[dis_value <= max_distance_fixed]
       dis_val_1 <- dis_value[dis_value <= max_distance_fixed]
-    }
-    #matches1
-    # build an output result from mtsta data
-    if (matches1 == "nill") {
+
+      if(length(matches1) == 0){
       row_data <- rep("nill", 7)
-    } else {
-      row_data <- as.matrix(ppendemic::ppendemic_tab[ppendemic::ppendemic_tab$accepted_name == matches1,])
-
+      }
+      else if(length(matches1) != 0){
+      row_data <- as.matrix(ppendemic::ppendemic_tab[ppendemic::ppendemic_tab$accepted_name %in% matches1,])
+      }
     }
 
-
+    # distance value
     if(is.null(nrow(row_data))){
       dis_value_1 <- "nill"
     } else{
@@ -79,6 +83,7 @@ get_ppendemic_data <- function(splist, max_distance = 0.1) {
       c(splist_std[i], row_data, dis_value_1)
   }
 #output_matrix
-  return(as.data.frame(output_matrix))
+  output <- as.data.frame(output_matrix)
+  return(output[output$accepted_name != "nill",])
 }
 
