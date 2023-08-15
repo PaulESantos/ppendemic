@@ -2,7 +2,7 @@ Package: ppendemic
 Title: A Glimpse at the Diversity of Peru's Endemic Plants
 Version: 0.1.7
 Authors@R: 
-      c(person(given = "Paul Efren",
+      c(person(given = "Paul E.",
                  family = "Santos Andrade",
                  role = c("aut", "cre"),
                  email = "paulefrens@gmail.com",
