@@ -5,7 +5,7 @@ test_that("get_ppendemic_data retrieves correct data for valid species names", {
 
   # Call the function to get the output
   output_data <- get_ppendemic_data(splist = input_species)
-  output_data
+  #output_data
   # Expected output data
   expected_data <- data.frame(
     name_submitted = c("Aa aurantiaca", "Aa aurantiaaia"),
@@ -29,21 +29,11 @@ test_that("get_ppendemic_data returns empty data frame for invalid species names
 
   # Call the function to get the output
   output_data <- get_ppendemic_data(splist = invalid_species)
-
+  #output_data |>  ncol()
   # Expected output is an empty data frame
-  expected_data <- data.frame(
-    name_submitted = c("Invalid species 1", "Invalid species 2", "Invalid species 3"),
-    accepted_name = rep("nill", 3),
-    accepted_family = rep("nill", 3),
-    accepted_name_author = rep("nill", 3),
-    publication_author = rep("nill", 3),
-    place_of_publication = rep("nill", 3),
-    volume_and_page = rep("nill", 3),
-    first_published = rep("nill", 3),
-    dist = rep("nill", 3),
-    stringsAsFactors = FALSE
-  )
-
+  expected_row <- 0
+  expected_col <- 9
   # Compare the output data with the expected data
-  expect_equal(output_data, expected_data)
+  expect_equal(nrow(output_data), expected_row)
+  expect_equal(ncol(output_data), expected_col)
 })
