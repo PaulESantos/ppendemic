@@ -18,14 +18,12 @@ library(ppendemic)
 
 # ppendemic 
 
-
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
 [![CRAN status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/grand-total/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![Codecov test coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/ppendemic?branch=main)
-
 [![DOI](https://zenodo.org/badge/336340798.svg)](https://zenodo.org/badge/latestdoi/336340798)
 [![R-CMD-check](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
@@ -38,7 +36,7 @@ The construction of the ppendemic package is built upon valuable data sourced fr
 
 Representing a significant advancement in our understanding of Peru's endemic plant species, the `ppendemic` package surpasses the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru, bringing the total to an impressive 7,249 species. This substantial increase in documented endemic species is a testament to the integration of data and the commitment to presenting the most up-to-date information. With this expanded and current database, researchers, conservationists, and nature enthusiasts alike can now delve into a more comprehensive and accurate account of Peru's unique and diverse plant biodiversity. The `ppendemic` package stands as a valuable resource for anyone interested in the study, conservation, and appreciation of Peru's endemic plant life.
 
-The database spans a total of 169 families, with particular richness observed in the Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae families, all of which boast the highest number of endemic species in Peru.
+The database spans a total of 169 families, with particular richness observed in the **Orchidaceae, Asteraceae, Piperaceae, Solanaceae, Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and Gentianaceae** families, all of which boast the highest number of endemic species in Peru.
 
 
 ```{r echo=FALSE, message=FALSE}
@@ -101,8 +99,6 @@ tibble::tibble(splist = splist) |>
   dplyr::mutate(endemic = is_ppendemic(splist))
 
 ```
-
-
 
 - Utilize the `get_ppendemic_data()` function to retrieve comprehensive taxonomic information.
 

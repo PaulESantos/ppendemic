@@ -13,7 +13,6 @@ status](https://www.r-pkg.org/badges/version/ppendemic)](https://CRAN.R-project.
 [![](http://cranlogs.r-pkg.org/badges/last-week/ppendemic?color=green)](https://cran.r-project.org/package=ppendemic)
 [![Codecov test
 coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.svg)](https://app.codecov.io/gh/PaulESantos/ppendemic?branch=main)
-
 [![DOI](https://zenodo.org/badge/336340798.svg)](https://zenodo.org/badge/latestdoi/336340798)
 [![R-CMD-check](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/PaulESantos/ppendemic/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
@@ -51,10 +50,10 @@ anyone interested in the study, conservation, and appreciation of Peru’s
 endemic plant life.
 
 The database spans a total of 169 families, with particular richness
-observed in the Orchidaceae, Asteraceae, Piperaceae, Solanaceae,
+observed in the **Orchidaceae, Asteraceae, Piperaceae, Solanaceae,
 Fabaceae, Bromeliaceae, Melastomataceae, Araceae, Rubiaceae, and
-Gentianaceae families, all of which boast the highest number of endemic
-species in Peru.
+Gentianaceae** families, all of which boast the highest number of
+endemic species in Peru.
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
@@ -91,11 +90,9 @@ splist <- c("Aa aurantiaca", "Aa aurantiaaia",
             "Werneria nubigena", "Piper politum var. politum",
             "Miconia firma")
 is_ppendemic(splist)
-#> [1] "Aa aurantiaca is endemic"                 
-#> [2] "Aa aurantiaca is endemic - fuzzy matching"
-#> [3] "not endemic"                              
-#> [4] "not endemic"                              
-#> [5] "Miconia firma is endemic"
+#> [1] "Endemic"                  "Endemic - fuzzy matching"
+#> [3] "Not endemic"              "Not endemic"             
+#> [5] "Endemic"
 ```
 
 - The `is_ppendemic()` function is designed to work seamlessly with
@@ -107,13 +104,13 @@ is_ppendemic(splist)
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic = is_ppendemic(splist))
 #> # A tibble: 5 × 2
-#>   splist                     endemic                                  
-#>   <chr>                      <chr>                                    
-#> 1 Aa aurantiaca              Aa aurantiaca is endemic                 
-#> 2 Aa aurantiaaia             Aa aurantiaca is endemic - fuzzy matching
-#> 3 Werneria nubigena          not endemic                              
-#> 4 Piper politum var. politum not endemic                              
-#> 5 Miconia firma              Miconia firma is endemic
+#>   splist                     endemic                 
+#>   <chr>                      <chr>                   
+#> 1 Aa aurantiaca              Endemic                 
+#> 2 Aa aurantiaaia             Endemic - fuzzy matching
+#> 3 Werneria nubigena          Not endemic             
+#> 4 Piper politum var. politum Not endemic             
+#> 5 Miconia firma              Endemic
 ```
 
 - Utilize the `get_ppendemic_data()` function to retrieve comprehensive
@@ -122,23 +119,17 @@ tibble::tibble(splist = splist) |>
 ``` r
 
 get_ppendemic_data(splist = splist)
-#>               name_submitted accepted_name accepted_family accepted_name_author
-#> 1              Aa aurantiaca Aa aurantiaca     Orchidaceae           D.Trujillo
-#> 2             Aa aurantiaaia Aa aurantiaca     Orchidaceae           D.Trujillo
-#> 3          Werneria nubigena          nill            nill                 nill
-#> 4 Piper politum var. politum          nill            nill                 nill
-#> 5              Miconia firma Miconia firma Melastomataceae           J.F.Macbr.
+#>   name_submitted accepted_name accepted_family accepted_name_author
+#> 1  Aa aurantiaca Aa aurantiaca     Orchidaceae           D.Trujillo
+#> 2 Aa aurantiaaia Aa aurantiaca     Orchidaceae           D.Trujillo
+#> 5  Miconia firma Miconia firma Melastomataceae           J.F.Macbr.
 #>   publication_author                   place_of_publication volume_and_page
-#> 1               <NA>                          Lankesteriana           11: 3
-#> 2               <NA>                          Lankesteriana           11: 3
-#> 3               nill                                   nill            nill
-#> 4               nill                                   nill            nill
-#> 5               <NA> Publ. Field Mus. Nat. Hist., Bot. Ser.      13(4): 411
+#> 1               nill                          Lankesteriana           11: 3
+#> 2               nill                          Lankesteriana           11: 3
+#> 5               nill Publ. Field Mus. Nat. Hist., Bot. Ser.      13(4): 411
 #>   first_published dist
 #> 1          (2011)    0
 #> 2          (2011)    2
-#> 3            nill nill
-#> 4            nill nill
 #> 5          (1941)    0
 ```
 
@@ -156,11 +147,10 @@ citation("ppendemic")
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
+#>     author = {Paul E. Santos Andrade and Lucely L. Vilca Bustamante},
 #>     title = {ppendemic: A glimpse at the diversity of Peru's endemic plants},
-#>     author = {Paul Efren Santos Andrade and Lucely L. Vilca Bustamante},
 #>     year = {2023},
-#>     note = {R package version 0.1.6},
 #>     doi = {10.5281/zenodo.5106619},
-#>     url = {https://github.com/PaulESantos/ppendemic},
+#>     url = {https://paulesantos.github.io/ppendemic/},
 #>   }
 ```
