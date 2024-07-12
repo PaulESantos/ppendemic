@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# ppendemic
+# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/ppendemic_logo.png' align="right" height="250" width="220" /></a>
 
 <!-- badges: start -->
 
@@ -86,13 +86,15 @@ library(ppendemic)
 - Use `is_ppendemic()` to check if taxa are endemic
 
 ``` r
-splist <- c("Aa aurantiaca", "Aa aurantiaaia",
-            "Werneria nubigena", "Piper politum var. politum",
-            "Miconia firma")
+splist <- c("Aa aurantiaca", 
+             "Aa aurantiaaia",
+             "Werneria nubigena", 
+             "Dasyphyllum brasiliense var. barnadesioides",
+             "Miconia firma",
+             "Festuca densiflora")
 is_ppendemic(splist)
-#> [1] "Endemic"                  "Endemic - fuzzy matching"
-#> [3] "Not endemic"              "Not endemic"             
-#> [5] "Endemic"
+#> [1] "endemic"     "endemic"     "not endemic" "endemic"     "endemic"    
+#> [6] "endemic"
 ```
 
 - The `is_ppendemic()` function is designed to work seamlessly with
@@ -103,34 +105,15 @@ is_ppendemic(splist)
 
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic = is_ppendemic(splist))
-#> # A tibble: 5 × 2
-#>   splist                     endemic                 
-#>   <chr>                      <chr>                   
-#> 1 Aa aurantiaca              Endemic                 
-#> 2 Aa aurantiaaia             Endemic - fuzzy matching
-#> 3 Werneria nubigena          Not endemic             
-#> 4 Piper politum var. politum Not endemic             
-#> 5 Miconia firma              Endemic
-```
-
-- Utilize the `get_ppendemic_data()` function to retrieve comprehensive
-  taxonomic information.
-
-``` r
-
-get_ppendemic_data(splist = splist)
-#>   name_submitted accepted_name accepted_family accepted_name_author
-#> 1  Aa aurantiaca Aa aurantiaca     Orchidaceae           D.Trujillo
-#> 2 Aa aurantiaaia Aa aurantiaca     Orchidaceae           D.Trujillo
-#> 5  Miconia firma Miconia firma Melastomataceae           J.F.Macbr.
-#>   publication_author                   place_of_publication volume_and_page
-#> 1               nill                          Lankesteriana           11: 3
-#> 2               nill                          Lankesteriana           11: 3
-#> 5               nill Publ. Field Mus. Nat. Hist., Bot. Ser.      13(4): 411
-#>   first_published dist
-#> 1          (2011)    0
-#> 2          (2011)    2
-#> 5          (1941)    0
+#> # A tibble: 6 × 2
+#>   splist                                      endemic    
+#>   <chr>                                       <chr>      
+#> 1 Aa aurantiaca                               endemic    
+#> 2 Aa aurantiaaia                              endemic    
+#> 3 Werneria nubigena                           not endemic
+#> 4 Dasyphyllum brasiliense var. barnadesioides endemic    
+#> 5 Miconia firma                               endemic    
+#> 6 Festuca densiflora                          endemic
 ```
 
 ## Citation
@@ -149,7 +132,7 @@ citation("ppendemic")
 #>   @Manual{,
 #>     author = {Paul E. Santos Andrade and Lucely L. Vilca Bustamante},
 #>     title = {ppendemic: A glimpse at the diversity of Peru's endemic plants},
-#>     year = {2023},
+#>     year = {2024},
 #>     doi = {10.5281/zenodo.5106619},
 #>     url = {https://paulesantos.github.io/ppendemic/},
 #>   }

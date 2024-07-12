@@ -16,7 +16,7 @@ library(tidyverse)
 library(ppendemic)
 ```
 
-# ppendemic 
+# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/ppendemic_logo.png' align="right" height="250" width="220" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
@@ -41,12 +41,12 @@ The database spans a total of 169 families, with particular richness observed in
 
 ```{r echo=FALSE, message=FALSE}
 library(tidyverse)
-ppendemic::ppendemic_tab |> 
-  group_by(accepted_family) |> 
-  summarise(n_especies = n_distinct(accepted_name)) |> 
+ppendemic::ppendemic_tab11 |> 
+  group_by(family) |> 
+  summarise(n_especies = n_distinct(taxon_name)) |> 
   arrange(desc(n_especies)) |> 
   top_n(10) |> 
-  ggplot(aes(fct_reorder(accepted_family, n_especies, .desc = TRUE),
+  ggplot(aes(fct_reorder(family, n_especies, .desc = TRUE),
              n_especies)) +
   geom_col() +
   labs(x = "Families",
@@ -84,9 +84,12 @@ library(ppendemic)
 - Use `is_ppendemic()` to check if taxa are endemic
 
 ```{r}
-splist <- c("Aa aurantiaca", "Aa aurantiaaia",
-            "Werneria nubigena", "Piper politum var. politum",
-            "Miconia firma")
+splist <- c("Aa aurantiaca", 
+             "Aa aurantiaaia",
+             "Werneria nubigena", 
+             "Dasyphyllum brasiliense var. barnadesioides",
+             "Miconia firma",
+             "Festuca densiflora")
 is_ppendemic(splist)
 
 ```
@@ -100,13 +103,6 @@ tibble::tibble(splist = splist) |>
 
 ```
 
-- Utilize the `get_ppendemic_data()` function to retrieve comprehensive taxonomic information.
-
-```{r}
-
-get_ppendemic_data(splist = splist)
-
-```
 
 ## Citation
 
