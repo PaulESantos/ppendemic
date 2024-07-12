@@ -8,13 +8,20 @@
 #'
 #' @format A tibble (data frame) with 7249 rows and 7 columns:
 #'   \describe{
-#'     \item{accepted_name}{Character vector. The accepted name of the endemic
+#'    \item{version}{Character vector. The version of ppendemic database, same id as POWO database.}
+#'    \item{version_date}{Character vector. The version date of POWO database.}
+#'     \item{taxon_name}{Character vector. The accepted name of the endemic
 #'     plant species.}
-#'     \item{accepted_family}{Character vector. The family of the accepted name
+#'     \item{taxon_status}{Character vector.}
+#'     \item{family}{Character vector. The family of the accepted name
 #'     of the endemic plant species.}
-#'     \item{accepted_name_author}{Character vector. The author(s) of the accepted
+#'     \item{Genus}{Character vector.}
+#'     \item{Species}{Character vector.}
+#'     \item{infraspecific_rank}{Character vector.}
+#'     \item{infraspecies}{Character vector.}
+#'     \item{taxon_authors}{Character vector. The author(s) of the accepted
 #'     name of the endemic plant species.}
-#'     \item{publication_author}{Character vector. The author(s) of the publication
+#'     \item{prinmary_author}{Character vector. The author(s) of the publication
 #'     containing the endemic plant species information.}
 #'     \item{place_of_publication}{Character vector. The place of publication of
 #'     the endemic plant species information.}
@@ -46,9 +53,9 @@
 #' library(ppendemic)
 #'
 #' # Access the dataset
-#' data("ppendemic_tab")
+#' data("ppendemic_tab11")
 #'
 #'
 #' @keywords dataset
 #'
-"ppendemic_tab"
+"ppendemic_tab11"

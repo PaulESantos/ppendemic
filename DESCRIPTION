@@ -1,6 +1,6 @@
 Package: ppendemic
 Title: A Glimpse at the Diversity of Peru's Endemic Plants
-Version: 0.1.7
+Version: 0.1.8
 Authors@R: 
       c(person(given = "Paul E.",
                  family = "Santos Andrade",
@@ -23,8 +23,19 @@ Suggests:
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.1
+RoxygenNote: 7.3.2
 Depends: 
     R (>= 3.5.0),
 Config/testthat/edition: 3
 Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>
+Imports: 
+    assertthat,
+    dplyr,
+    fuzzyjoin,
+    memoise,
+    progress,
+    purrr,
+    readr,
+    stringr,
+    tibble,
+    tidyr

@@ -4,7 +4,7 @@ bibentry(
   header = "To cite ppendemic in publications use:",
   author = "Paul E. Santos Andrade, Lucely L. Vilca Bustamante",
   title = "ppendemic: A glimpse at the diversity of Peru's endemic plants",
-  year = "2023",
+  year = "2024",
   doi      = "10.5281/zenodo.5106619",
   url = "https://paulesantos.github.io/ppendemic/",
 )

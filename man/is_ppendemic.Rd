@@ -4,27 +4,23 @@
 \alias{is_ppendemic}
 \title{Check if species are endemic in the ppendemic database}
 \usage{
-is_ppendemic(splist, max_distance = 0.1)
+is_ppendemic(splist)
 }
 \arguments{
 \item{splist}{A character vector containing the list of species names to be checked for
 endemism in the ppendemic database.}
-
-\item{max_distance}{A numeric value (default is 0.1) specifying the maximum distance
-for fuzzy matching. It should be a non-negative value.}
 }
 \value{
-A character vector indicating if each species is endemic, not endemic, or
-if it is an endemic species found using fuzzy matching.
+A character vector indicating if each species is endemic or not endemic.
 }
 \description{
 This function checks if a list of species names are endemic in the ppendemic database.
-Endemic species are those that are native and restricted to a specific geographic area,
-in this case, Peru. The function allows fuzzy matching for species names with a maximum
+The function allows fuzzy matching for species names with a maximum
 distance threshold to handle potential typos or variations in species names.
 }
 \examples{
 
-is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
+is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia",
+ "Werneria nubigena"))
 
 }
