@@ -7,12 +7,12 @@
 direct_match(df, target_df = NULL)
 }
 \arguments{
-\item{df}{A \code{tibble} containing the species data to be matched.}
+\item{df}{A tibble containing the species data to be matched.}
 
-\item{target_df}{A \code{tibble} representing the ppendemic database containing the reference list of endemic species.}
+\item{target_df}{A tibble representing the ppendemic database containing the reference list of endemic species.}
 }
 \value{
-A \code{tibble} with an additional logical column \code{direct_match}, indicating whether the binomial or trinomial name was successfully matched (\code{TRUE}) or not (\code{FALSE}).
+A tibble with an additional logical column \code{direct_match}, indicating whether the binomial or trinomial name was successfully matched (\code{TRUE}) or not (\code{FALSE}).
 }
 \description{
 This function performs a direct match of species names. It matches the genus and species if the name is binomial, and matches the genus, species, and infraspecies if the name includes a subspecies.

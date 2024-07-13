@@ -177,11 +177,17 @@
                                                  ifelse(Forma != "", "F.",
                                                         ifelse(Subforma != "", "SUBF.", NA_character_))))))
 
+  # Añadir la columna rank
+  df$Rank <- ifelse(!is.na(df$Orig.Genus) & !is.na(df$Orig.Species) & is.na(df$Orig.Infraspecies), 2,
+         ifelse(!is.na(df$Orig.Genus) & !is.na(df$Orig.Species) & !is.na(df$Orig.Infraspecies), 3,
+                ifelse(is.na(df$Orig.Species) & is.na(df$Orig.Infraspecies), 1, NA)))
+
   # Reordenar las columnas para que infraspecie e infra_rank estén antes de Subspecies
   column_order <- c( "sorter","Orig.Name", "Orig.Genus", "Orig.Species", "Author",
-                    "Orig.Infraspecies", "Infra.Rank",
-                    "Subspecies", "Variety", "Subvariety",
-                    "Forma", "Subforma")
+                    "Orig.Infraspecies", "Infra.Rank", "Rank")#,
+                   # "Subspecies", "Variety", "Subvariety",
+                    #"Forma", "Subforma")
+
   df <- df[, column_order]
 
   return(df)
@@ -255,9 +261,26 @@ str_to_simple_cap <- function(text) {
 }
 
 # ---------------------------------------------------------------
+#' @keywords internal
+.check_binomial <- function(splist_class, splist) {
+
+  missing_bino <- which(apply(splist_class[, 3:4, drop = FALSE],
+                              1,
+                              function(x) {any(is.na(x))}))
+  if (length(missing_bino) > 0) {
+    message(paste0("The species list (splist) should only include binomial names.",
+                   " The following names were submitted at the genus level: ",
+                   paste(paste0("'", splist[missing_bino], "'"),
+                         collapse = ", ")))
+
+  }
+  return(missing_bino)
+}
+# ---------------------------------------------------------------
 utils::globalVariables(c("%>%", "Genus", "Genus.x", "Matched.Genus",
                          "Matched.Infraespecie", "Matched.Species",
     "Orig.Genus", "Orig.Infraespecie", "Orig.Species", "Sorter", "Species",
     "fuzzy_genus_dist", "fuzzy_infraspecies_dist", "fuzzy_species_dist",
-    "infraspecies", "sorter",  "Matched.Infraspecies", "Orig.Infraspecies"))
+    "infraspecies", "sorter",  "Matched.Infraspecies", "Orig.Infraspecies",
+    "Comp.Rank",  "Matched.Rank",  "Orig.Name", "Rank", "Matched.Name"))
 

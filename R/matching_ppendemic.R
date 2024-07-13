@@ -25,10 +25,22 @@
 #' @export
 
 matching_ppendemic <- function(splist){
+  # Prepare the target data base
   target_df <- ppendemic::ppendemic_tab11 |>
     dplyr::mutate_all(~toupper(.))
-  df <- .splist_classify(splist) |>
+  # Classify splist
+  splist_class <- .splist_classify(splist) |>
     .transform_split_classify()
+  # Check binomial
+  non_binomial <- .check_binomial(splist_class, splist = splist)
+
+  if(length(non_binomial) != 0){
+    df <- splist_class[-non_binomial,]
+    df$sorter <- 1:nrow(df)
+  } else{
+    df <- splist_class
+  }
+
 
   ### Add two Columns Matched.Genus & Matched.Species and fill with NA's
   if(!all(c('Matched.Genus', 'Matched.Species',
@@ -139,38 +151,65 @@ matching_ppendemic <- function(splist){
   res <- dplyr::bind_rows(matched,
                           unmatched,
                           .id='matched') |>
-    dplyr::mutate(matched = (matched == 1)) |>  ## convert to Boolean
-    dplyr::relocate(c('Orig.Genus', 'Orig.Species','Orig.Infraspecies',
-                      'Matched.Genus', 'Matched.Species',
-                      'Matched.Infraspecies',
-                      'matched', 'direct_match',
-                      'genus_match', 'fuzzy_match_genus',
-                      'direct_match_species_within_genus',
-                      'suffix_match_species_within_genus',
-                      'fuzzy_match_species_within_genus')) ## Genus & Species column at the beginning of tibble
+    dplyr::mutate(matched = (matched == 1)) ## convert to Boolean
 
+  res
   # ---------------------------------------------------------------
   ### Check for infra species fuzzy matching
   ## Add sorter value
-  res <- res |>
-    dplyr::mutate(Sorter = dplyr::row_number()) |>
-    dplyr::relocate(Sorter)
 
   infra_input <- res |>
     dplyr::filter(!is.na(Orig.Infraspecies),
                   is.na(Matched.Infraspecies))
+  infra_sorter <- as.vector(infra_input$sorter)
+  if(nrow(infra_input) != 0){
+    infra_matched <- infra_input |>
+      fuzzy_match_infraspecies_within_species(target_df)
+  }
 
-  infra_sorter <- as.vector(infra_input$Sorter)
 
-  infra_matched <- infra_input |>
-    fuzzy_match_infraspecies_within_species(target_df)
 
-  output <- dplyr::bind_rows(res |>
-                               dplyr::filter(!Sorter %in% infra_sorter),
-                             infra_matched) |>
-    dplyr::arrange(Sorter) |>
-    dplyr::mutate(Matched.name = dplyr::case_when(
-      is.na(Matched.Species) ~ Matched.Genus,
+  # ---------------------------------------------------------------
+
+  # Check non binomial names
+  if(length(non_binomial) != 0){
+    genus_level <- matrix(nrow = length(non_binomial),
+                          ncol = length(names(res)))
+    colnames(genus_level) <- names(res)
+    genus_level <- as.data.frame(genus_level)
+    genus_level
+    genus_level$sorter <- splist_class[splist_class$Rank == 1, "sorter"]
+    genus_level$Orig.Name <- splist_class[splist_class$Rank == 1, "Orig.Name"]
+    genus_level$Orig.Genus <- splist_class[splist_class$Rank == 1, "Orig.Genus"]
+    genus_level$Rank <- splist_class[splist_class$Rank == 1, "Rank"]
+  }
+  # genus_level$Endemic.Tag <- "Not endemic"
+
+  # ---------------------------------------------------------------
+  if(nrow(infra_input) == 0 & length(non_binomial) == 0){
+    out <- res
+    rm(res)
+  } else if (nrow(infra_input) != 0 & length(non_binomial) == 0){
+    out <- dplyr::bind_rows(res |>
+                              dplyr::filter(!sorter %in% infra_sorter) ,
+                            infra_matched)
+    rm(res, infra_matched)
+  }else if (nrow(infra_input) == 0 & length(non_binomial) != 0){
+    out <- dplyr::bind_rows(res,
+                            genus_level)
+    rm(res, genus_level)
+  }else if (nrow(infra_input) != 0 & length(non_binomial) != 0){
+    out <- dplyr::bind_rows(res |>
+                              dplyr::filter(!sorter %in% infra_sorter) ,
+                            infra_matched,
+                            genus_level)
+    rm(res, infra_matched, genus_level)
+  }
+
+  output <- out |>
+    dplyr::arrange(sorter) |>
+    dplyr::mutate(Matched.Name = dplyr::case_when(
+      is.na(Matched.Species) ~ stringr::str_to_sentence(Matched.Genus),
       is.na(Matched.Infraspecies) ~ paste(stringr::str_to_sentence(Matched.Genus),
                                           stringr::str_to_lower(Matched.Species),
                                           sep = " "),
@@ -179,11 +218,32 @@ matching_ppendemic <- function(splist){
                                            stringr::str_to_lower(Infra.Rank),
                                            stringr::str_to_lower(Matched.Infraspecies),
                                            sep = " "))) |>
-    dplyr::arrange(sorter) |>
-    dplyr::mutate_all(~str_to_simple_cap(.))#stringr::str_to_sentence(.))
+    dplyr::mutate(Matched.Rank = dplyr::case_when(
+      !is.na(Matched.Genus) & !is.na(Matched.Species) & is.na(Matched.Infraspecies) ~ 2,
+      !is.na(Matched.Genus) & !is.na(Matched.Species) & !is.na(Matched.Infraspecies) ~ 3,
+      is.na(Matched.Species) & is.na(Matched.Infraspecies) ~ 1,
+      TRUE ~ NA_real_
+    )) |>
+    dplyr::mutate(Orig.Name = str_to_simple_cap(Orig.Name)) |>
+    dplyr::mutate(Comp.Rank = (Rank == Matched.Rank)) |>
+    dplyr::mutate(Endemic.Tag = dplyr::case_when(
+      is.na(Matched.Genus) & is.na(Matched.Species) & is.na(Matched.Infraspecies) ~ 'Not endemic',
+      Comp.Rank == TRUE ~ 'Endemic',
+      Comp.Rank == FALSE ~'Not endemic')) |>
+    dplyr::mutate(Matched.Name = dplyr::if_else(is.na(Matched.Name),
+                                                "---",
+                                                Matched.Name)) |>
+    dplyr::relocate(c("sorter", "Orig.Name", "Matched.Name",
+                  "Endemic.Tag", "Orig.Genus", "Orig.Species",
+                  "Orig.Infraspecies", "Rank", "Infra.Rank", "Comp.Rank",
+                  "Matched.Genus", "Matched.Species", "Matched.Infraspecies",
+                  "Matched.Rank", "matched", "direct_match", "genus_match",
+                  "fuzzy_match_genus", "direct_match_species_within_genus" ,
+                  "suffix_match_species_within_genus",
+                  "fuzzy_match_species_within_genus", "fuzzy_genus_dist",
+                  "fuzzy_species_dist"))
 
-  rm(res)
-  assertthat::assert_that(nrow(df) == nrow(output))
+  assertthat::assert_that(nrow(splist_class) == nrow(output))
   return(output)
 }
 

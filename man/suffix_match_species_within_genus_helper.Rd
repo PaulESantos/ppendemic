@@ -7,12 +7,12 @@
 suffix_match_species_within_genus_helper(df, target_df)
 }
 \arguments{
-\item{df}{a \code{tibble}.}
+\item{df}{a tibble.}
 
-\item{target_df}{A \code{tibble} representing the ppendemic database containing the reference list of endemic species.}
+\item{target_df}{A tibble representing the ppendemic database containing the reference list of endemic species.}
 }
 \value{
-Returns a \code{tibble} with the additional logical column
+Returns a tibble with the additional logical column
 \code{suffix_match_species_within_genus}, indicating whether the specific
 epithet was successfully matched within the matched genus (TRUE)
 or not (FALSE).
@@ -20,7 +20,7 @@ or not (FALSE).
 \description{
 Function to match the specific epithet by exchanging common suffixes
 within an already matched genus into the ppendemic database.
-The following suffixes are captured: \code{c("a", "i", "is", "um", "us", "ae")}
+The following suffixes are captured: a - i - is - um - us - ae
 }
 \keyword{"ae",}
 \keyword{"escens")}

@@ -4,6 +4,6 @@ test_that("all species within genus names matched in test", {
   df <- matching_ppendemic(species)
 
   expect_true(all(as.logical(df$matched)))
-  expect_true(all(df$Matched.name %in% df$Orig.Name))
+  expect_true(all(df$Matched.Name %in% df$Orig.Name))
 
 })

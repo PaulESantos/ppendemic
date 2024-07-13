@@ -20,15 +20,6 @@ is_ppendemic <- function(splist) {
 
   match_df <- matching_ppendemic(splist)
   # Inicializar el vector results con la longitud adecuada
-  output_vector <- character(length = nrow(match_df))
-
-  # Iterar sobre las filas de matched_names y determinar si son endémicas o no
-  for (i in seq_len(nrow(match_df))) {
-    output_vector[i] <- ifelse(
-      match_df$Matched.name[i] %in%
-        str_to_simple_cap(ppendemic::ppendemic_tab11$taxon_name),
-      "endemic", "not endemic")
-  }
-  # output_vector
+  output_vector <- as.vector(match_df$Endemic.Tag)
   return(output_vector)
 }
