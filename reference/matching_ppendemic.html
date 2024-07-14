@@ -51,18 +51,18 @@
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>Returns a <code>tibble</code> with the matched names in
-<code>Matched.Genus</code>, <code>Matched.Species</code> for binomial names,
-and <code>Matched.Infraspecies</code> for valid infraspecies names.</p>
+    <p>Returns a tibble with the matched names in
+Matched.Genus, Matched.Species for binomial names,
+and Matched.Infraspecies for valid infra species names.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>The function first attempts to directly match species names with exact
 matches in the database (genus and specific epithet, or genus, specific
-epithet, and infraspecies). If no exact match is found, the function
-performs a fuzzy match using the <code>fuzzyjoin</code> package with an optimal string alignment distance of one, as implemented in <code>stringdist</code>.</p>
+epithet, and infra species). If no exact match is found, the function
+performs a fuzzy match using the fuzzyjoin package with an optimal string alignment distance of one, as implemented in stringdist.</p>
 <p>The maximum edit distance is intentionally set to one.</p>
-<p>The function <code>matching_ppendemic()</code> returns a <code>tibble</code> with new columns <code>Matched.Genus</code>, <code>Matched.Species</code>, and <code>Matched.Infraspecies</code>, containing the matched names or <code>NA</code> if no match was found.</p>
+<p>The function matching_ppendemic returns a tibble with new columns Matched.Genus, Matched.Species, and Matched.Infraspecies, containing the matched names or NA if no match was found.</p>
 <p>Additionally, a logical column is added for each function called, allowing users to see which functions were applied to each name during the matching process. If a process column shows <code>NA</code>, the corresponding function was not called for that name because it was already matched by a preceding function.</p>
     </div>
 

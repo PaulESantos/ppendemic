@@ -33,7 +33,7 @@
     </div>
 
     <div class="ref-description section level2">
-    <p>This function performs a fuzzy match of genus names against the ppendemic database using <code>fuzzyjoin::stringdist()</code> to account for slight variations in spelling.</p>
+    <p>This function performs a fuzzy match of genus names against the ppendemic database using fuzzyjoin::stringdist() to account for slight variations in spelling.</p>
     </div>
 
     <div class="section level2">
@@ -46,17 +46,17 @@
 
 
 <dl><dt id="arg-df">df<a class="anchor" aria-label="anchor" href="#arg-df"></a></dt>
-<dd><p>A <code>tibble</code> containing the genus names to be matched.</p></dd>
+<dd><p>A tibble containing the genus names to be matched.</p></dd>
 
 
 <dt id="arg-target-df">target_df<a class="anchor" aria-label="anchor" href="#arg-target-df"></a></dt>
-<dd><p>A <code>tibble</code> representing the ppendemic database containing the reference list of endemic species.</p></dd>
+<dd><p>A tibble representing the ppendemic database containing the reference list of endemic species.</p></dd>
 
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
-    <p>A <code>tibble</code> with two additional columns:</p><ul><li><p><code>fuzzy_match_genus</code>: A logical column indicating whether the genus was successfully matched (<code>TRUE</code>) or not (<code>FALSE</code>).</p></li>
-<li><p><code>fuzzy_genus_dist</code>: A numeric column representing the distance for each match.</p></li>
+    <p>A tibble with two additional columns:</p><ul><li><p>fuzzy_match_genus: A logical column indicating whether the genus was successfully matched (<code>TRUE</code>) or not (<code>FALSE</code>).</p></li>
+<li><p>fuzzy_genus_dist: A numeric column representing the distance for each match.</p></li>
 </ul></div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
