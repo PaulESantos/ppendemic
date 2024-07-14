@@ -12,10 +12,10 @@
 #' @export
 #'
 #' @examples
-#'
+#' \donttest{
 #' is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia",
 #'  "Werneria nubigena"))
-#'
+#' }
 is_ppendemic <- function(splist) {
 
   match_df <- matching_ppendemic(splist)

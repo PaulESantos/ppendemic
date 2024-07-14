@@ -19,8 +19,8 @@ The function allows fuzzy matching for species names with a maximum
 distance threshold to handle potential typos or variations in species names.
 }
 \examples{
-
+\donttest{
 is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia",
  "Werneria nubigena"))
-
+}
 }
