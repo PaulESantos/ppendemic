@@ -10,9 +10,8 @@
 #' A `tibble` with two additional columns:
 #' - `fuzzy_match_genus`: A logical column indicating whether the genus was successfully matched (`TRUE`) or not (`FALSE`).
 #' - `fuzzy_genus_dist`: A numeric column representing the distance for each match.
+#'
 #' @keywords internal
-
-
 fuzzy_match_genus <- function(df, target_df = NULL){
   assertthat::assert_that(all(c('Orig.Genus',
                                 'Orig.Species',

@@ -3,7 +3,7 @@
 #' @description
 #' This function matches given species names against the internal database of endemic plant species in Peru.
 #'
-#' @param splist a vector containing the species list.
+#' @param splist A vector containing the species list.
 #'
 #' @details
 #' The function first attempts to directly match species names with exact
@@ -22,8 +22,8 @@
 #' `Matched.Genus`, `Matched.Species` for binomial names,
 #' and `Matched.Infraspecies` for valid infraspecies names.
 #'
+#' @keywords internal
 #' @export
-
 matching_ppendemic <- function(splist){
   # Prepare the target data base
   target_df <- ppendemic::ppendemic_tab13 |>

@@ -7,20 +7,17 @@
 is_ppendemic(splist)
 }
 \arguments{
-\item{splist}{A character vector containing the list of species names to be checked for
-endemism in the ppendemic database.}
+\item{splist}{A character vector containing the list of species names to be checked for endemism in the ppendemic database.}
 }
 \value{
 A character vector indicating if each species is endemic or not endemic.
 }
 \description{
 This function checks if a list of species names are endemic in the ppendemic database.
-The function allows fuzzy matching for species names with a maximum
-distance threshold to handle potential typos or variations in species names.
+The function allows fuzzy matching for species names with a maximum distance threshold to handle potential typos or variations in species names.
 }
 \examples{
 \donttest{
-is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia",
- "Werneria nubigena"))
+is_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
 }
 }

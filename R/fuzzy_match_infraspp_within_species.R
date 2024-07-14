@@ -9,7 +9,6 @@
 #' @return
 #' A `tibble` with an additional logical column `fuzzy_match_infraspecies_within_species`, indicating whether the specific infraspecies was successfully fuzzy matched within the matched species (`TRUE`) or not (`FALSE`).
 #' @keywords internal
-
 fuzzy_match_infraspecies_within_species <- function(df, target_df = NULL){
   assertthat::assert_that(all(c('Orig.Genus',
                                 'Orig.Species',

@@ -9,8 +9,6 @@
 #' @return
 #' A `tibble` with an additional logical column `fuzzy_match_species_within_genus`, indicating whether the specific epithet was successfully fuzzy matched within the matched genus (`TRUE`) or not (`FALSE`).
 #' @keywords internal
-
-
 fuzzy_match_species_within_genus_helper <- function(df, target_df){
   # subset database
   genus <- df |>

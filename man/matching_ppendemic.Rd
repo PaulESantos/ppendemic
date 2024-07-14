@@ -7,7 +7,7 @@
 matching_ppendemic(splist)
 }
 \arguments{
-\item{splist}{a vector containing the species list.}
+\item{splist}{A vector containing the species list.}
 }
 \value{
 Returns a \code{tibble} with the matched names in
@@ -29,3 +29,4 @@ The function \code{\link[=matching_ppendemic]{matching_ppendemic()}} returns a \
 
 Additionally, a logical column is added for each function called, allowing users to see which functions were applied to each name during the matching process. If a process column shows \code{NA}, the corresponding function was not called for that name because it was already matched by a preceding function.
 }
+\keyword{internal}

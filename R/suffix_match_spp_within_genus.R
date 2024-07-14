@@ -2,17 +2,17 @@
 #'
 #' @description
 #' Function to match the specific epithet by exchanging common suffixes
-#' within an already matched genus into the ppendemic database.
-#' The following suffixes are captured: a - i - is - um - us - ae
+#' within an already matched genus in the ppendemic database.
+#' The following suffixes are captured: a, i, is, um, us, ae.
 #'
-#' @param df a tibble.
+#' @param df A tibble.
 #' @param target_df A tibble representing the ppendemic database containing the reference list of endemic species.
 #'
 #' @return
 #' Returns a tibble with the additional logical column
 #' `suffix_match_species_within_genus`, indicating whether the specific
-#' epithet was successfully matched within the matched genus (`r TRUE`)
-#'  or not (`r FALSE`).
+#' epithet was successfully matched within the matched genus (`TRUE`)
+#' or not (`FALSE`).
 #' @keywords internal
 
 suffix_match_species_within_genus_helper <- function(df,target_df){
@@ -25,10 +25,7 @@ suffix_match_species_within_genus_helper <- function(df,target_df){
 
 
   # ending match
-  ##' create word root column in both the database subset and user
-  ##' input
-  #' common_suffixes <- c("a", "i", "is", "um", "us", "ae", "oides",
-  #'  "escens")
+  ##' create word root column in both the database subset and user input
   common_suffixes <- rev(c("a", "i", "is", "um", "us", "ae"))
   catch_suffixes <- paste0("(.*?)(", paste0(common_suffixes,
                                             collapse = "|"), ")$")

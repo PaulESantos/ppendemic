@@ -8,8 +8,8 @@
 #'
 #' @return
 #' A tibble with an additional logical column `direct_match`, indicating whether the binomial or trinomial name was successfully matched (`TRUE`) or not (`FALSE`).
+#'
 #' @keywords internal
-
 direct_match <- function(df, target_df = NULL){
   assertthat::assert_that(all(c('Orig.Genus',
                                 'Orig.Species',
