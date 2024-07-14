@@ -57,7 +57,7 @@ fuzzy_match_species_within_genus <- function(df, target_df = NULL){
                                 'Orig.Infraspecies',
                                 'Matched.Genus') %in% colnames(df)))
 
-  ## solve issue of empty input tibble, and needed to ensure compatibility with sequential_matching: because there the columns already exists for the second backbone
+  ## solve issue of empty input tibble and needed to ensure compatibility with sequential_matching: because there the columns already exists for the second backbone
   if(nrow(df) == 0){
     if(!all(c('fuzzy_match_species_within_genus',
               'fuzzy_species_dist') %in% colnames(df))){

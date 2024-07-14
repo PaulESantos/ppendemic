@@ -21,16 +21,4 @@ or not (\code{FALSE}).
 Function to match the specific epithet by exchanging common suffixes
 within an already matched genus in the ppendemic database.
 }
-\keyword{and}
-\keyword{both}
-\keyword{column}
-\keyword{create}
-\keyword{database}
-\keyword{in}
-\keyword{input}
 \keyword{internal}
-\keyword{root}
-\keyword{subset}
-\keyword{the}
-\keyword{user}
-\keyword{word}

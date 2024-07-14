@@ -15,7 +15,7 @@ genus_match <- function(df, target_df = NULL){
                                 'Orig.Infraspecies')
                               %in% colnames(df)))
 
-  ## solve issue of empty input tibble, and needed to ensure compatilbility with sequential_matching: because there the columns already exists for the second backbone
+  ## solve issue of empty input tibble and needed to ensure compatilbility with sequential_matching: because there the columns already exists for the second backbone
   if(nrow(df) == 0){
     if(!all(c('genus_match') %in% colnames(df))){
       return(tibble::add_column(df, genus_match = NA))

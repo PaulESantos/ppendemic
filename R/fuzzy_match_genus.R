@@ -70,10 +70,10 @@ fuzzy_match_genus <- function(df, target_df = NULL){
       ~ifelse(nrow(.x) == 0,
               return(.x),
               return(dplyr::slice_head(.x,n = 1)))
-      ##' In cases of multiple matches: we choose first match.
-      ##' Alternatively could use something more sophisticated here:
-      ##' like for instance choosing the one with more support (present
-      ##' in more databases)
+      ## In cases of multiple matches: we choose first match.
+      ## Alternatively could use something more sophisticated here:
+      ## like for instance choosing the one with more support (present
+      ## in more databases)
     ) |>
     dplyr::ungroup()
 

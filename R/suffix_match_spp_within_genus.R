@@ -24,14 +24,14 @@ suffix_match_species_within_genus_helper <- function(df,target_df){
 
 
   # ending match
-  ##' create word root column in both the database subset and user input
+  ## create word root column in both the database subset and user input
   common_suffixes <- rev(c("a", "i", "is", "um", "us", "ae"))
   catch_suffixes <- paste0("(.*?)(", paste0(common_suffixes,
                                             collapse = "|"), ")$")
   df <- df |>
     dplyr::mutate(Root = stringr::str_match(Orig.Species,
                                             catch_suffixes)[,2])
-  #df |>  select(binomial, Root)
+
   database_subset <- database_subset |>
     dplyr::mutate(Root = stringr::str_match(Species, catch_suffixes)[,2])
 

@@ -17,26 +17,4 @@ A tibble with an additional logical column direct_match indicating whether the b
 \description{
 This function performs a direct match of species names. It matches the genus and species if the name is binomial, and matches the genus, species, and infra species if the name includes a subspecies.
 }
-\keyword{already}
-\keyword{and}
-\keyword{backbone}
-\keyword{because}
-\keyword{columns}
-\keyword{compatilbility}
-\keyword{empty}
-\keyword{ensure}
-\keyword{exists}
-\keyword{for}
-\keyword{input}
 \keyword{internal}
-\keyword{issue}
-\keyword{needed}
-\keyword{of}
-\keyword{second}
-\keyword{sequential_matching:}
-\keyword{solve}
-\keyword{the}
-\keyword{there}
-\keyword{tibble,}
-\keyword{to}
-\keyword{with}
