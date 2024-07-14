@@ -10,9 +10,9 @@ matching_ppendemic(splist)
 \item{splist}{A vector containing the species list.}
 }
 \value{
-Returns a \code{tibble} with the matched names in
-\code{Matched.Genus}, \code{Matched.Species} for binomial names,
-and \code{Matched.Infraspecies} for valid infraspecies names.
+Returns a tibble with the matched names in
+Matched.Genus, Matched.Species for binomial names,
+and Matched.Infraspecies for valid infra species names.
 }
 \description{
 This function matches given species names against the internal database of endemic plant species in Peru.
@@ -20,12 +20,12 @@ This function matches given species names against the internal database of endem
 \details{
 The function first attempts to directly match species names with exact
 matches in the database (genus and specific epithet, or genus, specific
-epithet, and infraspecies). If no exact match is found, the function
-performs a fuzzy match using the \code{fuzzyjoin} package with an optimal string alignment distance of one, as implemented in \code{stringdist}.
+epithet, and infra species). If no exact match is found, the function
+performs a fuzzy match using the fuzzyjoin package with an optimal string alignment distance of one, as implemented in stringdist.
 
 The maximum edit distance is intentionally set to one.
 
-The function \code{\link[=matching_ppendemic]{matching_ppendemic()}} returns a \code{tibble} with new columns \code{Matched.Genus}, \code{Matched.Species}, and \code{Matched.Infraspecies}, containing the matched names or \code{NA} if no match was found.
+The function matching_ppendemic returns a tibble with new columns Matched.Genus, Matched.Species, and Matched.Infraspecies, containing the matched names or NA if no match was found.
 
 Additionally, a logical column is added for each function called, allowing users to see which functions were applied to each name during the matching process. If a process column shows \code{NA}, the corresponding function was not called for that name because it was already matched by a preceding function.
 }

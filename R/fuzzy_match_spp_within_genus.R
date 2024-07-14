@@ -1,13 +1,13 @@
 #' Fuzzy Match Species within Genus
 #'
 #' @description
-#' This function attempts to fuzzy match species names within a genus to the ppendemic database using `fuzzyjoin::stringdist()` for fuzzy matching.
+#' This function attempts to fuzzy match species names within a genus to the ppendemic database using fuzzyjoin::stringdist for fuzzy matching.
 #'
-#' @param df A `tibble` containing the species data to be matched.
-#' @param target_df A `tibble` representing the ppendemic database containing the reference list of endemic species.
+#' @param df A tibble containing the species data to be matched.
+#' @param target_df A tibble representing the ppendemic database containing the reference list of endemic species.
 #'
 #' @return
-#' A `tibble` with an additional logical column `fuzzy_match_species_within_genus`, indicating whether the specific epithet was successfully fuzzy matched within the matched genus (`TRUE`) or not (`FALSE`).
+#' A tibble with an additional logical column fuzzy_match_species_within_genus, indicating whether the specific epithet was successfully fuzzy matched within the matched genus (`TRUE`) or not (`FALSE`).
 #' @keywords internal
 fuzzy_match_species_within_genus_helper <- function(df, target_df){
   # subset database

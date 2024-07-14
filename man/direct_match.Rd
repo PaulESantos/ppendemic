@@ -12,10 +12,10 @@ direct_match(df, target_df = NULL)
 \item{target_df}{A tibble representing the ppendemic database containing the reference list of endemic species.}
 }
 \value{
-A tibble with an additional logical column \code{direct_match}, indicating whether the binomial or trinomial name was successfully matched (\code{TRUE}) or not (\code{FALSE}).
+A tibble with an additional logical column direct_match indicating whether the binomial or trinomial name was successfully matched (\code{TRUE}) or not (\code{FALSE}).
 }
 \description{
-This function performs a direct match of species names. It matches the genus and species if the name is binomial, and matches the genus, species, and infraspecies if the name includes a subspecies.
+This function performs a direct match of species names. It matches the genus and species if the name is binomial, and matches the genus, species, and infra species if the name includes a subspecies.
 }
 \keyword{already}
 \keyword{and}

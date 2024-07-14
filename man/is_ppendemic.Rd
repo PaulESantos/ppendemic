@@ -7,7 +7,7 @@
 is_ppendemic(splist)
 }
 \arguments{
-\item{splist}{A character vector containing the list of species names to be checked for endemism in the ppendemic database.}
+\item{splist}{A character vector containing the list of species names to be checked for endemic in the ppendemic database.}
 }
 \value{
 A character vector indicating if each species is endemic or not endemic.

@@ -13,14 +13,13 @@ suffix_match_species_within_genus_helper(df, target_df)
 }
 \value{
 Returns a tibble with the additional logical column
-\code{suffix_match_species_within_genus}, indicating whether the specific
+suffix_match_species_within_genus, indicating whether the specific
 epithet was successfully matched within the matched genus (\code{TRUE})
 or not (\code{FALSE}).
 }
 \description{
 Function to match the specific epithet by exchanging common suffixes
 within an already matched genus in the ppendemic database.
-The following suffixes are captured: a, i, is, um, us, ae.
 }
 \keyword{and}
 \keyword{both}

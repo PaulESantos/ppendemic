@@ -1,6 +1,6 @@
 #' ppendemic_tab: Endemic Plant Database of Peru
 #'
-#' The `ppendemic_tab` dataset is a tibble (data frame) that provides easy access
+#' The ppendemic_tab dataset is a tibble (data frame) that provides easy access
 #' to a comprehensive database of Peru's endemic plant species. It contains a total
 #' of 7,249 records with essential botanical information, including the accepted
 #' name, accepted family, accepted name author, publication author, place of

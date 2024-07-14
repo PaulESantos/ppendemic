@@ -3,14 +3,13 @@
 #' @description
 #' Function to match the specific epithet by exchanging common suffixes
 #' within an already matched genus in the ppendemic database.
-#' The following suffixes are captured: a, i, is, um, us, ae.
 #'
 #' @param df A tibble.
 #' @param target_df A tibble representing the ppendemic database containing the reference list of endemic species.
 #'
 #' @return
 #' Returns a tibble with the additional logical column
-#' `suffix_match_species_within_genus`, indicating whether the specific
+#' suffix_match_species_within_genus, indicating whether the specific
 #' epithet was successfully matched within the matched genus (`TRUE`)
 #' or not (`FALSE`).
 #' @keywords internal
