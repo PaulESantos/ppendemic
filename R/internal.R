@@ -276,6 +276,35 @@ str_to_simple_cap <- function(text) {
   }
   return(missing_bino)
 }
+
+
+# ---------------------------------------------------------------
+#' @keywords internal
+# get_target <- function(backbone = NULL, target_df = NULL){
+#   #####
+#   assertthat::assert_that(
+#     any(
+#       is.null(backbone),
+#       all(backbone %in% c('v09',
+#                           'v10', 'v11',
+#                           '12', 'v13'))#,
+#       #all(backbone %in% c('GBIF', 'WFO', 'WCVP', 'BGCI', 'CUSTOM'))
+#     )
+#   )
+#
+#   if(is.null(backbone)){
+#     return(dplyr::filter(ppendemic.source,
+#                          v11 == TRUE))
+#   }
+#   else {
+#     return(dplyr::filter(ppendemic.source,
+#                          get(backbone) == TRUE))
+#   }
+#
+# }
+#
+# memoised_get_target <- memoise::memoise(get_target)
+
 # ---------------------------------------------------------------
 utils::globalVariables(c("%>%", "Genus", "Genus.x", "Matched.Genus",
                          "Matched.Infraespecie", "Matched.Species",

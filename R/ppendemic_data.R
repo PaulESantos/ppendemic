@@ -6,7 +6,7 @@
 #' name, accepted family, accepted name author, publication author, place of
 #' publication, volume and page, and first published details.
 #'
-#' @format A tibble (data frame) with 7249 rows and 7 columns:
+#' @format A tibble (data frame) with 7815 rows and 14 columns:
 #'   \describe{
 #'    \item{version}{Character vector. The version of ppendemic database, same id as POWO database.}
 #'    \item{version_date}{Character vector. The version date of POWO database.}
@@ -53,9 +53,9 @@
 #' library(ppendemic)
 #'
 #' # Access the dataset
-#' data("ppendemic_tab11")
+#' data("ppendemic_tab13")
 #'
 #'
 #' @keywords dataset
 #'
-"ppendemic_tab11"
+"ppendemic_tab13"

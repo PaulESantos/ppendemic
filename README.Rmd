@@ -30,7 +30,7 @@ library(ppendemic)
 
 ## Overview
 
-This package offers convenient access to a new and extensive database containing a list of 7,249 endemic plant species found in Peru. This comprehensive collection provides detailed botanical information, including accepted names, family, authorship, publication details, and the place and date of first publication for each species.
+This package offers convenient access to a new and extensive database containing a list of `r nrow(ppendemic::ppendemic_tab13)` endemic plant species found in Peru. This comprehensive collection provides detailed botanical information, including accepted names, family, authorship, publication details, and the place and date of first publication for each species.
 
 The construction of the ppendemic package is built upon valuable data sourced from the renowned `World Checklist of Vascular Plants (WCVP)` database. As a highly authoritative resource, WCVP offers comprehensive information on plant taxonomy and occurrence worldwide. Leveraging this data, the `ppendemic` package aims to present an up-to-date and novel compilation of Peru's endemic plant species, tailored to the diverse ecosystems of the region. By incorporating meticulously curated data from WCVP, this package offers users a reliable and accurate resource to explore, analyze, and gain deeper insights into the rich diversity of Peru's endemic flora.
 

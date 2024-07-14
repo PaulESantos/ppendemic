@@ -26,7 +26,7 @@
 
 matching_ppendemic <- function(splist){
   # Prepare the target data base
-  target_df <- ppendemic::ppendemic_tab11 |>
+  target_df <- ppendemic::ppendemic_tab13 |>
     dplyr::mutate_all(~toupper(.))
   # Classify splist
   splist_class <- .splist_classify(splist) |>
