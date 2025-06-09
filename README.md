@@ -20,40 +20,51 @@ coverage](https://codecov.io/gh/PaulESantos/ppendemic/branch/main/graph/badge.sv
 ## Overview
 
 This package offers convenient access to a new and extensive database
-containing a list of 7815 endemic plant species found in Peru. This
+containing a list of 7898 endemic plant species found in Peru. This
 comprehensive collection provides detailed botanical information,
-including accepted names, family, authorship, publication details, and
-the place and date of first publication for each species.
+including accepted names, family, genus, species, infraspecific
+taxonomy, authorship, publication details, and temporal information
+including both actual and nominal publication years for each species.
 
-The construction of the ppendemic package is built upon valuable data
-sourced from the renowned `World Checklist of Vascular Plants (WCVP)`
-database. As a highly authoritative resource, WCVP offers comprehensive
-information on plant taxonomy and occurrence worldwide. Leveraging this
-data, the `ppendemic` package aims to present an up-to-date and novel
-compilation of Peru’s endemic plant species, tailored to the diverse
-ecosystems of the region. By incorporating meticulously curated data
-from WCVP, this package offers users a reliable and accurate resource to
-explore, analyze, and gain deeper insights into the rich diversity of
-Peru’s endemic flora.
+The construction of the `ppendemic` package is built upon valuable data
+sourced from the renowned **World Checklist of Vascular Plants (WCVP)**
+database. The WCVP is an international collaborative programme initiated
+in 1988 by Rafaël Govaerts that provides high-quality expert-reviewed
+taxonomic data on all vascular plants. As a highly authoritative
+resource updated daily, WCVP offers comprehensive information on plant
+taxonomy and occurrence worldwide, serving as the taxonomic backbone for
+World Flora Online (WFO) and being incorporated into the Catalogue of
+Life Checklist via GBIF. Leveraging this data, the ppendemic package
+aims to present an up-to-date and novel compilation of Peru’s endemic
+plant species, tailored to the diverse ecosystems of the region.
+
+By incorporating meticulously curated data from WCVP following the
+International Code of Nomenclature for algae, fungi, and plants (ICN),
+this package offers users a reliable and accurate resource to explore,
+analyze, and gain deeper insights into the rich diversity of Peru’s
+endemic flora. The latest version (V-14, dated 28-05-2025) includes
+enhanced temporal bibliographic information with sophisticated year
+extraction capabilities, distinguishing between actual and nominal
+publication years for improved citation accuracy.
 
 Representing a significant advancement in our understanding of Peru’s
-endemic plant species, the `ppendemic` package update the previously
-known list of 5,507 species presented in the Red Book of Endemic Plants
-of Peru, bringing the total to an impressive 7815 species. This
-substantial increase in documented endemic species is a testament to the
-integration of data and the commitment to presenting the most up-to-date
-information. With this expanded and current database, researchers,
-conservationists, and nature enthusiasts alike can now delve into a more
-comprehensive and accurate account of Peru’s unique and diverse plant
-biodiversity. The `ppendemic` package stands as a valuable resource for
-anyone interested in the study, conservation, and appreciation of Peru’s
-endemic plant life.
+endemic plant species, the ppendemic package update the previously known
+list of 5,507 species presented in the Red Book of Endemic Plants of
+Peru, bringing the total to an impressive 7898 species. This substantial
+increase in documented endemic species is a testament to the continuous
+integration of updated taxonomic data and the commitment to presenting
+the most current information available. With this expanded and current
+database, researchers, conservationists, and nature enthusiasts alike
+can now delve into a more comprehensive and accurate account of Peru’s
+unique and diverse plant biodiversity.
 
 The database spans a total of 165 families, with particular richness
 observed in the Orchidaceae, Asteraceae, Piperaceae, Fabaceae,
-Bromeliaceae, Solanaceae, Melastomataceae, Cactaceae, Araceae, Rubiaceae
+Solanaceae, Bromeliaceae, Melastomataceae, Cactaceae, Araceae, Rubiaceae
 families, all of which boast the highest number of endemic species in
-Peru.
+Peru. The enhanced dataset now includes 160 records where actual and
+nominal publication years differ, providing valuable insights into
+historical botanical publishing practices.
 
 <img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
@@ -81,6 +92,7 @@ session using:
 
 ``` r
 library(ppendemic)
+#> This is ppendemic 0.1.9
 ```
 
 - Use `is_ppendemic()` to check if taxa are endemic
@@ -124,7 +136,7 @@ To cite the `ppendemic` package, please use:
 citation("ppendemic")
 #> To cite ppendemic in publications use:
 #> 
-#>   Santos-Andrade PE, Vilca-Bustamante LL (2024). ppendemic: A glimpse
+#>   Santos-Andrade PE, Vilca-Bustamante LL (2025). ppendemic: A glimpse
 #>   at the diversity of Peru's endemic plants.
 #> 
 #> A BibTeX entry for LaTeX users is
@@ -132,7 +144,7 @@ citation("ppendemic")
 #>   @Manual{,
 #>     author = {Paul E. Santos Andrade and Lucely L. Vilca Bustamante},
 #>     title = {ppendemic: A glimpse at the diversity of Peru's endemic plants},
-#>     year = {2024},
+#>     year = {2025},
 #>     doi = {10.5281/zenodo.5106619},
 #>     url = {https://paulesantos.github.io/ppendemic/},
 #>   }

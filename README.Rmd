@@ -13,7 +13,6 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 library(tidyverse)
-library(ppendemic)
 ```
 
 # ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/ppendemic_logo.png' align="right" height="180" width="160" /></a>
