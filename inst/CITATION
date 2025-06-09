@@ -1,10 +1,10 @@
 bibentry(
   bibtype = "Manual",
-  textVersion = "Santos-Andrade PE, Vilca-Bustamante LL (2024). ppendemic: A glimpse at the diversity of Peru's endemic plants.",
+  textVersion = "Santos-Andrade PE, Vilca-Bustamante LL (2025). ppendemic: A glimpse at the diversity of Peru's endemic plants.",
   header = "To cite ppendemic in publications use:",
   author = "Paul E. Santos Andrade, Lucely L. Vilca Bustamante",
   title = "ppendemic: A glimpse at the diversity of Peru's endemic plants",
-  year = "2024",
+  year = "2025",
   doi      = "10.5281/zenodo.5106619",
   url = "https://paulesantos.github.io/ppendemic/",
 )
