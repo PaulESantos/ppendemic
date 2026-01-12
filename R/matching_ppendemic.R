@@ -26,7 +26,7 @@
 #' @export
 matching_ppendemic <- function(splist){
   # Prepare the target data base
-  target_df <- ppendemic::ppendemic_tab14 |>
+  target_df <- ppendemic::ppendemic_tab15 |>
     dplyr::mutate_all(~toupper(.))
   # Classify splist
   splist_class <- .splist_classify(splist) |>

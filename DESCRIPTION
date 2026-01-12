@@ -30,6 +30,7 @@ Config/testthat/edition: 3
 Maintainer: Paul E. Santos Andrade <paulefrens@gmail.com>
 Imports: 
     assertthat,
+    cli,
     dplyr,
     fuzzyjoin,
     memoise,
