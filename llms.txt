@@ -3,7 +3,7 @@
 ## Overview
 
 This package offers convenient access to a new and extensive database
-containing a list of 7898 endemic plant species found in Peru. This
+containing a list of 7892 endemic plant species found in Peru. This
 comprehensive collection provides detailed botanical information,
 including accepted names, family, genus, species, infraspecific
 taxonomy, authorship, publication details, and temporal information
@@ -25,7 +25,7 @@ By incorporating meticulously curated data from WCVP following the
 International Code of Nomenclature for algae, fungi, and plants (ICN),
 this package offers users a reliable and accurate resource to explore,
 analyze, and gain deeper insights into the rich diversity of Peru’s
-endemic flora. The latest version (V-14, dated 28-05-2025) includes
+endemic flora. The latest version (V-15, dated 06-01-2026) includes
 enhanced temporal bibliographic information with sophisticated year
 extraction capabilities, distinguishing between actual and nominal
 publication years for improved citation accuracy.
@@ -33,7 +33,7 @@ publication years for improved citation accuracy.
 Representing a significant advancement in our understanding of Peru’s
 endemic plant species, the ppendemic package update the previously known
 list of 5,507 species presented in the Red Book of Endemic Plants of
-Peru, bringing the total to an impressive 7898 species. This substantial
+Peru, bringing the total to an impressive 7892 species. This substantial
 increase in documented endemic species is a testament to the continuous
 integration of updated taxonomic data and the commitment to presenting
 the most current information available. With this expanded and current
@@ -43,9 +43,9 @@ unique and diverse plant biodiversity.
 
 The database spans a total of 165 families, with particular richness
 observed in the Orchidaceae, Asteraceae, Piperaceae, Fabaceae,
-Solanaceae, Bromeliaceae, Melastomataceae, Cactaceae, Araceae, Rubiaceae
+Bromeliaceae, Solanaceae, Melastomataceae, Cactaceae, Araceae, Rubiaceae
 families, all of which boast the highest number of endemic species in
-Peru. The enhanced dataset now includes 160 records where actual and
+Peru. The enhanced dataset now includes 159 records where actual and
 nominal publication years differ, providing valuable insights into
 historical botanical publishing practices.
 
@@ -75,7 +75,7 @@ session using:
 
 ``` r
 library(ppendemic)
-#> This is ppendemic 0.1.9
+#> ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.0 ──
 ```
 
 - Use
