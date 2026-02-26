@@ -1,6 +1,6 @@
 Package: ppendemic
 Title: A Glimpse at the Diversity of Peru's Endemic Plants
-Version: 0.2.0
+Version: 0.2.1
 Authors@R: 
       c(person(given = "Paul E.",
                  family = "Santos Andrade",
