@@ -6,7 +6,7 @@ the ppendemic database using fuzzyjoin::stringdist for fuzzy matching.
 ## Usage
 
 ``` r
-fuzzy_match_species_within_genus_helper(df, target_df)
+fuzzy_match_species_within_genus_helper(df, target_df, max_dist)
 ```
 
 ## Arguments
@@ -19,6 +19,10 @@ fuzzy_match_species_within_genus_helper(df, target_df)
 
   A tibble representing the ppendemic database containing the reference
   list of endemic species.
+
+- max_dist:
+
+  Maximum edit distance used by fuzzyjoin::stringdist\_\* joins.
 
 ## Value
 

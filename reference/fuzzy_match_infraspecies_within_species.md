@@ -7,7 +7,7 @@ ppendemic database.
 ## Usage
 
 ``` r
-fuzzy_match_infraspecies_within_species(df, target_df = NULL)
+fuzzy_match_infraspecies_within_species(df, target_df = NULL, max_dist = 2)
 ```
 
 ## Arguments
@@ -20,6 +20,10 @@ fuzzy_match_infraspecies_within_species(df, target_df = NULL)
 
   A tibble representing the ppendemic database containing the reference
   list of endemic species.
+
+- max_dist:
+
+  Maximum edit distance used by fuzzyjoin::stringdist\_\* joins.
 
 ## Value
 

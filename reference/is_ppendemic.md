@@ -8,7 +8,12 @@ variations in species names.
 ## Usage
 
 ``` r
-is_ppendemic(splist)
+is_ppendemic(
+  splist,
+  max_dist = 2,
+  save_ambiguous = FALSE,
+  ambiguous_path = "ambiguous_genera.csv"
+)
 ```
 
 ## Arguments
@@ -17,6 +22,20 @@ is_ppendemic(splist)
 
   A character vector containing the list of species names to be checked
   for endemic in the ppendemic database.
+
+- max_dist:
+
+  Maximum edit distance used in fuzzy matching steps. Defaults to 2.
+
+- save_ambiguous:
+
+  Logical flag. If `TRUE`, ambiguous fuzzy genus matches are exported to
+  disk.
+
+- ambiguous_path:
+
+  File path used when `save_ambiguous = TRUE`. Defaults to
+  `"ambiguous_genera.csv"`.
 
 ## Value
 

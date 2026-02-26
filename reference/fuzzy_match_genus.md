@@ -7,7 +7,13 @@ variations in spelling.
 ## Usage
 
 ``` r
-fuzzy_match_genus(df, target_df = NULL)
+fuzzy_match_genus(
+  df,
+  target_df = NULL,
+  max_dist = 2,
+  save_ambiguous = FALSE,
+  ambiguous_path = "ambiguous_genera.csv"
+)
 ```
 
 ## Arguments
@@ -20,6 +26,20 @@ fuzzy_match_genus(df, target_df = NULL)
 
   A tibble representing the ppendemic database containing the reference
   list of endemic species.
+
+- max_dist:
+
+  Maximum edit distance used by fuzzyjoin::stringdist\_\* joins.
+
+- save_ambiguous:
+
+  Logical flag. If `TRUE`, ambiguous fuzzy genus matches are exported to
+  disk.
+
+- ambiguous_path:
+
+  File path used when `save_ambiguous = TRUE`. Defaults to
+  `"ambiguous_genera.csv"`.
 
 ## Value
 

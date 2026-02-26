@@ -9,7 +9,7 @@ The function allows fuzzy matching for species names with a maximum distance thr
 
     <a class="navbar-brand me-2" href="../index.html">ppendemic</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,7 +41,12 @@ The function allows fuzzy matching for species names with a maximum distance thr
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is_ppendemic</span><span class="op">(</span><span class="va">splist</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">is_ppendemic</span><span class="op">(</span></span>
+<span>  <span class="va">splist</span>,</span>
+<span>  max_dist <span class="op">=</span> <span class="fl">2</span>,</span>
+<span>  save_ambiguous <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  ambiguous_path <span class="op">=</span> <span class="st">"ambiguous_genera.csv"</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -50,6 +55,21 @@ The function allows fuzzy matching for species names with a maximum distance thr
 
 <dl><dt id="arg-splist">splist<a class="anchor" aria-label="anchor" href="#arg-splist"></a></dt>
 <dd><p>A character vector containing the list of species names to be checked for endemic in the ppendemic database.</p></dd>
+
+
+<dt id="arg-max-dist">max_dist<a class="anchor" aria-label="anchor" href="#arg-max-dist"></a></dt>
+<dd><p>Maximum edit distance used in fuzzy matching steps.
+Defaults to 2.</p></dd>
+
+
+<dt id="arg-save-ambiguous">save_ambiguous<a class="anchor" aria-label="anchor" href="#arg-save-ambiguous"></a></dt>
+<dd><p>Logical flag. If <code>TRUE</code>, ambiguous fuzzy genus matches
+are exported to disk.</p></dd>
+
+
+<dt id="arg-ambiguous-path">ambiguous_path<a class="anchor" aria-label="anchor" href="#arg-ambiguous-path"></a></dt>
+<dd><p>File path used when <code>save_ambiguous = TRUE</code>. Defaults
+to <code>"ambiguous_genera.csv"</code>.</p></dd>
 
 </dl></div>
     <div class="section level2">

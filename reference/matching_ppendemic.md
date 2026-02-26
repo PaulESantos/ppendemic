@@ -6,7 +6,12 @@ of endemic plant species in Peru.
 ## Usage
 
 ``` r
-matching_ppendemic(splist)
+matching_ppendemic(
+  splist,
+  max_dist = 2,
+  save_ambiguous = FALSE,
+  ambiguous_path = "ambiguous_genera.csv"
+)
 ```
 
 ## Arguments
@@ -14,6 +19,21 @@ matching_ppendemic(splist)
 - splist:
 
   A vector containing the species list.
+
+- max_dist:
+
+  Maximum edit distance used in fuzzy matching steps. Defaults to 2 (the
+  default in fuzzyjoin::stringdist_left_join()).
+
+- save_ambiguous:
+
+  Logical flag. If `TRUE`, ambiguous fuzzy genus matches are exported to
+  disk.
+
+- ambiguous_path:
+
+  File path used when `save_ambiguous = TRUE`. Defaults to
+  `"ambiguous_genera.csv"`.
 
 ## Value
 
@@ -26,10 +46,10 @@ infra species names.
 The function first attempts to directly match species names with exact
 matches in the database (genus and specific epithet, or genus, specific
 epithet, and infra species). If no exact match is found, the function
-performs a fuzzy match using the fuzzyjoin package with an optimal
-string alignment distance of one, as implemented in stringdist.
+performs a fuzzy match using the fuzzyjoin package with optimal string
+alignment distance as implemented in stringdist.
 
-The maximum edit distance is intentionally set to one.
+The maximum edit distance can be controlled through `max_dist`.
 
 The function matching_ppendemic returns a tibble with new columns
 Matched.Genus, Matched.Species, and Matched.Infraspecies, containing the
