@@ -4,12 +4,26 @@
 \alias{fuzzy_match_genus}
 \title{Fuzzy Match Genus Name}
 \usage{
-fuzzy_match_genus(df, target_df = NULL)
+fuzzy_match_genus(
+  df,
+  target_df = NULL,
+  max_dist = 2,
+  save_ambiguous = FALSE,
+  ambiguous_path = "ambiguous_genera.csv"
+)
 }
 \arguments{
 \item{df}{A tibble containing the genus names to be matched.}
 
 \item{target_df}{A tibble representing the ppendemic database containing the reference list of endemic species.}
+
+\item{max_dist}{Maximum edit distance used by fuzzyjoin::stringdist_* joins.}
+
+\item{save_ambiguous}{Logical flag. If \code{TRUE}, ambiguous fuzzy genus matches
+are exported to disk.}
+
+\item{ambiguous_path}{File path used when \code{save_ambiguous = TRUE}. Defaults
+to \code{"ambiguous_genera.csv"}.}
 }
 \value{
 A tibble with two additional columns:

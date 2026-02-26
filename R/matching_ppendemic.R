@@ -4,14 +4,21 @@
 #' This function matches given species names against the internal database of endemic plant species in Peru.
 #'
 #' @param splist A vector containing the species list.
+#' @param max_dist Maximum edit distance used in fuzzy matching steps.
+#'   Defaults to 2 (the default in fuzzyjoin::stringdist_left_join()).
+#' @param save_ambiguous Logical flag. If `TRUE`, ambiguous fuzzy genus matches
+#'   are exported to disk.
+#' @param ambiguous_path File path used when `save_ambiguous = TRUE`. Defaults
+#'   to `"ambiguous_genera.csv"`.
 #'
 #' @details
 #' The function first attempts to directly match species names with exact
 #' matches in the database (genus and specific epithet, or genus, specific
 #' epithet, and infra species). If no exact match is found, the function
-#' performs a fuzzy match using the fuzzyjoin package with an optimal string alignment distance of one, as implemented in stringdist.
+#' performs a fuzzy match using the fuzzyjoin package with optimal string
+#' alignment distance as implemented in stringdist.
 #'
-#' The maximum edit distance is intentionally set to one.
+#' The maximum edit distance can be controlled through `max_dist`.
 #'
 #' The function matching_ppendemic returns a tibble with new columns Matched.Genus, Matched.Species, and Matched.Infraspecies, containing the matched names or NA if no match was found.
 #'
@@ -24,7 +31,21 @@
 #'
 #' @keywords internal
 #' @export
-matching_ppendemic <- function(splist){
+matching_ppendemic <- function(splist,
+                               max_dist = 2,
+                               save_ambiguous = FALSE,
+                               ambiguous_path = "ambiguous_genera.csv"){
+  assertthat::assert_that(is.numeric(max_dist),
+                          length(max_dist) == 1,
+                          !is.na(max_dist),
+                          max_dist >= 0)
+  assertthat::assert_that(is.logical(save_ambiguous),
+                          length(save_ambiguous) == 1,
+                          !is.na(save_ambiguous))
+  assertthat::assert_that(is.character(ambiguous_path),
+                          length(ambiguous_path) == 1,
+                          !is.na(ambiguous_path))
+
   # Prepare the target data base
   target_df <- ppendemic::ppendemic_tab15 |>
     dplyr::mutate_all(~toupper(.))
@@ -35,8 +56,8 @@ matching_ppendemic <- function(splist){
   non_binomial <- .check_binomial(splist_class, splist = splist)
 
   if(length(non_binomial) != 0){
-    df <- splist_class[-non_binomial,]
-    df$sorter <- 1:nrow(df)
+    # Keep original sorter values from input; avoid 1:0 when df has zero rows.
+    df <- splist_class[-non_binomial, , drop = FALSE]
   } else{
     df <- splist_class
   }
@@ -83,7 +104,10 @@ matching_ppendemic <- function(splist){
   # ---------------------------------------------------------------
   # Node 3: Fuzzy Match Genus
   Node_3_processed <- Node_2_FALSE |>
-    fuzzy_match_genus(target_df)
+    fuzzy_match_genus(target_df,
+                      max_dist = max_dist,
+                      save_ambiguous = save_ambiguous,
+                      ambiguous_path = ambiguous_path)
 
 
   Node_3_TRUE <- Node_3_processed |>
@@ -127,7 +151,7 @@ matching_ppendemic <- function(splist){
 
   Node_5b_input <- Node_5a_FALSE
   Node_5b_processed <- Node_5b_input |>
-    fuzzy_match_species_within_genus( target_df)
+    fuzzy_match_species_within_genus( target_df, max_dist = max_dist)
 
   Node_5b_TRUE <- Node_5b_processed |>
     dplyr::filter(fuzzy_match_species_within_genus == TRUE)
@@ -164,7 +188,7 @@ matching_ppendemic <- function(splist){
   infra_sorter <- as.vector(infra_input$sorter)
   if(nrow(infra_input) != 0){
     infra_matched <- infra_input |>
-      fuzzy_match_infraspecies_within_species(target_df)
+      fuzzy_match_infraspecies_within_species(target_df, max_dist = max_dist)
   }
 
 
@@ -246,4 +270,6 @@ matching_ppendemic <- function(splist){
   assertthat::assert_that(nrow(splist_class) == nrow(output))
   return(output)
 }
+
+
 

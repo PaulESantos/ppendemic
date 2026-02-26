@@ -4,10 +4,24 @@
 \alias{is_ppendemic}
 \title{Check if species are endemic in the ppendemic database}
 \usage{
-is_ppendemic(splist)
+is_ppendemic(
+  splist,
+  max_dist = 2,
+  save_ambiguous = FALSE,
+  ambiguous_path = "ambiguous_genera.csv"
+)
 }
 \arguments{
 \item{splist}{A character vector containing the list of species names to be checked for endemic in the ppendemic database.}
+
+\item{max_dist}{Maximum edit distance used in fuzzy matching steps.
+Defaults to 2.}
+
+\item{save_ambiguous}{Logical flag. If \code{TRUE}, ambiguous fuzzy genus matches
+are exported to disk.}
+
+\item{ambiguous_path}{File path used when \code{save_ambiguous = TRUE}. Defaults
+to \code{"ambiguous_genera.csv"}.}
 }
 \value{
 A character vector indicating if each species is endemic or not endemic.

@@ -4,12 +4,14 @@
 \alias{fuzzy_match_species_within_genus_helper}
 \title{Fuzzy Match Species within Genus}
 \usage{
-fuzzy_match_species_within_genus_helper(df, target_df)
+fuzzy_match_species_within_genus_helper(df, target_df, max_dist)
 }
 \arguments{
 \item{df}{A tibble containing the species data to be matched.}
 
 \item{target_df}{A tibble representing the ppendemic database containing the reference list of endemic species.}
+
+\item{max_dist}{Maximum edit distance used by fuzzyjoin::stringdist_* joins.}
 }
 \value{
 A tibble with an additional logical column fuzzy_match_species_within_genus, indicating whether the specific epithet was successfully fuzzy matched within the matched genus (\code{TRUE}) or not (\code{FALSE}).

@@ -311,5 +311,6 @@ utils::globalVariables(c("%>%", "Genus", "Genus.x", "Matched.Genus",
     "Orig.Genus", "Orig.Infraespecie", "Orig.Species", "Sorter", "Species",
     "fuzzy_genus_dist", "fuzzy_infraspecies_dist", "fuzzy_species_dist",
     "infraspecies", "sorter",  "Matched.Infraspecies", "Orig.Infraspecies",
-    "Comp.Rank",  "Matched.Rank",  "Orig.Name", "Rank", "Matched.Name"))
+    "Comp.Rank",  "Matched.Rank",  "Orig.Name", "Rank", "Matched.Name",
+    ".row_id"))
 

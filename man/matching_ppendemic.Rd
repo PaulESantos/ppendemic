@@ -4,10 +4,24 @@
 \alias{matching_ppendemic}
 \title{Match Species Names to Endemic Plant List of Peru}
 \usage{
-matching_ppendemic(splist)
+matching_ppendemic(
+  splist,
+  max_dist = 2,
+  save_ambiguous = FALSE,
+  ambiguous_path = "ambiguous_genera.csv"
+)
 }
 \arguments{
 \item{splist}{A vector containing the species list.}
+
+\item{max_dist}{Maximum edit distance used in fuzzy matching steps.
+Defaults to 2 (the default in fuzzyjoin::stringdist_left_join()).}
+
+\item{save_ambiguous}{Logical flag. If \code{TRUE}, ambiguous fuzzy genus matches
+are exported to disk.}
+
+\item{ambiguous_path}{File path used when \code{save_ambiguous = TRUE}. Defaults
+to \code{"ambiguous_genera.csv"}.}
 }
 \value{
 Returns a tibble with the matched names in
@@ -21,9 +35,10 @@ This function matches given species names against the internal database of endem
 The function first attempts to directly match species names with exact
 matches in the database (genus and specific epithet, or genus, specific
 epithet, and infra species). If no exact match is found, the function
-performs a fuzzy match using the fuzzyjoin package with an optimal string alignment distance of one, as implemented in stringdist.
+performs a fuzzy match using the fuzzyjoin package with optimal string
+alignment distance as implemented in stringdist.
 
-The maximum edit distance is intentionally set to one.
+The maximum edit distance can be controlled through \code{max_dist}.
 
 The function matching_ppendemic returns a tibble with new columns Matched.Genus, Matched.Species, and Matched.Infraspecies, containing the matched names or NA if no match was found.
 

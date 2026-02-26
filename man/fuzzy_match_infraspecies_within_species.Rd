@@ -4,12 +4,14 @@
 \alias{fuzzy_match_infraspecies_within_species}
 \title{Fuzzy Match Infraspecies within Species}
 \usage{
-fuzzy_match_infraspecies_within_species(df, target_df = NULL)
+fuzzy_match_infraspecies_within_species(df, target_df = NULL, max_dist = 2)
 }
 \arguments{
 \item{df}{A tibble containing the species data to be matched.}
 
 \item{target_df}{A tibble representing the ppendemic database containing the reference list of endemic species.}
+
+\item{max_dist}{Maximum edit distance used by fuzzyjoin::stringdist_* joins.}
 }
 \value{
 A tibble with an additional logical column fuzzy_match_infraspecies_within_species, indicating whether the specific infraspecies was successfully fuzzy matched within the matched species (\code{TRUE}) or not (\code{FALSE}).
