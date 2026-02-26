@@ -92,7 +92,7 @@ session using:
 
 ``` r
 library(ppendemic)
-#> ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.0 ──
+#> ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.1 ──
 ```
 
 - Use `is_ppendemic()` to check if taxa are endemic
