@@ -60,3 +60,35 @@ allowing users to see which functions were applied to each name during
 the matching process. If a process column shows `NA`, the corresponding
 function was not called for that name because it was already matched by
 a preceding function.
+
+## Examples
+
+``` r
+# \donttest{
+matching_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
+#>   sorter         Orig.Name  Matched.Name Endemic.Tag Orig.Genus Orig.Species
+#> 1      1     Aa aurantiaca Aa aurantiaca     Endemic         AA   AURANTIACA
+#> 2      2    Aa aurantiaaia Aa aurantiaca     Endemic         AA  AURANTIAAIA
+#> 3      3 Werneria nubigena      Werneria Not endemic   WERNERIA     NUBIGENA
+#>   Orig.Infraspecies Rank Infra.Rank Comp.Rank Matched.Genus Matched.Species
+#> 1              <NA>    2       <NA>      TRUE            AA      AURANTIACA
+#> 2              <NA>    2       <NA>      TRUE            AA      AURANTIACA
+#> 3              <NA>    2       <NA>     FALSE      WERNERIA            <NA>
+#>   Matched.Infraspecies Matched.Rank matched direct_match genus_match
+#> 1                 <NA>            2    TRUE         TRUE          NA
+#> 2                 <NA>            2    TRUE        FALSE        TRUE
+#> 3                 <NA>            1   FALSE        FALSE        TRUE
+#>   fuzzy_match_genus direct_match_species_within_genus
+#> 1                NA                                NA
+#> 2                NA                             FALSE
+#> 3                NA                             FALSE
+#>   suffix_match_species_within_genus fuzzy_match_species_within_genus
+#> 1                                NA                               NA
+#> 2                             FALSE                             TRUE
+#> 3                             FALSE                            FALSE
+#>   fuzzy_genus_dist fuzzy_species_dist Author
+#> 1               NA                 NA       
+#> 2               NA                  2       
+#> 3               NA                 NA       
+# }
+```

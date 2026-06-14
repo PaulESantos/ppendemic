@@ -87,6 +87,38 @@ alignment distance as implemented in stringdist.</p>
 <p>Additionally, a logical column is added for each function called, allowing users to see which functions were applied to each name during the matching process. If a process column shows <code>NA</code>, the corresponding function was not called for that name because it was already matched by a preceding function.</p>
     </div>
 
+    <div class="section level2">
+    <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
+<span class="r-in"><span><span class="fu">matching_ppendemic</span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aa aurantiaca"</span>, <span class="st">"Aa aurantiaaia"</span>, <span class="st">"Werneria nubigena"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   sorter         Orig.Name  Matched.Name Endemic.Tag Orig.Genus Orig.Species</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      1     Aa aurantiaca Aa aurantiaca     Endemic         AA   AURANTIACA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2      2    Aa aurantiaaia Aa aurantiaca     Endemic         AA  AURANTIAAIA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3      3 Werneria nubigena      Werneria Not endemic   WERNERIA     NUBIGENA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Orig.Infraspecies Rank Infra.Rank Comp.Rank Matched.Genus Matched.Species</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1              &lt;NA&gt;    2       &lt;NA&gt;      TRUE            AA      AURANTIACA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2              &lt;NA&gt;    2       &lt;NA&gt;      TRUE            AA      AURANTIACA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3              &lt;NA&gt;    2       &lt;NA&gt;     FALSE      WERNERIA            &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   Matched.Infraspecies Matched.Rank matched direct_match genus_match</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                 &lt;NA&gt;            2    TRUE         TRUE          NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                 &lt;NA&gt;            2    TRUE        FALSE        TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                 &lt;NA&gt;            1   FALSE        FALSE        TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   fuzzy_match_genus direct_match_species_within_genus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                NA                                NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                NA                             FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                NA                             FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   suffix_match_species_within_genus fuzzy_match_species_within_genus</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1                                NA                               NA</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2                             FALSE                             TRUE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3                             FALSE                            FALSE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   fuzzy_genus_dist fuzzy_species_dist Author</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1               NA                 NA       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2               NA                  2       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3               NA                 NA       </span>
+<span class="r-in"><span><span class="co"># }</span></span></span>
+<span class="r-in"><span></span></span>
+</code></pre></div>
+    </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside></div>
 
