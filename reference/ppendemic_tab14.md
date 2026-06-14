@@ -139,6 +139,7 @@ publications where publication delays were common.
 ## Examples
 
 ``` r
+
 # Load the package
 library(ppendemic)
 

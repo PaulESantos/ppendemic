@@ -56,6 +56,7 @@ historical botanical publishing practices.
 You can install the `ppendemic` package from CRAN using:
 
 ``` r
+
 install.packages("ppendemic")
 # or
 pak::pak("ppendemic")
@@ -65,6 +66,7 @@ Also you can install the `ppendemic` package from GitHub using the
 following command:
 
 ``` r
+
 pak::pak("PaulESantos/ppendemic")
 ```
 
@@ -74,6 +76,7 @@ After installing the `ppendemic` package, you can load it into your R
 session using:
 
 ``` r
+
 library(ppendemic)
 #> ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.1 ──
 ```
@@ -83,6 +86,7 @@ library(ppendemic)
   to check if taxa are endemic
 
 ``` r
+
 splist <- c("Aa aurantiaca", 
              "Aa aurantiaaia",
              "Werneria nubigena", 
@@ -102,6 +106,7 @@ is_ppendemic(splist)
 
 ``` r
 
+
 tibble::tibble(splist = splist) |> 
   dplyr::mutate(endemic = is_ppendemic(splist))
 #> # A tibble: 6 × 2
@@ -120,6 +125,7 @@ tibble::tibble(splist = splist) |>
 To cite the `ppendemic` package, please use:
 
 ``` r
+
 citation("ppendemic")
 #> To cite ppendemic in publications use:
 #> 
