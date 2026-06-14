@@ -44,4 +44,10 @@ The function matching_ppendemic returns a tibble with new columns Matched.Genus,
 
 Additionally, a logical column is added for each function called, allowing users to see which functions were applied to each name during the matching process. If a process column shows \code{NA}, the corresponding function was not called for that name because it was already matched by a preceding function.
 }
+\examples{
+\donttest{
+matching_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
+}
+
+}
 \keyword{internal}

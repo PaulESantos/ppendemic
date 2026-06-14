@@ -77,11 +77,10 @@ fuzzy_match_genus <- function(df,
 
   ## If there are multiple matches for the same genus: raise warning.
   if(nrow(ambiguous) > 0){
-    warning(paste0("Multiple fuzzy genus matches detected for ",
-                   dplyr::n_distinct(ambiguous$.row_id),
-                   " input row(s). The algorithm will choose the first match ",
-                   "by (fuzzy_genus_dist, Matched.Genus)."),
-            call. = FALSE)
+    n_ambig <- dplyr::n_distinct(ambiguous$.row_id)
+    cli::cli_warn(
+      "Multiple fuzzy genus matches detected for {n_ambig} input row{?s}. The algorithm will choose the first match by {.code (fuzzy_genus_dist, Matched.Genus)}."
+    )
 
     if (save_ambiguous) {
       ambiguous |>

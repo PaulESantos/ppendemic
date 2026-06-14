@@ -9,7 +9,7 @@ test_that("name normalization tolerates case and underscore separators", {
 test_that("hybrid mark is removed with warning", {
   expect_warning(
     out <- matching_ppendemic("Aa x aurantiaca"),
-    "hybrids have been removed"
+    "hybrids has been removed"
   )
 
   expect_equal(nrow(out), 1)

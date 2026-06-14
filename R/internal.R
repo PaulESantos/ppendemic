@@ -23,10 +23,9 @@
   hybrids <- fixed8 == fixed9
   if (!all(hybrids)) {
     sp_hybrids <- splist[!hybrids]
-    warning(paste("The 'X' sign indicating hybrids have been removed in the",
-                  "following names before search:",
-                  paste(paste0("'", sp_hybrids, "'"), collapse = ", ")),
-            immediate. = TRUE, call. = FALSE)
+    cli::cli_warn(
+      "The 'X' sign indicating hybrids has been removed in the following name{?s} before search: {.val {sp_hybrids}}"
+    )
   }
 
   # Eliminar múltiples espacios
@@ -268,11 +267,9 @@ str_to_simple_cap <- function(text) {
                               1,
                               function(x) {any(is.na(x))}))
   if (length(missing_bino) > 0) {
-    message(paste0("The species list (splist) should only include binomial names.",
-                   " The following names were submitted at the genus level: ",
-                   paste(paste0("'", splist[missing_bino], "'"),
-                         collapse = ", ")))
-
+    cli::cli_inform(
+      "The species list ({.arg splist}) should only include binomial names. The following name{?s} {?was/were} submitted at the genus level: {.val {splist[missing_bino]}}"
+    )
   }
   return(missing_bino)
 }

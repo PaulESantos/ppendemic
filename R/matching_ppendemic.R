@@ -29,6 +29,11 @@
 #' Matched.Genus, Matched.Species for binomial names,
 #' and Matched.Infraspecies for valid infra species names.
 #'
+#' @examples
+#' \donttest{
+#' matching_ppendemic(c("Aa aurantiaca", "Aa aurantiaaia", "Werneria nubigena"))
+#' }
+#'
 #' @keywords internal
 #' @export
 matching_ppendemic <- function(splist,
@@ -47,7 +52,7 @@ matching_ppendemic <- function(splist,
                           !is.na(ambiguous_path))
 
   # Prepare the target data base
-  target_df <- ppendemic::ppendemic_tab15 |>
+  target_df <- ppendemic::ppendemic_tab16 |>
     dplyr::mutate_all(~toupper(.))
   # Classify splist
   splist_class <- .splist_classify(splist) |>
