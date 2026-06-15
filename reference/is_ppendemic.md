@@ -20,8 +20,10 @@ is_ppendemic(
 
 - splist:
 
-  A character vector containing the list of species names to be checked
-  for endemic in the ppendemic database.
+  A non-empty character vector containing taxon names to check against
+  the ppendemic database. Missing and empty values are not accepted.
+  Indeterminate `sp.` and `spp.` names are treated as genus-level
+  records.
 
 - max_dist:
 

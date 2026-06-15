@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.8/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="A Glimpse at the Diversity of Peru's Endemic Plants">
-<meta name="description" content="Introducing a novel and updated database showcasing Perus endemic plants. This meticulously compiled and revised botanical collection encompasses a remarkable assemblage of over 7,898 distinct species. The data for this resource was sourced from the work of Govaerts, R., Nic Lughadha, E., Black, N. et al., titled The World Checklist of Vascular Plants: A continuously updated resource for exploring global plant diversity', published in Sci Data 8, 215 (2021) &lt;doi:10.1038/s41597-021-00997-6&gt;.">
-<meta property="og:description" content="Introducing a novel and updated database showcasing Perus endemic plants. This meticulously compiled and revised botanical collection encompasses a remarkable assemblage of over 7,898 distinct species. The data for this resource was sourced from the work of Govaerts, R., Nic Lughadha, E., Black, N. et al., titled The World Checklist of Vascular Plants: A continuously updated resource for exploring global plant diversity', published in Sci Data 8, 215 (2021) &lt;doi:10.1038/s41597-021-00997-6&gt;.">
+<meta name="description" content="Provides an updated database of accepted endemic plant taxa from Peru. The current collection contains over 8,000 taxonomic records at species and infraspecific ranks. Data are derived from Govaerts, R., Nic Lughadha, E., Black, N. et al., The World Checklist of Vascular Plants: A continuously updated resource for exploring global plant diversity, published in Sci Data 8, 215 (2021) &lt;doi:10.1038/s41597-021-00997-6&gt;.">
+<meta property="og:description" content="Provides an updated database of accepted endemic plant taxa from Peru. The current collection contains over 8,000 taxonomic records at species and infraspecific ranks. Data are derived from Govaerts, R., Nic Lughadha, E., Black, N. et al., The World Checklist of Vascular Plants: A continuously updated resource for exploring global plant diversity, published in Sci Data 8, 215 (2021) &lt;doi:10.1038/s41597-021-00997-6&gt;.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -32,6 +32,12 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/cambios-entre-versiones.html">Cambios entre versiones de la base de plantas endemicas del Peru</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -54,11 +60,11 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This package offers convenient access to a new and extensive database containing a list of 8030 endemic plant species found in Peru. This comprehensive collection provides detailed botanical information, including accepted names, family, genus, species, infraspecific taxonomy, authorship, publication details, and temporal information including both actual and nominal publication years for each species.</p>
+<p>This package offers convenient access to a database containing 8030 accepted endemic plant taxonomic records from Peru. The records include taxa at species and infraspecific ranks, together with accepted names, family, genus, specific epithet, infraspecific taxonomy, authorship, publication details, and actual and nominal publication years.</p>
 <p>The construction of the <code>ppendemic</code> package is built upon valuable data sourced from the renowned <strong>World Checklist of Vascular Plants (WCVP)</strong> database. The WCVP is an international collaborative programme initiated in 1988 by Rafaël Govaerts that provides high-quality expert-reviewed taxonomic data on all vascular plants. As a highly authoritative resource updated daily, WCVP offers comprehensive information on plant taxonomy and occurrence worldwide, serving as the taxonomic backbone for World Flora Online (WFO) and being incorporated into the Catalogue of Life Checklist via GBIF. Leveraging this data, the ppendemic package aims to present an up-to-date and novel compilation of Peru’s endemic plant species, tailored to the diverse ecosystems of the region.</p>
 <p>By incorporating meticulously curated data from WCVP following the International Code of Nomenclature for algae, fungi, and plants (ICN), this package offers users a reliable and accurate resource to explore, analyze, and gain deeper insights into the rich diversity of Peru’s endemic flora. The latest version (V-16, dated 04-06-2026) includes enhanced temporal bibliographic information with sophisticated year extraction capabilities, distinguishing between actual and nominal publication years for improved citation accuracy.</p>
-<p>Representing a significant advancement in our understanding of Peru’s endemic plant species, the ppendemic package update the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru, bringing the total to an impressive 8030 species. This substantial increase in documented endemic species is a testament to the continuous integration of updated taxonomic data and the commitment to presenting the most current information available. With this expanded and current database, researchers, conservationists, and nature enthusiasts alike can now delve into a more comprehensive and accurate account of Peru’s unique and diverse plant biodiversity.</p>
-<p>The database spans a total of 165 families, with particular richness observed in the Orchidaceae, Asteraceae, Piperaceae, Fabaceae, Bromeliaceae, Solanaceae, Melastomataceae, Araceae, Cactaceae, Rubiaceae families, all of which boast the highest number of endemic species in Peru. The enhanced dataset now includes 159 records where actual and nominal publication years differ, providing valuable insights into historical botanical publishing practices.</p>
+<p>The current version expands the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru to 8030 accepted taxonomic records. Because the database includes infraspecific taxa, this row count must not be interpreted as the number of distinct species.</p>
+<p>The database spans 165 families. The families with the greatest numbers of endemic taxonomic records are Orchidaceae, Asteraceae, Piperaceae, Fabaceae, Bromeliaceae, Solanaceae, Melastomataceae, Araceae, Cactaceae, Rubiaceae. The enhanced dataset also includes 159 records where actual and nominal publication years differ.</p>
 <p><img src="reference/figures/README-unnamed-chunk-2-1.png" alt="" width="100%"></p>
 </div>
 <div class="section level2">
@@ -79,7 +85,7 @@
 <p>After installing the <code>ppendemic</code> package, you can load it into your R session using:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/ppendemic/" class="external-link">ppendemic</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.1 ──</span></span></code></pre></div>
+<span><span class="co">#&gt; ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.2 ──</span></span></code></pre></div>
 <ul>
 <li>Use <code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> to check if taxa are endemic</li>
 </ul>

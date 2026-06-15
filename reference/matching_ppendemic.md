@@ -18,7 +18,9 @@ matching_ppendemic(
 
 - splist:
 
-  A vector containing the species list.
+  A non-empty character vector containing taxon names. Missing and empty
+  values are not accepted. Indeterminate `sp.` and `spp.` names are
+  treated as genus-level records and are not classified as endemic taxa.
 
 - max_dist:
 

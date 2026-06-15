@@ -1,7 +1,7 @@
 # ppendemic_tab16: Endemic Plant Database of Peru (based on WCVP v16)
 
 The `ppendemic_tab16` dataset is a tibble (data frame) providing a
-curated and taxonomically validated list of vascular plant species that
+curated and taxonomically validated list of vascular plant taxa that
 occur exclusively in Peru. The dataset is derived from version 16 of the
 World Checklist of Vascular Plants (WCVP), facilitated by the Royal
 Botanic Gardens, Kew, and corresponds to the extraction performed on 04
@@ -20,8 +20,8 @@ A tibble (data frame) with 8,030 rows and 18 columns:
 - taxon_name:
 
   Character vector. The full scientific name of the accepted endemic
-  species (binomial or trinomial), constructed from genus, species and,
-  where applicable, infraspecific epithets, following WCVP standards.
+  taxon, constructed from genus, species and, where applicable,
+  infraspecific epithets, following WCVP standards.
 
 - taxon_status:
 
@@ -123,8 +123,8 @@ https://doi.org/10.1038/s41597-021-00997-6
 
 ## Details
 
-This database contains only accepted endemic species names, following
-the taxonomic backbone of WCVP and filtered by geographic distribution
+This database contains only accepted endemic taxon names, following the
+taxonomic backbone of WCVP and filtered by geographic distribution
 records indicating occurrence restricted to Peru.
 
 The dataset was constructed from the World Checklist of Vascular Plants

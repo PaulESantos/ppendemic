@@ -1,11 +1,11 @@
 # ppendemic_tab14: Endemic Plant Database of Peru
 
 The ppendemic_tab14 dataset is a tibble (data frame) that provides easy
-access to a comprehensive database of Peru's endemic plant species. It
-contains a total of 7,898 records with essential botanical information,
-including the accepted name, accepted family, genus, species,
-infraspecific information, taxon authors, primary author, place of
-publication, volume and page, publication years, and version details.
+access to a comprehensive database of Peru's accepted endemic plant
+taxa. It contains 7,898 taxonomic records at species and infraspecific
+ranks, with information including the accepted name, family, genus,
+specific epithet, taxon authors, primary author, place of publication,
+volume and page, publication years, and version details.
 
 ## Usage
 
@@ -19,25 +19,24 @@ A tibble (data frame) with 7,898 rows and 18 columns:
 
 - taxon_name:
 
-  Character vector. The accepted name of the endemic plant species.
+  Character vector. The accepted name of the endemic plant taxon.
 
 - taxon_status:
 
-  Character vector. The taxonomic status of the species (e.g.,
-  "Accepted").
+  Character vector. The taxonomic status of the name (e.g., "Accepted").
 
 - family:
 
   Character vector. The family of the accepted name of the endemic plant
-  species.
+  taxon.
 
-- genus:
+- Genus:
 
-  Character vector. The genus of the endemic plant species.
+  Character vector. The genus of the endemic plant taxon.
 
-- species:
+- Species:
 
-  Character vector. The specific epithet of the endemic plant species.
+  Character vector. The specific epithet of the endemic plant taxon.
 
 - infraspecific_rank:
 
@@ -51,27 +50,27 @@ A tibble (data frame) with 7,898 rows and 18 columns:
 - taxon_authors:
 
   Character vector. The author(s) of the accepted name of the endemic
-  plant species.
+  plant taxon.
 
 - primary_author:
 
   Character vector. The primary author(s) of the publication containing
-  the endemic plant species information.
+  the endemic plant taxon information.
 
 - place_of_publication:
 
-  Character vector. The place of publication of the endemic plant
-  species information.
+  Character vector. The place of publication of the endemic plant taxon
+  information.
 
 - volume_and_page:
 
   Character vector. The volume and page number of the publication
-  containing the endemic plant species information.
+  containing the endemic plant taxon information.
 
 - first_published:
 
   Character vector. The first published year of the publication
-  containing the endemic plant species information.
+  containing the endemic plant taxon information.
 
 - year_actual:
 
@@ -106,7 +105,7 @@ A tibble (data frame) with 7,898 rows and 18 columns:
 ## Source
 
 The dataset has been carefully compiled and updated to offer the latest
-insights into Peru's endemic plant species. The data is sourced from the
+insights into Peru's endemic plant taxa. The data is sourced from the
 World Checklist of Vascular Plants (WCVP) database, an international
 collaborative programme initiated in 1988 by Rafaël Govaerts that
 provides high-quality expert-reviewed taxonomic data on all vascular
@@ -118,11 +117,11 @@ exploring global plant diversity" in Nature Scientific Data.
 
 ## Details
 
-The dataset provides a curated and up-to-date collection of Peru's
-endemic plant species, gathered from reputable botanical sources and
-publications. The data for this database was extracted and compiled from
-the World Checklist of Vascular Plants (WCVP) database, which is a
-comprehensive and reliable repository of botanical information.
+The dataset provides a curated collection of Peru's accepted endemic
+plant taxa, gathered from reputable botanical sources and publications.
+The data for this database was extracted and compiled from the World
+Checklist of Vascular Plants (WCVP) database, which is a comprehensive
+and reliable repository of botanical information.
 
 This version (ppendemic_tab14) includes enhanced temporal information
 with separate numeric fields for actual and nominal publication years.
@@ -184,7 +183,7 @@ head(ppendemic_tab14)
 #> #   year_actual <dbl>, year_nominal <dbl>, both_years <chr>,
 #> #   has_different_years <lgl>, version <chr>, version_date <chr>
 
-# Check for species with different actual and nominal years
+# Check for taxa with different actual and nominal years
 different_years <- subset(ppendemic_tab14, has_different_years == TRUE)
 nrow(different_years)
 #> [1] 160
