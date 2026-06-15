@@ -12,7 +12,9 @@ is_ppendemic(
 )
 }
 \arguments{
-\item{splist}{A character vector containing the list of species names to be checked for endemic in the ppendemic database.}
+\item{splist}{A non-empty character vector containing taxon names to check
+against the ppendemic database. Missing and empty values are not accepted.
+Indeterminate \code{sp.} and \code{spp.} names are treated as genus-level records.}
 
 \item{max_dist}{Maximum edit distance used in fuzzy matching steps.
 Defaults to 2.}

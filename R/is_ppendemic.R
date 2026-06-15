@@ -4,7 +4,9 @@
 #' This function checks if a list of species names are endemic in the ppendemic database.
 #' The function allows fuzzy matching for species names with a maximum distance threshold to handle potential typos or variations in species names.
 #'
-#' @param splist A character vector containing the list of species names to be checked for endemic in the ppendemic database.
+#' @param splist A non-empty character vector containing taxon names to check
+#'   against the ppendemic database. Missing and empty values are not accepted.
+#'   Indeterminate `sp.` and `spp.` names are treated as genus-level records.
 #' @param max_dist Maximum edit distance used in fuzzy matching steps.
 #'   Defaults to 2.
 #' @param save_ambiguous Logical flag. If `TRUE`, ambiguous fuzzy genus matches

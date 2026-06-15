@@ -13,6 +13,7 @@
 direct_match <- function(df, target_df = NULL){
   assertthat::assert_that(all(c('Orig.Genus',
                                 'Orig.Species',
+                                'Infra.Rank',
                                 'Orig.Infraspecies') %in%
                                 colnames(df)))
 
@@ -29,6 +30,7 @@ direct_match <- function(df, target_df = NULL){
     dplyr::semi_join(target_df,
                      by = c('Orig.Genus' = 'Genus',
                             'Orig.Species' = 'Species',
+                            'Infra.Rank' = 'infraspecific_rank',
                             'Orig.Infraspecies' = 'infraspecies')) |>
     dplyr::mutate(Matched.Genus = Orig.Genus,
                   Matched.Species = Orig.Species,
@@ -37,6 +39,7 @@ direct_match <- function(df, target_df = NULL){
     dplyr::anti_join( target_df,
                       c('Orig.Genus' = 'Genus',
                         'Orig.Species' = 'Species',
+                        'Infra.Rank' = 'infraspecific_rank',
                         'Orig.Infraspecies' = 'infraspecies'))
 
   assertthat::assert_that(nrow(df) == (nrow(matched) + nrow(unmatched)))

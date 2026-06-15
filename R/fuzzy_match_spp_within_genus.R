@@ -11,6 +11,9 @@
 #' A tibble with an additional logical column fuzzy_match_species_within_genus, indicating whether the specific epithet was successfully fuzzy matched within the matched genus (`TRUE`) or not (`FALSE`).
 #' @keywords internal
 fuzzy_match_species_within_genus_helper <- function(df, target_df, max_dist){
+  df <- df |>
+    dplyr::mutate(.row_id = dplyr::row_number())
+
   # subset database
   genus <- df |>
     dplyr::distinct(Matched.Genus) |>
@@ -26,7 +29,7 @@ fuzzy_match_species_within_genus_helper <- function(df, target_df, max_dist){
                                     distance_col = 'fuzzy_species_dist') |>
     dplyr::mutate(Matched.Species = Species) |>
     dplyr::select(-c('Species', 'Genus')) |>
-    dplyr::group_by(Orig.Genus, Orig.Species) |>
+    dplyr::group_by(.row_id) |>
     dplyr::filter(fuzzy_species_dist == min(fuzzy_species_dist)) |>
     dplyr::group_modify(
       ~ifelse(nrow(.x) == 0, return(.x),
@@ -47,6 +50,7 @@ fuzzy_match_species_within_genus_helper <- function(df, target_df, max_dist){
   combined <-  dplyr::bind_rows(matched, unmatched,
                                 .id = 'fuzzy_match_species_within_genus') |>
     dplyr::mutate(fuzzy_match_species_within_genus = (fuzzy_match_species_within_genus == 1)) |>  ## convert to Boolean
+    dplyr::select(-.row_id) |>
     dplyr::relocate(c('Orig.Genus',
                       'Orig.Species',
                       'Orig.Infraspecies')) ## Genus & Species column at the beginning of tibble

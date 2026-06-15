@@ -8,7 +8,7 @@
 A tibble (data frame) with 7,892 rows and 18 columns:
 \describe{
 \item{taxon_name}{Character vector. The full scientific name of the accepted
-endemic species (binomial or trinomial), constructed from genus, species and,
+endemic taxon, constructed from genus, species and,
 where applicable, infraspecific epithets, following WCVP standards.}
 
 \item{taxon_status}{Character vector. The taxonomic status of the name according
@@ -79,13 +79,13 @@ ppendemic_tab15
 }
 \description{
 The \code{ppendemic_tab15} dataset is a tibble (data frame) providing a curated
-and taxonomically validated list of vascular plant species that occur exclusively
+and taxonomically validated list of vascular plant taxa that occur exclusively
 in Peru. The dataset is derived from version 15 of the World Checklist of Vascular
 Plants (WCVP), facilitated by the Royal Botanic Gardens, Kew, and corresponds to
 the extraction performed on 06 January 2026.
 }
 \details{
-This database contains only accepted endemic species names, following the
+This database contains only accepted endemic taxon names, following the
 taxonomic backbone of WCVP and filtered by geographic distribution records
 indicating occurrence restricted to Peru.
 

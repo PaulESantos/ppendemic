@@ -38,7 +38,7 @@ fuzzy_match_infraspecies_within_species <- function(df, target_df = NULL, max_di
   }
 
   res <- df |>
-    dplyr::group_by(Matched.Species) |>
+    dplyr::group_by(Matched.Genus, Matched.Species, Infra.Rank) |>
     dplyr::group_split() |>
     map_dfr_progress(fuzzy_match_infraspecies_within_species_helper,
                      target_df,
@@ -48,19 +48,34 @@ fuzzy_match_infraspecies_within_species <- function(df, target_df = NULL, max_di
 }
 
 fuzzy_match_infraspecies_within_species_helper <- function(df, target_df, max_dist){
+  df <- df |>
+    dplyr::mutate(.row_id = dplyr::row_number())
+
+  genus <- df |>
+    dplyr::distinct(Matched.Genus) |>
+    unlist()
+
   species <- df |>
     dplyr::distinct(Matched.Species) |>
     unlist()
 
-  get_trees_of_infra <- function(species, target_df = NULL){
+  infra_rank <- df |>
+    dplyr::distinct(Infra.Rank) |>
+    unlist()
+
+  get_trees_of_infra <- function(genus, species, infra_rank, target_df = NULL){
     return(target_df |>
-             dplyr::filter(Species %in% species) |>
-             dplyr::select(c('Genus', 'Species', 'infraspecies')))
+             dplyr::filter(Genus %in% genus,
+                           Species %in% species,
+                           infraspecific_rank %in% infra_rank) |>
+             dplyr::select(c('Genus', 'Species', 'infraspecific_rank',
+                             'infraspecies')))
   }
 
   memoised_get_trees_of_infrasp <- memoise::memoise(get_trees_of_infra)
 
-  database_subset <- memoised_get_trees_of_infrasp(species, target_df) |>
+  database_subset <- memoised_get_trees_of_infrasp(genus, species, infra_rank,
+                                                   target_df) |>
     tidyr::drop_na()
 
   matched <-
@@ -70,8 +85,9 @@ fuzzy_match_infraspecies_within_species_helper <- function(df, target_df, max_di
                                     max_dist = max_dist,
                                     distance_col = 'fuzzy_infraspecies_dist') |>
     dplyr::mutate(Matched.Infraspecies = infraspecies) |>
-    dplyr::select(-c('Species', 'Genus', 'infraspecies')) |>
-    dplyr::group_by(Orig.Genus, Orig.Species, Orig.Infraspecies) |>
+    dplyr::select(-c('Species', 'Genus', 'infraspecific_rank',
+                     'infraspecies')) |>
+    dplyr::group_by(.row_id) |>
     dplyr::filter(fuzzy_infraspecies_dist == min(fuzzy_infraspecies_dist)) |>
     dplyr::group_modify(
       ~ifelse(nrow(.x) == 0, return(.x),
@@ -91,6 +107,7 @@ fuzzy_match_infraspecies_within_species_helper <- function(df, target_df, max_di
                                 unmatched,
                                 .id = 'fuzzy_match_infraspecies_within_species') |>
     dplyr::mutate(fuzzy_match_infraspecies_within_species = (fuzzy_match_infraspecies_within_species == 1)) |>
+    dplyr::select(-.row_id) |>
     dplyr::relocate(c('Orig.Genus',
                       'Orig.Species',
                       'Orig.Infraspecies'))

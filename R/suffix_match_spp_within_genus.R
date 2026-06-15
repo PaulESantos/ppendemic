@@ -15,6 +15,9 @@
 #' @keywords internal
 
 suffix_match_species_within_genus_helper <- function(df,target_df){
+  df <- df |>
+    dplyr::mutate(.row_id = dplyr::row_number())
+
   # subset database
   genus <- df |>
     dplyr::distinct(Matched.Genus) |>
@@ -42,7 +45,7 @@ suffix_match_species_within_genus_helper <- function(df,target_df){
                       na_matches = 'never') |>
     dplyr::mutate(Matched.Species = Species) |>
     dplyr::select(-c('Species', 'Genus', 'Root')) |>
-    dplyr::group_by(Orig.Genus, Orig.Species) |>
+    dplyr::group_by(.row_id) |>
     dplyr::group_modify(
       ~ifelse(nrow(.x) == 0, return(.x),
               return(dplyr::slice_head(.x,n=1)))
@@ -61,6 +64,7 @@ suffix_match_species_within_genus_helper <- function(df,target_df){
   combined <-  dplyr::bind_rows(matched, unmatched,
                                 .id = 'suffix_match_species_within_genus') |>
     dplyr::mutate(suffix_match_species_within_genus = (suffix_match_species_within_genus == 1)) |>  ## convert to Boolean
+    dplyr::select(-.row_id) |>
     dplyr::relocate(c('Orig.Genus',
                       'Orig.Species',
                       'Orig.Infraspecies')) ## Genus & Species column at the beginning of tibble

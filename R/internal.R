@@ -16,7 +16,7 @@
   # Estandarizar 'VAR', 'F.', 'SUBSP.'
   fixed6 <- gsub(" VAR ", " VAR. ", fixed5)
   fixed7 <- gsub(" (F|FO|FO\\.|FORM|FORM\\.|FORMA|FORMA\\.) ", " F. ", fixed6)
-  fixed8 <- gsub(" (SSP|SPP|SUBSP|SP|SP\\.|SPP\\.) ", " SUBSP. ", fixed7)
+  fixed8 <- gsub(" (SSP|SUBSP) ", " SUBSP. ", fixed7)
 
   # Manejar híbridos (eliminar 'X' y '\u00d7')
   fixed9 <- gsub("(^X )|( X$)|( X )|(^\u00d7 )|( \u00d7$)|( \u00d7 )", " ", fixed8)
@@ -163,6 +163,10 @@
   df <- as.data.frame(df)
   df$sorter <- 1:nrow(df)
 
+  # Indeterminate sp./spp. records identify a genus, not a species epithet.
+  indeterminate_species <- df$Orig.Species %in% c("SP.", "SPP.")
+  df$Orig.Species[indeterminate_species] <- NA_character_
+
   # Crear las nuevas columnas infraspecie e infra_rank
   df$Orig.Infraspecies <- with(df, ifelse(Subspecies != "", Subspecies,
                                     ifelse(Variety != "", Variety,
@@ -194,24 +198,43 @@
 
 # ---------------------------------------------------------------
 #' @keywords internal
+.validate_splist <- function(splist) {
+  if (is.null(splist) || !is.character(splist)) {
+    cli::cli_abort("{.arg splist} must be a character vector.")
+  }
+  if (length(splist) == 0L) {
+    cli::cli_abort("{.arg splist} must contain at least one taxon name.")
+  }
+  if (anyNA(splist)) {
+    cli::cli_abort("{.arg splist} must not contain missing values.")
+  }
+  if (any(!nzchar(trimws(splist)))) {
+    cli::cli_abort("{.arg splist} must not contain empty taxon names.")
+  }
+
+  invisible(splist)
+}
+
+# ---------------------------------------------------------------
+#' @keywords internal
 map_dfr_progress <- function(.x, .f, ..., .id = NULL) { ## credits to https://www.jamesatkins.net/posts/progress-bar-in-purrr-map-df/
   function_name <- stringr::str_remove(toString(substitute(.f)), '_helper')
   .f <- purrr::as_mapper(.f, ...)
+
+  if (!show_progress()) {
+    return(purrr::map_dfr(.x, .f, ..., .id = .id))
+  }
+
   pb <- progress::progress_bar$new(total = length(.x),
                                    force = TRUE,
                                    format = paste(paste0(eval(...), collapse = ' '), ": ",
                                                   function_name, "[:bar] :percent", collapse = ''))
-  # pb <- progress::progress_bar$new(total = length(.x),
-  #                                  force = TRUE,
-  #                                  format = paste(paste0(eval(...), collapse = ' '), ": ", substitute(.f), "[:bar] :percent", collapse = ''))
-
 
   f <- function(...) {
     pb$tick()
     .f(...)
   }
 
-  #future::plan(future::multicore, workers = 4)
   purrr::map_dfr(.x, f, ..., .id = .id)
 }
 
@@ -305,9 +328,10 @@ str_to_simple_cap <- function(text) {
 # ---------------------------------------------------------------
 utils::globalVariables(c("%>%", "Genus", "Genus.x", "Matched.Genus",
                          "Matched.Infraespecie", "Matched.Species",
-    "Orig.Genus", "Orig.Infraespecie", "Orig.Species", "Sorter", "Species",
+    "Infra.Rank", "Orig.Genus", "Orig.Infraespecie", "Orig.Species", "Sorter",
+    "Species",
     "fuzzy_genus_dist", "fuzzy_infraspecies_dist", "fuzzy_species_dist",
-    "infraspecies", "sorter",  "Matched.Infraspecies", "Orig.Infraspecies",
+    "infraspecies", "infraspecific_rank", "sorter",  "Matched.Infraspecies",
+    "Orig.Infraspecies",
     "Comp.Rank",  "Matched.Rank",  "Orig.Name", "Rank", "Matched.Name",
     ".row_id"))
-

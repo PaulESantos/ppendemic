@@ -1,0 +1,324 @@
+---
+title: "Cambios entre versiones de la base de plantas endemicas del Peru"
+author: "ppendemic"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Cambios entre versiones de la base de plantas endemicas del Peru}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width = 7,
+  fig.height = 4.5
+)
+
+library(dplyr)
+library(tibble)
+library(tidyr)
+
+data("ppendemic_tab14", package = "ppendemic")
+data("ppendemic_tab15", package = "ppendemic")
+data("ppendemic_tab16", package = "ppendemic")
+```
+
+## Objetivo
+
+Las tablas `ppendemic_tab14`, `ppendemic_tab15` y `ppendemic_tab16`
+representan extracciones sucesivas de WCVP. Compararlas permite identificar:
+
+* nombres que permanecen entre versiones;
+* posibles inclusiones y exclusiones;
+* correcciones ortograficas o de terminacion;
+* cambios de rango infraespecifico; y
+* posibles transferencias entre generos.
+
+Una inclusion o exclusion observada no implica necesariamente que una especie
+haya sido descubierta o dejado de ser endemica. Tambien puede reflejar cambios
+taxonomicos, nomenclaturales o de los criterios de distribucion usados por
+WCVP. Por eso, esta viñeta distingue los cambios observados de su posible
+interpretacion.
+
+## Funciones para comparar versiones
+
+La unidad de comparacion es `taxon_name`. Los nombres presentes solo en la
+version nueva son inclusiones observadas y los presentes solo en la version
+anterior son exclusiones observadas.
+
+Para detectar posibles reemplazos se calcula una puntuacion conservadora entre
+cada nombre retirado y cada nombre añadido. La puntuacion combina similitud
+textual y coincidencias en epitetos, autoria, familia y año de publicacion.
+Estos vinculos son candidatos para revision, no sinonimias confirmadas.
+
+```{r comparison-functions}
+candidate_replacements <- function(removed, added) {
+  if (nrow(removed) == 0L || nrow(added) == 0L) {
+    return(tibble::tibble())
+  }
+
+  same_val <- function(x, y) {
+    !is.na(x) & !is.na(y) & x != "" & y != "" & x == y
+  }
+
+  name_sim <- function(x, y) {
+    distance <- diag(adist(tolower(x), tolower(y)))
+    lengths <- pmax(nchar(x), nchar(y))
+    1 - distance / lengths
+  }
+
+  pairs <- dplyr::cross_join(
+    removed %>% dplyr::rename_with(~ paste0(.x, "_old")),
+    added %>% dplyr::rename_with(~ paste0(.x, "_new"))
+  )
+
+  candidates <- pairs %>%
+    dplyr::mutate(
+      similarity = name_sim(taxon_name_old, taxon_name_new),
+      same_species = same_val(Species_old, Species_new),
+      same_infraspecies = same_val(infraspecies_old, infraspecies_new),
+      same_author = same_val(taxon_authors_old, taxon_authors_new),
+      same_family = same_val(family_old, family_new),
+      same_year = same_val(year_actual_old, year_actual_new),
+      
+      score = 0.40 * similarity +
+        0.25 * same_species +
+        0.10 * same_infraspecies +
+        0.15 * same_author +
+        0.05 * same_family +
+        0.05 * same_year
+    ) %>%
+    dplyr::filter(score >= 0.50)
+
+  if (nrow(candidates) == 0L) {
+    return(tibble::tibble())
+  }
+
+  candidates %>%
+    dplyr::mutate(
+      interpretacion = dplyr::case_when(
+        same_species & same_infraspecies & coalesce(infraspecific_rank_old != infraspecific_rank_new, FALSE) ~ "Posible cambio de rango",
+        same_species & coalesce(Genus_old != Genus_new, FALSE) ~ "Posible transferencia de genero",
+        similarity >= 0.85 & (same_author | same_year) ~ "Posible correccion ortografica",
+        TRUE ~ "Posible reemplazo taxonomico"
+      ),
+      puntuacion = round(score, 3)
+    ) %>%
+    dplyr::select(
+      exclusion_observada = taxon_name_old,
+      inclusion_observada = taxon_name_new,
+      familia = family_new,
+      interpretacion,
+      puntuacion
+    ) %>%
+    dplyr::arrange(dplyr::desc(puntuacion))
+}
+
+compare_versions <- function(old, new) {
+  removed <- dplyr::anti_join(old, new, by = "taxon_name")
+  added <- dplyr::anti_join(new, old, by = "taxon_name")
+  candidates <- candidate_replacements(removed, added)
+
+  linked_removed <- unique(candidates$exclusion_observada)
+  linked_added <- unique(candidates$inclusion_observada)
+
+  list(
+    summary = tibble::tibble(
+      version_anterior = unique(old$version),
+      version_nueva = unique(new$version),
+      registros_anteriores = nrow(old),
+      registros_nuevos = nrow(new),
+      inclusiones_observadas = nrow(added),
+      exclusiones_observadas = nrow(removed),
+      cambio_neto = registros_nuevos - registros_anteriores,
+      posibles_reemplazos = nrow(candidates)
+    ),
+    candidates = candidates,
+    probable_inclusions = added %>%
+      dplyr::filter(!taxon_name %in% linked_added) %>%
+      dplyr::select(taxon_name, family, year_actual),
+    probable_exclusions = removed %>%
+      dplyr::filter(!taxon_name %in% linked_removed) %>%
+      dplyr::select(taxon_name, family, year_actual)
+  )
+}
+
+comparison_14_15 <- compare_versions(ppendemic_tab14, ppendemic_tab15)
+comparison_15_16 <- compare_versions(ppendemic_tab15, ppendemic_tab16)
+```
+
+## Magnitud de los cambios
+
+```{r summary-table}
+change_summary <- dplyr::bind_rows(
+  comparison_14_15$summary,
+  comparison_15_16$summary
+)
+
+knitr::kable(
+  change_summary,
+  caption = "Cambios observados y posibles reemplazos entre versiones."
+)
+```
+
+El cambio neto debe interpretarse junto con las inclusiones y exclusiones
+brutas. Por ejemplo, una correccion ortografica genera simultaneamente una
+salida y una entrada aunque represente al mismo taxon.
+
+```{r change-plot}
+plot_values <- rbind(
+  inclusiones = change_summary$inclusiones_observadas,
+  exclusiones = -change_summary$exclusiones_observadas,
+  cambio_neto = change_summary$cambio_neto
+)
+
+barplot(
+  plot_values,
+  beside = TRUE,
+  names.arg = paste(
+    change_summary$version_anterior,
+    change_summary$version_nueva,
+    sep = " a "
+  ),
+  col = c("#2E8B57", "#B22222", "#4169E1"),
+  ylab = "Numero de registros",
+  legend.text = rownames(plot_values),
+  args.legend = list(x = "topleft", bty = "n")
+)
+abline(h = 0, col = "grey40")
+```
+
+## Posibles correcciones y cambios taxonomicos
+
+Los siguientes pares no deben contarse automaticamente como nuevas especies o
+perdidas de endemicidad. Comparten suficiente informacion para considerarlos
+posibles reemplazos entre versiones.
+
+```{r candidates-14-15}
+knitr::kable(
+  comparison_14_15$candidates,
+  caption = "Posibles reemplazos entre V-14 y V-15."
+)
+```
+
+```{r candidates-15-16}
+knitr::kable(
+  comparison_15_16$candidates,
+  caption = "Posibles reemplazos entre V-15 y V-16."
+)
+```
+
+Entre los patrones detectables se encuentran:
+
+* cambios de terminacion, como `Eudema chacasensis` a
+  `Eudema chacasense`;
+* correcciones ortograficas, como `Senecio danal` a `Senecio danai`;
+* cambios de rango, como `Peperomia nivalis var. nivalis` a
+  `Peperomia nivalis f. nivalis`; y
+* posibles transferencias de genero, como especies de `Lobivia` que aparecen
+  posteriormente bajo `Echinopsis`.
+
+Estos casos requieren validacion contra sinonimos, identificadores taxonomicos
+estables o la historia nomenclatural de WCVP.
+
+## Posibles inclusiones
+
+Despues de retirar los candidatos a reemplazo, los nombres restantes son las
+inclusiones con mayor probabilidad de representar incorporaciones a la lista.
+La version V-16 concentra numerosas inclusiones publicadas recientemente.
+
+```{r inclusion-summary}
+inclusions_15_16 <- comparison_15_16$probable_inclusions
+
+inclusion_families <- inclusions_15_16 %>%
+  dplyr::count(family, name = "posibles_inclusiones") %>%
+  dplyr::arrange(dplyr::desc(posibles_inclusiones)) %>%
+  dplyr::slice_head(n = 15) %>%
+  dplyr::rename(familia = family)
+
+knitr::kable(
+  inclusion_families,
+  caption = "Familias con mas posibles inclusiones entre V-15 y V-16."
+)
+```
+
+```{r recent-inclusions}
+recent_inclusions <- inclusions_15_16 %>%
+  dplyr::filter(!is.na(year_actual), year_actual >= 2024) %>%
+  dplyr::arrange(dplyr::desc(year_actual)) %>%
+  dplyr::slice_head(n = 25)
+
+knitr::kable(
+  recent_inclusions,
+  caption = "Ejemplos de posibles inclusiones publicadas desde 2024."
+)
+```
+
+## Posibles exclusiones
+
+Los nombres retirados que no tienen un reemplazo candidato son posibles
+exclusiones. Una exclusion puede deberse a que el taxon dejo de considerarse
+aceptado o exclusivamente peruano, pero esa causa no puede determinarse solo
+con estas tablas.
+
+```{r exclusion-summary}
+exclusions_15_16 <- comparison_15_16$probable_exclusions
+
+exclusion_families <- exclusions_15_16 %>%
+  dplyr::count(family, name = "posibles_exclusiones") %>%
+  dplyr::arrange(dplyr::desc(posibles_exclusiones)) %>%
+  dplyr::rename(familia = family)
+
+knitr::kable(
+  exclusion_families,
+  caption = "Familias de las posibles exclusiones entre V-15 y V-16."
+)
+```
+
+```{r exclusion-list}
+knitr::kable(
+  exclusions_15_16 %>% dplyr::arrange(family),
+  caption = "Posibles exclusiones entre V-15 y V-16."
+)
+```
+
+## Cambios netos por familia
+
+El balance por familia ayuda a identificar grupos que requieren una revision
+prioritaria. Este balance incluye tanto cambios taxonomicos como posibles
+incorporaciones o exclusiones reales.
+
+```{r family-deltas}
+family_change <- dplyr::full_join(
+  ppendemic_tab15 %>% dplyr::count(family, name = "v15"),
+  ppendemic_tab16 %>% dplyr::count(family, name = "v16"),
+  by = "family"
+) %>%
+  dplyr::mutate(
+    v15 = tidyr::replace_na(v15, 0L),
+    v16 = tidyr::replace_na(v16, 0L),
+    change = v16 - v15
+  ) %>%
+  dplyr::arrange(dplyr::desc(abs(change)), family)
+
+knitr::kable(
+  head(family_change, 20),
+  caption = "Mayores cambios absolutos por familia entre V-15 y V-16."
+)
+```
+
+## Recomendaciones de interpretacion
+
+1. Usar `taxon_name` para describir entradas y salidas observadas.
+2. Revisar primero los posibles reemplazos antes de comunicar descubrimientos
+   o perdidas.
+3. Confirmar las posibles inclusiones y exclusiones con WCVP y sus
+   identificadores estables.
+4. No interpretar una exclusion como perdida biologica o extincion.
+5. Reportar siempre las versiones y fechas comparadas.
+
+El procedimiento presentado es reproducible y sirve como filtro inicial. Una
+evaluacion taxonomica definitiva requiere fuentes externas que documenten
+sinonimias, cambios de distribucion y decisiones nomenclaturales.

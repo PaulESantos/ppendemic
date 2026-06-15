@@ -12,7 +12,9 @@ matching_ppendemic(
 )
 }
 \arguments{
-\item{splist}{A vector containing the species list.}
+\item{splist}{A non-empty character vector containing taxon names. Missing
+and empty values are not accepted. Indeterminate \code{sp.} and \code{spp.} names are
+treated as genus-level records and are not classified as endemic taxa.}
 
 \item{max_dist}{Maximum edit distance used in fuzzy matching steps.
 Defaults to 2 (the default in fuzzyjoin::stringdist_left_join()).}

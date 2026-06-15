@@ -3,7 +3,9 @@
 #' @description
 #' This function matches given species names against the internal database of endemic plant species in Peru.
 #'
-#' @param splist A vector containing the species list.
+#' @param splist A non-empty character vector containing taxon names. Missing
+#'   and empty values are not accepted. Indeterminate `sp.` and `spp.` names are
+#'   treated as genus-level records and are not classified as endemic taxa.
 #' @param max_dist Maximum edit distance used in fuzzy matching steps.
 #'   Defaults to 2 (the default in fuzzyjoin::stringdist_left_join()).
 #' @param save_ambiguous Logical flag. If `TRUE`, ambiguous fuzzy genus matches
@@ -40,6 +42,8 @@ matching_ppendemic <- function(splist,
                                max_dist = 2,
                                save_ambiguous = FALSE,
                                ambiguous_path = "ambiguous_genera.csv"){
+  .validate_splist(splist)
+
   assertthat::assert_that(is.numeric(max_dist),
                           length(max_dist) == 1,
                           !is.na(max_dist),

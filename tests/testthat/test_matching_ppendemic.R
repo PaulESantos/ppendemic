@@ -70,3 +70,11 @@ test_that("matching_ppendemic exposes max_dist control for fuzzy matching", {
   expect_equal(default$Endemic.Tag, "Endemic")
   expect_equal(loose$Endemic.Tag, "Endemic")
 })
+
+test_that("matching_ppendemic validates splist", {
+  expect_error(matching_ppendemic(NULL), "character vector")
+  expect_error(matching_ppendemic(character()), "at least one")
+  expect_error(matching_ppendemic(NA_character_), "missing values")
+  expect_error(matching_ppendemic(c("Aa aurantiaca", " ")), "empty taxon")
+  expect_error(matching_ppendemic(1:2), "character vector")
+})

@@ -28,3 +28,14 @@ test_that("output includes core columns required by downstream use", {
 
   expect_true(all(expected %in% names(out)))
 })
+
+test_that("sp. and spp. are treated as indeterminate genus-level names", {
+  expect_message(
+    out <- matching_ppendemic(c("Piper sp.", "Piper sp. 1", "Piper spp.")),
+    "genus level"
+  )
+
+  expect_true(all(out$Rank == 1))
+  expect_true(all(is.na(out$Orig.Species)))
+  expect_true(all(out$Endemic.Tag == "Not endemic"))
+})
