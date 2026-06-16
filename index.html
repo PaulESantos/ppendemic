@@ -52,7 +52,7 @@
 </nav><div class="container template-home">
 <div class="row">
   <main id="main" class="col-md-9"><div class="section level1">
-<div class="page-header"><h1 id="ppendemic-">ppendemic <a href="https://github.com/PaulESantos/ppendemic" class="external-link"><img src="reference/figures/ppendemic_logo.png" align="right" height="180" width="160"></a>
+<div class="page-header"><h1 id="ppendemic-">ppendemic <a href="https://github.com/PaulESantos/ppendemic" class="external-link"><img src="reference/figures/ppendemic_logo_web.png" align="right" height="200" width="180"></a>
 <a class="anchor" aria-label="anchor" href="#ppendemic-"></a>
 </h1></div>
 <!-- badges: start -->
@@ -60,51 +60,169 @@
 <div class="section level2">
 <h2 id="overview">Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
-<p>This package offers convenient access to a database containing 8030 accepted endemic plant taxonomic records from Peru. The records include taxa at species and infraspecific ranks, together with accepted names, family, genus, specific epithet, infraspecific taxonomy, authorship, publication details, and actual and nominal publication years.</p>
-<p>The construction of the <code>ppendemic</code> package is built upon valuable data sourced from the renowned <strong>World Checklist of Vascular Plants (WCVP)</strong> database. The WCVP is an international collaborative programme initiated in 1988 by Rafaël Govaerts that provides high-quality expert-reviewed taxonomic data on all vascular plants. As a highly authoritative resource updated daily, WCVP offers comprehensive information on plant taxonomy and occurrence worldwide, serving as the taxonomic backbone for World Flora Online (WFO) and being incorporated into the Catalogue of Life Checklist via GBIF. Leveraging this data, the ppendemic package aims to present an up-to-date and novel compilation of Peru’s endemic plant species, tailored to the diverse ecosystems of the region.</p>
-<p>By incorporating meticulously curated data from WCVP following the International Code of Nomenclature for algae, fungi, and plants (ICN), this package offers users a reliable and accurate resource to explore, analyze, and gain deeper insights into the rich diversity of Peru’s endemic flora. The latest version (V-16, dated 04-06-2026) includes enhanced temporal bibliographic information with sophisticated year extraction capabilities, distinguishing between actual and nominal publication years for improved citation accuracy.</p>
-<p>The current version expands the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru to 8030 accepted taxonomic records. Because the database includes infraspecific taxa, this row count must not be interpreted as the number of distinct species.</p>
-<p>The database spans 165 families. The families with the greatest numbers of endemic taxonomic records are Orchidaceae, Asteraceae, Piperaceae, Fabaceae, Bromeliaceae, Solanaceae, Melastomataceae, Araceae, Cactaceae, Rubiaceae. The enhanced dataset also includes 159 records where actual and nominal publication years differ.</p>
-<p><img src="reference/figures/README-unnamed-chunk-2-1.png" alt="" width="100%"></p>
+<p><code>ppendemic</code> provides access to accepted endemic plant taxonomic records from Peru. The current dataset, <code>ppendemic_tab16</code>, contains 8030 records from WCVP V-16, including taxa at species and infraspecific ranks.</p>
+<p>The package is useful for:</p>
+<ul>
+<li>exploring the taxonomic composition of Peru’s endemic flora;</li>
+<li>checking whether a submitted plant name is listed as endemic;</li>
+<li>comparing successive WCVP-derived versions of the endemic checklist; and</li>
+<li>inspecting bibliographic metadata, including actual and nominal publication years.</li>
+</ul>
+<p>Because the database includes infraspecific taxa, the number of rows must not be interpreted as the number of distinct species.</p>
+</div>
+<div class="section level2">
+<h2 id="what-is-included">What Is Included<a class="anchor" aria-label="anchor" href="#what-is-included"></a>
+</h2>
+<p>The datasets include accepted endemic taxa with:</p>
+<ul>
+<li>accepted taxon name and taxonomic status;</li>
+<li>family, genus, specific epithet, infraspecific rank and infraspecific epithet;</li>
+<li>taxon authorship and publication metadata;</li>
+<li>actual and nominal publication years; and</li>
+<li>dataset version and extraction date.</li>
+</ul>
+<p>The datasets do not include coordinates, departments, elevation, habitat, threat categories, or fine-scale distribution records. Geographic hotspot, conservation-priority, or range-size analyses require joining <code>ppendemic</code> with external occurrence or conservation datasets.</p>
+</div>
+<div class="section level2">
+<h2 id="datasets">Datasets<a class="anchor" aria-label="anchor" href="#datasets"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="22%">
+<col width="18%">
+<col width="22%">
+<col width="12%">
+<col width="13%">
+<col width="10%">
+</colgroup>
+<thead><tr>
+<th align="left">dataset</th>
+<th align="left">wcvp_version</th>
+<th align="left">extraction_date</th>
+<th align="right">records</th>
+<th align="right">families</th>
+<th align="right">genera</th>
+</tr></thead>
+<tbody>
+<tr>
+<td align="left">ppendemic_tab14</td>
+<td align="left">V-14</td>
+<td align="left">28-05-2025</td>
+<td align="right">7898</td>
+<td align="right">165</td>
+<td align="right">1116</td>
+</tr>
+<tr>
+<td align="left">ppendemic_tab15</td>
+<td align="left">V-15</td>
+<td align="left">06-01-2026</td>
+<td align="right">7892</td>
+<td align="right">165</td>
+<td align="right">1115</td>
+</tr>
+<tr>
+<td align="left">ppendemic_tab16</td>
+<td align="left">V-16</td>
+<td align="left">04-06-2026</td>
+<td align="right">8030</td>
+<td align="right">165</td>
+<td align="right">1121</td>
+</tr>
+</tbody>
+</table>
+<p><code>ppendemic_tab16</code> is the latest dataset and should be used by default unless a reproducible analysis requires an older WCVP version.</p>
+<p>The latest version expands the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru to 8030 accepted taxonomic records. These records span 165 families; the most record-rich families are Orchidaceae, Asteraceae, Piperaceae, Fabaceae, Bromeliaceae, Solanaceae, Melastomataceae, Araceae, Cactaceae, Rubiaceae.</p>
+<p><img src="reference/figures/README-top-family-plot-1.png" alt="" width="100%"></p>
 </div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the <code>ppendemic</code> package from CRAN using:</p>
+<p>Install the CRAN release:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ppendemic"</span><span class="op">)</span></span>
-<span><span class="co"># or</span></span>
-<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"ppendemic"</span><span class="op">)</span></span></code></pre></div>
-<p>Also you can install the <code>ppendemic</code> package from GitHub using the following command:</p>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html" class="external-link">install.packages</a></span><span class="op">(</span><span class="st">"ppendemic"</span><span class="op">)</span></span></code></pre></div>
+<p>Or install the development version from GitHub:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"PaulESantos/ppendemic"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="getting-started">Getting Started<a class="anchor" aria-label="anchor" href="#getting-started"></a>
 </h2>
-<p>After installing the <code>ppendemic</code> package, you can load it into your R session using:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/PaulESantos/ppendemic/" class="external-link">ppendemic</a></span><span class="op">)</span></span>
 <span><span class="co">#&gt; ── Access Peruvian plant endemic data ─────────────────────── ppendemic 0.2.2 ──</span></span></code></pre></div>
-<ul>
-<li>Use <code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> to check if taxa are endemic</li>
-</ul>
+<p>Access the latest dataset directly:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Aa aurantiaca"</span>, </span>
-<span>             <span class="st">"Aa aurantiaaia"</span>,</span>
-<span>             <span class="st">"Werneria nubigena"</span>, </span>
-<span>             <span class="st">"Dasyphyllum brasiliense var. barnadesioides"</span>,</span>
-<span>             <span class="st">"Miconia firma"</span>,</span>
-<span>             <span class="st">"Festuca densiflora"</span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"ppendemic_tab16"</span><span class="op">)</span></span>
+<span><span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://pillar.r-lib.org/reference/glimpse.html" class="external-link">glimpse</a></span><span class="op">(</span><span class="va">ppendemic_tab16</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Rows: 8,030</span></span>
+<span><span class="co">#&gt; Columns: 18</span></span>
+<span><span class="co">#&gt; $ taxon_name           &lt;chr&gt; "Varronia lippioides", "Varronia munda", "Varroni…</span></span>
+<span><span class="co">#&gt; $ taxon_status         &lt;chr&gt; "Accepted", "Accepted", "Accepted", "Accepted", "…</span></span>
+<span><span class="co">#&gt; $ family               &lt;chr&gt; "Boraginaceae", "Boraginaceae", "Boraginaceae", "…</span></span>
+<span><span class="co">#&gt; $ Genus                &lt;chr&gt; "Varronia", "Varronia", "Varronia", "Adelonema", …</span></span>
+<span><span class="co">#&gt; $ Species              &lt;chr&gt; "lippioides", "munda", "vargasii", "orientale", "…</span></span>
+<span><span class="co">#&gt; $ infraspecific_rank   &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ infraspecies         &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, N…</span></span>
+<span><span class="co">#&gt; $ taxon_authors        &lt;chr&gt; "(I.M.Johnst.) J.S.Mill.", "(I.M.Johnst.) J.S.Mil…</span></span>
+<span><span class="co">#&gt; $ primary_author       &lt;chr&gt; "J.S.Mill.", "J.S.Mill.", "J.S.Mill.", "Croat", "…</span></span>
+<span><span class="co">#&gt; $ place_of_publication &lt;chr&gt; "Brittonia", "Brittonia", "Brittonia", "Syst. Bot…</span></span>
+<span><span class="co">#&gt; $ volume_and_page      &lt;chr&gt; " 65: 342", " 65: 343", " 65: 343", " 41: 39", " …</span></span>
+<span><span class="co">#&gt; $ first_published      &lt;chr&gt; "(2013)", "(2013)", "(2013)", "(2016)", "(2016)",…</span></span>
+<span><span class="co">#&gt; $ year_actual          &lt;dbl&gt; 2013, 2013, 2013, 2016, 2016, 1991, 2016, 2015, 2…</span></span>
+<span><span class="co">#&gt; $ year_nominal         &lt;dbl&gt; 2013, 2013, 2013, 2016, 2016, 1991, 2016, 2015, 2…</span></span>
+<span><span class="co">#&gt; $ both_years           &lt;chr&gt; "2013", "2013", "2013", "2016", "2016", "1991", "…</span></span>
+<span><span class="co">#&gt; $ has_different_years  &lt;lgl&gt; FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, FALSE, …</span></span>
+<span><span class="co">#&gt; $ version              &lt;chr&gt; "V-16", "V-16", "V-16", "V-16", "V-16", "V-16", "…</span></span>
+<span><span class="co">#&gt; $ version_date         &lt;chr&gt; "04-06-2026", "04-06-2026", "04-06-2026", "04-06-…</span></span></code></pre></div>
+<p>Count records by family:</p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ppendemic_tab16</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">family</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; # A tibble: 165 × 2</span></span>
+<span><span class="co">#&gt;    family              n</span></span>
+<span><span class="co">#&gt;    &lt;chr&gt;           &lt;int&gt;</span></span>
+<span><span class="co">#&gt;  1 Orchidaceae      1168</span></span>
+<span><span class="co">#&gt;  2 Asteraceae        883</span></span>
+<span><span class="co">#&gt;  3 Piperaceae        680</span></span>
+<span><span class="co">#&gt;  4 Fabaceae          334</span></span>
+<span><span class="co">#&gt;  5 Bromeliaceae      319</span></span>
+<span><span class="co">#&gt;  6 Solanaceae        314</span></span>
+<span><span class="co">#&gt;  7 Melastomataceae   263</span></span>
+<span><span class="co">#&gt;  8 Araceae           214</span></span>
+<span><span class="co">#&gt;  9 Cactaceae         188</span></span>
+<span><span class="co">#&gt; 10 Rubiaceae         176</span></span>
+<span><span class="co">#&gt; # ℹ 155 more rows</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="check-endemism">Check Endemism<a class="anchor" aria-label="anchor" href="#check-endemism"></a>
+</h2>
+<p>Use <code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> to check whether submitted names are listed as endemic:</p>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">splist</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span></span>
+<span>  <span class="st">"Aa aurantiaca"</span>,</span>
+<span>  <span class="st">"Aa aurantiaaia"</span>,</span>
+<span>  <span class="st">"Werneria nubigena"</span>,</span>
+<span>  <span class="st">"Dasyphyllum brasiliense var. barnadesioides"</span>,</span>
+<span>  <span class="st">"Miconia firma"</span>,</span>
+<span>  <span class="st">"Festuca densiflora"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
 <span><span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="va">splist</span><span class="op">)</span></span>
 <span><span class="co">#&gt; [1] "Endemic"     "Endemic"     "Not endemic" "Endemic"     "Endemic"    </span></span>
 <span><span class="co">#&gt; [6] "Endemic"</span></span></code></pre></div>
-<ul>
-<li>The <code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> function is designed to work seamlessly with tibbles, allowing users to easily analyze and determine the endemic status of species within a tabular format.</li>
-</ul>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span></span>
-<span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span> </span>
+<p>The matching engine uses exact and fuzzy matching. The <code>max_dist</code> argument controls fuzzy tolerance:</p>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="st">"Aa aurantiaaia"</span>, max_dist <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Not endemic"</span></span>
+<span><span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="st">"Aa aurantiaaia"</span>, max_dist <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Endemic"</span></span></code></pre></div>
+<p>Indeterminate names such as <code>sp.</code> and <code>spp.</code> are treated as genus-level records and are not classified as endemic taxa:</p>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Piper sp."</span>, <span class="st">"Piper spp."</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co">#&gt; [1] "Not endemic" "Not endemic"</span></span></code></pre></div>
+<p><code><a href="reference/is_ppendemic.html">is_ppendemic()</a></code> can also be used inside tabular workflows:</p>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu">tibble</span><span class="fu">::</span><span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>splist <span class="op">=</span> <span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>endemic <span class="op">=</span> <span class="fu"><a href="reference/is_ppendemic.html">is_ppendemic</a></span><span class="op">(</span><span class="va">splist</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="co">#&gt; # A tibble: 6 × 2</span></span>
 <span><span class="co">#&gt;   splist                                      endemic    </span></span>
@@ -115,27 +233,38 @@
 <span><span class="co">#&gt; 4 Dasyphyllum brasiliense var. barnadesioides Endemic    </span></span>
 <span><span class="co">#&gt; 5 Miconia firma                               Endemic    </span></span>
 <span><span class="co">#&gt; 6 Festuca densiflora                          Endemic</span></span></code></pre></div>
+<p>For detailed matching diagnostics, use <code><a href="reference/matching_ppendemic.html">matching_ppendemic()</a></code>:</p>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="reference/matching_ppendemic.html">matching_ppendemic</a></span><span class="op">(</span><span class="va">splist</span><span class="op">)</span> <span class="op">|&gt;</span></span>
+<span>  <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="va">Orig.Name</span>, <span class="va">Matched.Name</span>, <span class="va">Endemic.Tag</span>, <span class="va">matched</span><span class="op">)</span></span>
+<span><span class="co">#&gt;                                     Orig.Name</span></span>
+<span><span class="co">#&gt; 1                               Aa aurantiaca</span></span>
+<span><span class="co">#&gt; 2                              Aa aurantiaaia</span></span>
+<span><span class="co">#&gt; 3                           Werneria nubigena</span></span>
+<span><span class="co">#&gt; 4 Dasyphyllum brasiliense var. barnadesioides</span></span>
+<span><span class="co">#&gt; 5                               Miconia firma</span></span>
+<span><span class="co">#&gt; 6                          Festuca densiflora</span></span>
+<span><span class="co">#&gt;                                  Matched.Name Endemic.Tag matched</span></span>
+<span><span class="co">#&gt; 1                               Aa aurantiaca     Endemic    TRUE</span></span>
+<span><span class="co">#&gt; 2                               Aa aurantiaca     Endemic    TRUE</span></span>
+<span><span class="co">#&gt; 3                                    Werneria Not endemic   FALSE</span></span>
+<span><span class="co">#&gt; 4 Dasyphyllum brasiliense var. barnadesioides     Endemic    TRUE</span></span>
+<span><span class="co">#&gt; 5                               Miconia firma     Endemic    TRUE</span></span>
+<span><span class="co">#&gt; 6                          Festuca densiflora     Endemic    TRUE</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="compare-versions">Compare Versions<a class="anchor" aria-label="anchor" href="#compare-versions"></a>
+</h2>
+<p>The package includes a vignette for comparing inclusions, exclusions, and possible nomenclatural replacements across dataset versions:</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/vignette.html" class="external-link">vignette</a></span><span class="op">(</span><span class="st">"cambios-entre-versiones"</span>, package <span class="op">=</span> <span class="st">"ppendemic"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>To cite the <code>ppendemic</code> package, please use:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"ppendemic"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; To cite ppendemic in publications use:</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   Santos-Andrade PE, Vilca-Bustamante LL (2025). ppendemic: A glimpse</span></span>
-<span><span class="co">#&gt;   at the diversity of Peru's endemic plants.</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; A BibTeX entry for LaTeX users is</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;   @Manual{,</span></span>
-<span><span class="co">#&gt;     author = {Paul E. Santos Andrade and Lucely L. Vilca Bustamante},</span></span>
-<span><span class="co">#&gt;     title = {ppendemic: A glimpse at the diversity of Peru's endemic plants},</span></span>
-<span><span class="co">#&gt;     year = {2025},</span></span>
-<span><span class="co">#&gt;     doi = {10.5281/zenodo.5106619},</span></span>
-<span><span class="co">#&gt;     url = {https://paulesantos.github.io/ppendemic/},</span></span>
-<span><span class="co">#&gt;   }</span></span></code></pre></div>
+<p>To cite <code>ppendemic</code>, use:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"ppendemic"</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
