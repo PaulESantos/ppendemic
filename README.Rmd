@@ -4,7 +4,6 @@ output: github_document
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -15,7 +14,7 @@ knitr::opts_chunk$set(
 library(tidyverse)
 ```
 
-# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/ppendemic_logo.png' align="right" height="180" width="160" /></a>
+# ppendemic <a href='https://github.com/PaulESantos/ppendemic'><img src='man/figures/ppendemic_logo_web.png' align="right" height="200" width="180" /></a>
 
 <!-- badges: start -->
 [![Lifecycle: stable](https://img.shields.io/badge/lifecycle-stable-blue.svg)](https://lifecycle.r-lib.org/articles/stages.html)
@@ -29,90 +28,173 @@ library(tidyverse)
 
 ## Overview
 
-This package offers convenient access to a database containing `r nrow(ppendemic::ppendemic_tab16)` accepted endemic plant taxonomic records from Peru. The records include taxa at species and infraspecific ranks, together with accepted names, family, genus, specific epithet, infraspecific taxonomy, authorship, publication details, and actual and nominal publication years.
+`ppendemic` provides access to accepted endemic plant taxonomic records from Peru. The current dataset, `ppendemic_tab16`, contains `r nrow(ppendemic::ppendemic_tab16)` records from WCVP V-16, including taxa at species and infraspecific ranks.
 
-The construction of the `ppendemic` package is built upon valuable data sourced from the renowned **World Checklist of Vascular Plants (WCVP)** database. The WCVP is an international collaborative programme initiated in 1988 by Rafaël Govaerts that provides high-quality expert-reviewed taxonomic data on all vascular plants. As a highly authoritative resource updated daily, WCVP offers comprehensive information on plant taxonomy and occurrence worldwide, serving as the taxonomic backbone for World Flora Online (WFO) and being incorporated into the Catalogue of Life Checklist via GBIF. Leveraging this data, the ppendemic package aims to present an up-to-date and novel compilation of Peru's endemic plant species, tailored to the diverse ecosystems of the region.
+The package is useful for:
 
-By incorporating meticulously curated data from WCVP following the International Code of Nomenclature for algae, fungi, and plants (ICN), this package offers users a reliable and accurate resource to explore, analyze, and gain deeper insights into the rich diversity of Peru's endemic flora. The latest version (V-16, dated 04-06-2026) includes enhanced temporal bibliographic information with sophisticated year extraction capabilities, distinguishing between actual and nominal publication years for improved citation accuracy.
+- exploring the taxonomic composition of Peru's endemic flora;
+- checking whether a submitted plant name is listed as endemic;
+- comparing successive WCVP-derived versions of the endemic checklist; and
+- inspecting bibliographic metadata, including actual and nominal publication years.
 
-The current version expands the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru to `r nrow(ppendemic::ppendemic_tab16)` accepted taxonomic records. Because the database includes infraspecific taxa, this row count must not be interpreted as the number of distinct species.
+Because the database includes infraspecific taxa, the number of rows must not be interpreted as the number of distinct species.
 
-The database spans `r length(unique(ppendemic::ppendemic_tab16$family))` families. The families with the greatest numbers of endemic taxonomic records are `r names(rev(sort(table(ppendemic::ppendemic_tab16$family))))[1:10]`. The enhanced dataset also includes `r sum(ppendemic::ppendemic_tab16$has_different_years, na.rm = TRUE)` records where actual and nominal publication years differ.
+## What Is Included
 
+The datasets include accepted endemic taxa with:
 
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-ppendemic::ppendemic_tab16 |> 
-  group_by(family) |> 
-  summarise(n_taxa = n_distinct(taxon_name)) |>
-  arrange(desc(n_taxa)) |>
-  top_n(10) |> 
-  ggplot(aes(fct_reorder(family, n_taxa, .desc = TRUE),
-             n_taxa)) +
-  geom_col() +
-  labs(x = "Families",
-       y = "Number of taxonomic records",
-       title = "Top 10 Families with Most Endemic Taxonomic Records in Peru",
-       subtitle = paste("Based on", nrow(ppendemic::ppendemic_tab16), "accepted endemic taxonomic records (Version V-16)")) +
-  scale_x_discrete(guide = guide_axis(n.dodge = 2)) +
-  theme_bw() +
-  theme(plot.title = element_text(hjust = 0.5),
-        plot.subtitle = element_text(hjust = 0.5))
+- accepted taxon name and taxonomic status;
+- family, genus, specific epithet, infraspecific rank and infraspecific epithet;
+- taxon authorship and publication metadata;
+- actual and nominal publication years; and
+- dataset version and extraction date.
+
+The datasets do not include coordinates, departments, elevation, habitat, threat categories, or fine-scale distribution records. Geographic hotspot, conservation-priority, or range-size analyses require joining `ppendemic` with external occurrence or conservation datasets.
+
+## Datasets
+
+```{r datasets-table, echo=FALSE}
+dataset_summary <- tibble::tibble(
+  dataset = c("ppendemic_tab14", "ppendemic_tab15", "ppendemic_tab16"),
+  wcvp_version = c("V-14", "V-15", "V-16"),
+  extraction_date = c("28-05-2025", "06-01-2026", "04-06-2026"),
+  records = c(
+    nrow(ppendemic::ppendemic_tab14),
+    nrow(ppendemic::ppendemic_tab15),
+    nrow(ppendemic::ppendemic_tab16)
+  ),
+  families = c(
+    dplyr::n_distinct(ppendemic::ppendemic_tab14$family),
+    dplyr::n_distinct(ppendemic::ppendemic_tab15$family),
+    dplyr::n_distinct(ppendemic::ppendemic_tab16$family)
+  ),
+  genera = c(
+    dplyr::n_distinct(ppendemic::ppendemic_tab14$Genus),
+    dplyr::n_distinct(ppendemic::ppendemic_tab15$Genus),
+    dplyr::n_distinct(ppendemic::ppendemic_tab16$Genus)
+  )
+)
+
+knitr::kable(dataset_summary)
+```
+
+`ppendemic_tab16` is the latest dataset and should be used by default unless a reproducible analysis requires an older WCVP version.
+
+The latest version expands the previously known list of 5,507 species presented in the Red Book of Endemic Plants of Peru to `r nrow(ppendemic::ppendemic_tab16)` accepted taxonomic records. These records span `r dplyr::n_distinct(ppendemic::ppendemic_tab16$family)` families; the most record-rich families are `r paste(names(sort(table(ppendemic::ppendemic_tab16$family), decreasing = TRUE))[1:10], collapse = ", ")`.
+
+```{r top-family-plot, echo=FALSE, message=FALSE}
+ppendemic::ppendemic_tab16 |>
+  dplyr::count(family, name = "n_taxa", sort = TRUE) |>
+  dplyr::slice_head(n = 10) |>
+  ggplot2::ggplot(ggplot2::aes(
+    forcats::fct_reorder(family, n_taxa),
+    n_taxa
+  )) +
+  ggplot2::geom_col() +
+  ggplot2::coord_flip() +
+  ggplot2::labs(
+    x = "Family",
+    y = "Number of taxonomic records",
+    title = "Top 10 Families with Most Endemic Taxonomic Records in Peru",
+    subtitle = paste(
+      "Based on",
+      nrow(ppendemic::ppendemic_tab16),
+      "accepted endemic taxonomic records (WCVP V-16)"
+    )
+  ) +
+  ggplot2::theme_bw()
 ```
 
 ## Installation
 
-You can install the `ppendemic` package from CRAN using:
+Install the CRAN release:
 
 ```r
 install.packages("ppendemic")
-# or
-pak::pak("ppendemic")
 ```
 
-Also you can install the `ppendemic` package from GitHub using the following command:
+Or install the development version from GitHub:
 
 ```r
 pak::pak("PaulESantos/ppendemic")
 ```
 
-
 ## Getting Started
-
-After installing the `ppendemic` package, you can load it into your R session using:
 
 ```{r}
 library(ppendemic)
-
 ```
 
-- Use `is_ppendemic()` to check if taxa are endemic
+Access the latest dataset directly:
 
 ```{r}
-splist <- c("Aa aurantiaca", 
-             "Aa aurantiaaia",
-             "Werneria nubigena", 
-             "Dasyphyllum brasiliense var. barnadesioides",
-             "Miconia firma",
-             "Festuca densiflora")
+data("ppendemic_tab16")
+dplyr::glimpse(ppendemic_tab16)
+```
+
+Count records by family:
+
+```{r}
+ppendemic_tab16 |>
+  dplyr::count(family, sort = TRUE)
+```
+
+## Check Endemism
+
+Use `is_ppendemic()` to check whether submitted names are listed as endemic:
+
+```{r}
+splist <- c(
+  "Aa aurantiaca",
+  "Aa aurantiaaia",
+  "Werneria nubigena",
+  "Dasyphyllum brasiliense var. barnadesioides",
+  "Miconia firma",
+  "Festuca densiflora"
+)
+
 is_ppendemic(splist)
-
 ```
 
-- The `is_ppendemic()` function is designed to work seamlessly with tibbles, allowing users to easily analyze and determine the endemic status of species within a tabular format.
+The matching engine uses exact and fuzzy matching. The `max_dist` argument controls fuzzy tolerance:
 
 ```{r}
-
-tibble::tibble(splist = splist) |> 
-  dplyr::mutate(endemic = is_ppendemic(splist))
-
+is_ppendemic("Aa aurantiaaia", max_dist = 0)
+is_ppendemic("Aa aurantiaaia", max_dist = 2)
 ```
 
+Indeterminate names such as `sp.` and `spp.` are treated as genus-level records and are not classified as endemic taxa:
+
+```{r}
+is_ppendemic(c("Piper sp.", "Piper spp."))
+```
+
+`is_ppendemic()` can also be used inside tabular workflows:
+
+```{r}
+tibble::tibble(splist = splist) |>
+  dplyr::mutate(endemic = is_ppendemic(splist))
+```
+
+For detailed matching diagnostics, use `matching_ppendemic()`:
+
+```{r}
+matching_ppendemic(splist) |>
+  dplyr::select(Orig.Name, Matched.Name, Endemic.Tag, matched)
+```
+
+## Compare Versions
+
+The package includes a vignette for comparing inclusions, exclusions, and possible nomenclatural replacements across dataset versions:
+
+```r
+vignette("cambios-entre-versiones", package = "ppendemic")
+```
 
 ## Citation
 
-To cite the `ppendemic` package, please use:
+To cite `ppendemic`, use:
 
-```{r}
+```{r eval=TRUE}
 citation("ppendemic")
 ```
